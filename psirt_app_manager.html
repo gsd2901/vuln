@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PSIRT Applicability Manager</title>
+{% csrf_token %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    /* Re-themed to match the native SNAAP palette (see gen_ai.html / inc/sidebar.html)
+       instead of the standalone Flask app's cream/serif "paper" look. */
+    --bg: #f7fafc; --surface: #ffffff; --surface2: #eef2f7; --border: #e2e8f0;
+    --border2: #cbd5e0; --text: #2d3748; --text2: #4a5568; --text3: #718096;
+    --green: #10b981; --green-bg: rgba(16,185,129,.1); --red: #ef4444; --red-bg: rgba(239,68,68,.1);
+    --amber: #f59e0b; --amber-bg: rgba(245,158,11,.1); --blue: #4080f5; --blue-bg: rgba(64,128,245,.1);
+    --secondary: #572ac2;
+    --hcl-gradient: linear-gradient(304deg, #572ac2, #4080f5);
+    --mono: 'Consolas', 'Courier New', monospace; --radius: 8px; --radius-lg: 12px;
+  }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 14px; line-height: 1.6; }
+  .psirt-main-content { margin-left: 250px; width: calc(100% - 250px); min-height: 100vh; }
+  .topbar { background: var(--surface); color: var(--text); padding: 18px 32px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .topbar-logo { font-size: 18px; font-weight: 700; letter-spacing: 0.01em; font-family: 'Segoe UI', sans-serif; background: var(--hcl-gradient); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .topbar-sub { font-size: 12px; color: var(--text3); margin-left: auto; font-family: 'Segoe UI', sans-serif; }
+  .layout { display: grid; grid-template-columns: 340px 1fr; gap: 0; min-height: calc(100vh - 49px); }
+  .psirt-sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 24px 20px; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; }
+  .main { padding: 24px 28px; overflow-y: auto; }
+  .section-label { font-family: monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
+  textarea, input[type="text"], input[type="number"], input[type="password"], select { width: 100%; border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 10px; font-size: 13px; font-family: var(--mono); background: var(--surface); color: var(--text); transition: border-color 0.15s; outline: none; }
+  textarea:focus, input:focus, select:focus { border-color: var(--text); }
+  textarea { resize: vertical; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: var(--radius); font-size: 13px; font-family: monospace; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--text); transition: all 0.15s; text-decoration: none; }
+  .btn:hover { background: var(--surface2); border-color: var(--border2); }
+  .btn-primary { background: var(--hcl-gradient); color: #ffffff; border-color: transparent; }
+  .btn-primary:hover { background: var(--hcl-gradient); color: #ffffff; filter: brightness(1.08); }
+  .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
+  .btn-sm { padding: 5px 10px; font-size: 11px; }
+  .btn-danger { color: var(--red); border-color: #f0b0a8; }
+  .btn-danger:hover { background: var(--red-bg); }
+  .btn-export { color: var(--blue); border-color: #b0c8f0; }
+  .btn-export:hover { background: var(--blue-bg); }
+  .device-table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: var(--mono); }
+  th { background: var(--surface2); padding: 7px 10px; text-align: left; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text2); border-bottom: 1px solid var(--border); }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--surface2); }
+  .del-row { cursor: pointer; color: var(--text3); background: none; border: none; font-size: 16px; line-height: 1; }
+  .del-row:hover { color: var(--red); }
+  .add-device-form { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px; display: none; flex-direction: column; gap: 10px; margin-top: 10px; }
+  .add-device-form.open { display: flex; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 80px; gap: 8px; }
+  .field-label { font-size: 10px; color: var(--text3); font-family: monospace; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 3px; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 10px; font-family: monospace; letter-spacing: 0.05em; font-weight: bold; text-transform: uppercase; }
+  .badge-applicable { background: var(--red-bg); color: var(--red); }
+  .badge-not { background: var(--green-bg); color: var(--green); }
+  .badge-review { background: var(--amber-bg); color: var(--amber); }
+  .badge-pending { background: var(--surface2); color: var(--text3); }
+  .badge-running { background: var(--blue-bg); color: var(--blue); }
+  .results-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .results-title { font-size: 16px; font-weight: bold; font-family: 'Segoe UI', sans-serif; }
+  .summary-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 16px; min-width: 110px; text-align: center; }
+  .stat-num { font-size: 24px; font-weight: bold; font-family: monospace; }
+  .stat-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; font-family: monospace; }
+  .stat-applicable .stat-num { color: var(--red); }
+  .stat-not .stat-num { color: var(--green); }
+  .stat-review .stat-num { color: var(--amber); }
+  .device-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 12px; overflow: hidden; }
+  .device-card-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; cursor: pointer; border-bottom: 1px solid transparent; transition: background 0.1s; }
+  .device-card-header:hover { background: var(--surface2); }
+  .device-card.open .device-card-header { border-bottom-color: var(--border); }
+  .device-hostname { font-family: monospace; font-weight: bold; font-size: 13px; flex: 1; }
+  .device-meta { font-size: 11px; color: var(--text3); font-family: monospace; }
+  .device-card-body { display: none; padding: 16px; }
+  .device-card.open .device-card-body { display: block; }
+  .layer-grid { display: flex; flex-direction: column; gap: 6px; margin: 12px 0; }
+  .layer-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 12px; border-radius: var(--radius); background: var(--surface2); font-size: 12px; }
+  .layer-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .dot-pass { background: var(--green); }
+  .dot-fail { background: var(--red); }
+  .dot-unknown { background: var(--amber); }
+  .layer-name { font-family: monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text3); min-width: 85px; margin-top: 2px; }
+  .layer-detail { color: var(--text); flex: 1; line-height: 1.5; }
+  .evidence-block { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; font-family: var(--mono); font-size: 11px; color: var(--text2); white-space: pre-wrap; max-height: 200px; overflow-y: auto; margin-top: 8px; }
+  .action-box { border-left: 3px solid var(--border2); padding: 8px 12px; margin-top: 10px; font-size: 12px; color: var(--text2); }
+  .progress-wrap { margin: 12px 0; }
+  .progress-bar-bg { background: var(--surface2); border-radius: 99px; height: 6px; }
+  .progress-bar-fill { background: var(--text); border-radius: 99px; height: 6px; transition: width 0.3s; }
+  .log-box { background: #1a1a18; color: #b0f0c0; font-family: var(--mono); font-size: 11px; border-radius: var(--radius); padding: 10px 12px; max-height: 160px; overflow-y: auto; line-height: 1.7; margin-top: 10px; }
+  .empty-state { text-align: center; padding: 48px 24px; color: var(--text3); font-family: monospace; font-size: 13px; }
+  .advisory-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 16px; margin-bottom: 16px; font-size: 12px; font-family: monospace; }
+  .advisory-card-title { font-size: 13px; font-weight: bold; margin-bottom: 8px; color: var(--text); font-family: 'Segoe UI', sans-serif; }
+  .advisory-kv { display: grid; grid-template-columns: 120px 1fr; gap: 4px 12px; }
+  .advisory-k { color: var(--text3); }
+  .advisory-v { color: var(--text); }
+  .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+  .tab { padding: 8px 18px; font-family: monospace; font-size: 12px; cursor: pointer; border: none; background: none; color: var(--text3); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab.active { color: var(--text); border-bottom-color: var(--text); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .spinner { width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--text); border-radius: 50%; animation: spin 0.7s linear infinite; display: inline-block; vertical-align: middle; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .dash-metric-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 1.5rem; }
+  .dash-metric { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+  .dash-metric-label { font-size: 11px; color: var(--text3); margin: 0 0 4px; font-family: var(--mono); text-transform: uppercase; letter-spacing: .04em; }
+  .dash-metric-value { font-size: 28px; font-weight: 700; margin: 0; line-height: 1; }
+  .dash-metric-sub { font-size: 11px; color: var(--text3); margin: 4px 0 0; }
+  .dash-charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .dash-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+  .dash-card-title { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .04em; font-family: var(--mono); margin: 0 0 10px; }
+  .dash-legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; font-size: 11px; color: var(--text3); }
+  .dash-legend span { display: flex; align-items: center; gap: 4px; }
+  .dash-legend-dot { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
+  .adv-breakdown-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .adv-breakdown-table th { font-size: 10px; color: var(--text3); text-align: left; padding: 0 8px 7px 0; border-bottom: 1px solid var(--border); font-family: var(--mono); text-transform: uppercase; }
+  .adv-breakdown-table td { padding: 8px 8px 8px 0; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .adv-breakdown-table tr:last-child td { border-bottom: none; }
+  .mini-bar-wrap { display: flex; gap: 2px; align-items: center; }
+  .mini-bar-seg { height: 7px; border-radius: 2px; min-width: 3px; }
+  .why-btn { font-size: 11px; background: none; border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; cursor: pointer; color: var(--text3); font-family: var(--mono); transition: background .15s; margin-left: 8px; }
+  .why-btn:hover { background: var(--surface2); color: var(--text); }
+  .why-drawer { display: none; margin: 8px 0 0; background: var(--surface2); border-radius: 6px; padding: 12px 14px; font-size: 12px; line-height: 1.6; }
+  .why-drawer.open { display: block; }
+  .why-layers { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; margin: 8px 0; font-size: 12px; align-items: start; }
+  .why-layer-name { color: var(--text3); font-family: var(--mono); white-space: nowrap; padding-top: 1px; }
+  .why-layer-detail { color: var(--text); }
+  .why-evidence { margin-top: 8px; padding: 8px 10px; background: var(--bg); border-radius: 4px; font-family: var(--mono); font-size: 11px; color: var(--text3); border-left: 3px solid var(--border); }
+  .why-action { margin-top: 8px; font-size: 12px; color: var(--amber); }
+  .remediation-block { margin-top: 10px; padding: 10px 12px; background: var(--green-bg); border-left: 3px solid var(--green); border-radius: var(--radius); font-size: 12px; line-height: 1.6; }
+  .remediation-title { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--text3); margin-bottom: 4px; }
+  .remediation-cmd { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 6px 8px; font-family: var(--mono); font-size: 11px; margin: 2px 0; white-space: pre-wrap; }
+  .ai-drafted-block { margin-top: 10px; padding: 10px 12px; background: var(--amber-bg); border-left: 3px solid var(--amber); border-radius: var(--radius); font-size: 12px; line-height: 1.6; }
+  .ai-disclaimer { font-size: 10px; color: var(--amber); font-style: italic; margin-top: 6px; }
+  .verdict-pill { display: inline-block; font-size: 10px; font-weight: 600; padding: 1px 7px; border-radius: 999px; }
+  .vp-app { background: rgba(220,50,50,.12); color: var(--red); }
+  .vp-na  { background: rgba(40,180,80,.12); color: var(--green); }
+  .vp-nr  { background: rgba(210,140,30,.12); color: var(--amber); }
+</style>
+</head>
+<body>
+{% include 'inc/sidebar.html' %}
+<div class="psirt-main-content">
+<div class="topbar">
+  <div class="topbar-logo">⬡ PSIRT Applicability Manager</div>
+  <div class="topbar-sub">Cisco IOS / IOS XE · Netmiko SSH</div>
+</div>
+<div class="layout">
+  <aside class="psirt-sidebar">
+    <div>
+      <div class="section-label">Advisory text</div>
+      <textarea id="advisory-text" rows="8" placeholder="Paste Cisco PSIRT advisory, CVE description, or PSIRT JSON…"></textarea>
+      <button class="btn btn-sm" onclick="loadSampleAdvisory()" style="margin-top:6px">Load sample advisory</button>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom:8px">Device inventory</div>
+      <div class="device-table-wrap" id="device-table-wrap">
+        <table id="device-table">
+          <thead><tr><th>Host</th><th>Type</th><th>Platform</th><th></th></tr></thead>
+          <tbody id="device-tbody"></tbody>
+        </table>
+      </div>
+      <div id="add-device-form" class="add-device-form">
+        <div class="form-row-3">
+          <div><div class="field-label">Hostname/IP *</div><input type="text" id="f-host" placeholder="192.168.1.1" /></div>
+          <div><div class="field-label">Hostname label</div><input type="text" id="f-hostname" placeholder="SW1" /></div>
+          <div><div class="field-label">Port</div><input type="number" id="f-port" value="22" min="1" max="65535" /></div>
+        </div>
+        <div class="form-row">
+          <div><div class="field-label">Username *</div><input type="text" id="f-user" placeholder="admin" /></div>
+          <div><div class="field-label">Password *</div><input type="password" id="f-pass" placeholder="••••••••" /></div>
+        </div>
+        <div class="form-row">
+          <div><div class="field-label">Device type</div>
+            <select id="f-dtype">
+              <option value="cisco_ios">cisco_ios</option>
+              <option value="cisco_xe">cisco_xe</option>
+              <option value="cisco_nxos">cisco_nxos</option>
+              <option value="cisco_xr">cisco_xr</option>
+            </select>
+          </div>
+          <div><div class="field-label">Platform/Model</div><input type="text" id="f-platform" placeholder="C9300-48U" /></div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:4px">
+          <button class="btn btn-primary btn-sm" onclick="addDevice()">Add device</button>
+          <button class="btn btn-sm" onclick="toggleAddForm()">Cancel</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <button class="btn btn-sm" onclick="toggleAddForm()">+ Add device</button>
+        <button class="btn btn-sm" onclick="loadSampleDevices()">Load samples</button>
+        <button class="btn btn-sm btn-danger" onclick="clearDevices()">Clear all</button>
+      </div>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom:8px">
+        DNA Center
+        <span id="dnac-status-dot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--text3);margin-left:6px;vertical-align:middle" title="Not connected"></span>
+      </div>
+      <div id="dnac-form" style="display:flex;flex-direction:column;gap:8px">
+        <div class="form-row">
+          <div><div class="field-label">DNAC Host / IP</div><input type="text" id="dnac-host" placeholder="sandboxdnac.cisco.com" /></div>
+          <div><div class="field-label">Port</div><input type="number" id="dnac-port" value="443" style="width:70px"/></div>
+        </div>
+        <div class="form-row">
+          <div><div class="field-label">DNAC Username</div><input type="text" id="dnac-user" placeholder="devnetuser" /></div>
+          <div><div class="field-label">DNAC Password</div><input type="password" id="dnac-pass" placeholder="••••••••" /></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <label style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px;cursor:pointer">
+            <input type="checkbox" id="dnac-verify-ssl" /> Verify SSL
+          </label>
+        </div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px">SSH credentials for fetched devices (leave blank to reuse DNAC credentials):</div>
+        <div class="form-row">
+          <div><div class="field-label">SSH Username</div><input type="text" id="dnac-ssh-user" placeholder="(same as DNAC)" /></div>
+          <div><div class="field-label">SSH Password</div><input type="password" id="dnac-ssh-pass" placeholder="(same as DNAC)" /></div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:2px">
+          <button class="btn btn-sm" onclick="dnacTest()">Test connection</button>
+          <button class="btn btn-sm" onclick="dnacFetchDevices()">Import devices</button>
+          <button class="btn btn-sm" onclick="openDnacAdvisories()">Browse advisories</button>
+          <button class="btn btn-primary" style="width:100%;margin-top:4px" onclick="dnacAssessAll()">&#9654; Assess All DNAC Impacted Pairs</button>
+          <div style="font-size:10px;color:var(--text3);margin-top:3px">or Browse advisories to select specific ones</div>
+        </div>
+        <div id="dnac-msg" style="font-size:11px;min-height:14px;font-family:monospace;margin-top:2px"></div>
+      </div>
+    </div>
+    <div id="dnac-adv-panel" style="display:none;margin-top:10px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <div class="field-label" style="margin:0">DNAC Advisories</div>
+        <button class="btn btn-sm" onclick="closeDnacAdvisories()" style="padding:2px 6px">x</button>
+      </div>
+      <label style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px;cursor:pointer;margin-bottom:6px">
+        <input type="checkbox" id="dnac-adv-include-affected" checked /> Fetch affected devices per advisory
+      </label>
+      <div style="display:flex;gap:5px;margin-bottom:6px;flex-wrap:wrap">
+        <button class="btn btn-sm btn-primary" style="flex:1" onclick="dnacFetchAdvisories()">Fetch from DNAC</button>
+        <button class="btn btn-sm" onclick="dnacSelectAll(true)">All</button>
+        <button class="btn btn-sm" onclick="dnacSelectAll(false)">None</button>
+      </div>
+      <div id="dnac-adv-list" style="max-height:240px;overflow-y:auto;font-size:11px;font-family:monospace"></div>
+      <label style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px;cursor:pointer;margin-top:6px" title="Ignore any cached advisory profile for the selected advisories and re-extract fresh from the advisory text (e.g. after a parsing fix, or if Cisco revised the advisory).">
+        <input type="checkbox" id="dnac-force-refresh" /> Force refresh advisory data (ignore cache)
+      </label>
+      <button id="dnac-run-selected-btn" class="btn btn-primary" style="width:100%;margin-top:6px;display:none" onclick="dnacAssessSelected()">&#9654; Assess Selected Advisories</button>
+    </div>
+    <button class="btn btn-primary" id="run-btn" onclick="startAssessment()">&#9654; Run assessment</button>
+  </aside>
+
+  <main class="main">
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('results')">Results</button>
+      <button class="tab" onclick="showTab('dashboard')">Dashboard</button>
+      <button class="tab" onclick="showTab('log')">Job log</button>
+      <button class="tab" onclick="showTab('history')">History</button>
+      <button class="tab" onclick="showTab('dbresults')">Scan DB</button>
+    </div>
+    <div class="tab-content active" id="tab-results">
+      <div id="results-area"><div class="empty-state">No assessment run yet.<br>Add devices and paste an advisory, then click Run.</div></div>
+    </div>
+    <div class="tab-content" id="tab-dashboard">
+      <div id="dashboard-area"><div class="empty-state">Run an assessment to see the dashboard.</div></div>
+    </div>
+    <div class="tab-content" id="tab-log">
+      <div id="log-area"><div class="empty-state">Job log will appear here.</div></div>
+    </div>
+    <div class="tab-content" id="tab-history">
+      <div id="history-area"><div class="empty-state">Completed jobs will appear here.</div></div>
+    </div>
+    <div class="tab-content" id="tab-dbresults">
+      <div style="display:flex;align-items:flex-end;gap:10px;margin-bottom:18px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--border)">
+        <div>
+          <div class="section-label" style="margin-bottom:4px">DNAC ID</div>
+          <select id="db-dnac-id" style="width:220px;font-size:12px">
+            <option value="">All DNACs</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="loadDbResults()">Load DB results</button>
+        <button class="btn btn-sm" id="db-refresh-btn" onclick="toggleDbAutoRefresh()" title="Poll the DB every 10 s while a scan is running">⟳ Auto-refresh</button>
+        <span id="db-refresh-status" style="font-size:11px;color:var(--text3);font-family:monospace"></span>
+      </div>
+      <div id="db-results-area"><div class="empty-state">Select a DNAC and click "Load DB results" to view scan results stored in the database.</div></div>
+    </div>
+  </main>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// ── Django URL wiring (replaces the original Flask relative /api/... paths) ──
+const API_URLS = {
+  assess:              "{% url 'plugins:custom_chatbot:psirt_assess' %}",
+  jobStatus:           "{% url 'plugins:custom_chatbot:psirt_job_status' job_id='__JOBID__' %}",
+  jobExport:           "{% url 'plugins:custom_chatbot:psirt_job_export' job_id='__JOBID__' %}",
+  diagnose:            "{% url 'plugins:custom_chatbot:psirt_diagnose' %}",
+  applicabilitySummary:"{% url 'plugins:custom_chatbot:psirt_applicability_summary' %}",
+  dnacTest:            "{% url 'plugins:custom_chatbot:psirt_dnac_test' %}",
+  dnacDevices:         "{% url 'plugins:custom_chatbot:psirt_dnac_devices' %}",
+  dnacAdvisories:      "{% url 'plugins:custom_chatbot:psirt_dnac_advisories' %}",
+  dnacAdvisoryDevices: "{% url 'plugins:custom_chatbot:psirt_dnac_advisory_devices' advisory_id='__ADVISORYID__' %}",
+  dnacAssessAll:       "{% url 'plugins:custom_chatbot:psirt_dnac_assess_all' %}",
+  dnacInstances:       "{% url 'plugins:custom_chatbot:dnac_instances' %}",
+  generateRemediation: "{% url 'plugins:custom_chatbot:psirt_generate_remediation' %}",
+};
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return '';
+}
+function csrfHeaders(extra) {
+  return Object.assign({ 'Content-Type': 'application/json', 'X-CSRFToken': getCookie('csrftoken') }, extra || {});
+}
+
+let devices = [];
+let currentJobId = null;
+let pollInterval = null;
+let jobHistory = [];
+
+function renderDeviceTable() {
+  const tbody = document.getElementById('device-tbody');
+  if (!devices.length) {
+    tbody.innerHTML = '<tr><td colspan="4" style="color:var(--text3);text-align:center;padding:12px;font-family:monospace;font-size:11px">No devices added</td></tr>';
+    return;
+  }
+  tbody.innerHTML = devices.map((d, i) => `
+    <tr>
+      <td>${d.hostname || d.host}</td>
+      <td><span style="font-size:10px;color:var(--text3)">${d.device_type}</span></td>
+      <td><span style="font-size:10px;color:var(--text3)">${d.platform || '—'}</span></td>
+      <td><button class="del-row" onclick="removeDevice(${i})" title="Remove">×</button></td>
+    </tr>`).join('');
+}
+
+function addDevice() {
+  const host = document.getElementById('f-host').value.trim();
+  const username = document.getElementById('f-user').value.trim();
+  const password = document.getElementById('f-pass').value;
+  if (!host || !username || !password) { alert('Host, username, and password are required.'); return; }
+  devices.push({
+    host, hostname: document.getElementById('f-hostname').value.trim() || host,
+    port: parseInt(document.getElementById('f-port').value) || 22,
+    username, password,
+    device_type: document.getElementById('f-dtype').value,
+    platform: document.getElementById('f-platform').value.trim(),
+  });
+  ['f-host','f-hostname','f-user','f-pass','f-platform'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('f-port').value = '22';
+  renderDeviceTable();
+  document.getElementById('add-device-form').classList.remove('open');
+}
+
+function removeDevice(i) { devices.splice(i, 1); renderDeviceTable(); }
+function clearDevices() { devices = []; renderDeviceTable(); }
+function toggleAddForm() { document.getElementById('add-device-form').classList.toggle('open'); }
+
+function loadSampleDevices() {
+  devices = [
+    { host:'192.168.1.10', hostname:'SW1-C9300', port:22, username:'admin', password:'cisco123', device_type:'cisco_xe', platform:'C9300-48U' },
+    { host:'192.168.1.11', hostname:'SW2-C9200L', port:22, username:'admin', password:'cisco123', device_type:'cisco_xe', platform:'C9200L-48P' },
+    { host:'192.168.1.20', hostname:'RTR1-ASR', port:22, username:'admin', password:'cisco123', device_type:'cisco_ios', platform:'ASR1001-X' },
+  ];
+  renderDeviceTable();
+}
+
+function loadSampleAdvisory() {
+  document.getElementById('advisory-text').value = `Advisory ID: cisco-sa-snmp-x4LPhte
+CVE: CVE-2025-20352
+CVSS Score: 8.6 (High)
+Title: Cisco IOS and IOS XE Software SNMP Remote Code Execution and Denial of Service Vulnerability
+
+Affected Feature: SNMP
+Affected Platforms: IOS, IOS XE
+Affected Versions: 16.x, 17.x through 17.9.4
+Fixed In: 17.9.6 and later
+
+Detection Commands:
+  show running-config | include snmp-server community
+  show running-config | include snmp-server group
+  show snmp user`;
+}
+
+async function startAssessment() {
+  const advisory = document.getElementById('advisory-text').value.trim();
+  if (!advisory) { alert('Please paste an advisory first.'); return; }
+  if (!devices.length) { alert('Please add at least one device.'); return; }
+  const btn = document.getElementById('run-btn');
+  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Running…';
+  showTab('results');
+  try {
+    const resp = await fetch(API_URLS.assess, {
+      method: 'POST', headers: csrfHeaders(),
+      body: JSON.stringify({ advisory_text: advisory, devices })
+    });
+    const data = await resp.json();
+    if (data.error) { alert('Error: ' + data.error); btn.disabled=false; btn.innerHTML='&#9654; Run assessment'; return; }
+    currentJobId = data.job_id;
+    startPolling(data.job_id);
+  } catch(e) {
+    alert('Request failed: ' + e.message);
+    btn.disabled=false; btn.innerHTML='&#9654; Run assessment';
+  }
+}
+
+function startPolling(jobId) {
+  clearInterval(pollInterval);
+  window._pollStart = Date.now(); window._pollJobId = jobId;
+  pollInterval = setInterval(() => pollJob(jobId), 2000);
+  pollJob(jobId);
+}
+
+async function pollJob(jobId) {
+  if (Date.now() - (window._pollStart || 0) > 30 * 60 * 1000) {
+    clearInterval(pollInterval);
+    document.getElementById('run-btn').disabled = false;
+    document.getElementById('run-btn').innerHTML = '&#9654; Run assessment';
+    return;
+  }
+  try {
+    const resp = await fetch(API_URLS.jobStatus.replace('__JOBID__', jobId));
+    const job = await resp.json();
+    renderResults(job);
+    renderLog(job);
+    if (job.status === 'done' || job.status === 'failed') {
+      clearInterval(pollInterval);
+      document.getElementById('run-btn').disabled = false;
+      document.getElementById('run-btn').innerHTML = '&#9654; Run assessment';
+      if (!jobHistory.find(j => j.job_id === jobId)) { jobHistory.unshift(job); renderHistory(); }
+    }
+  } catch(e) { console.error('Poll error:', e); }
+}
+
+function verdictBadge(v) {
+  if (!v) return '<span class="badge badge-pending">pending</span>';
+  if (v === 'AFFECTED') return '<span class="badge badge-applicable">Affected</span>';
+  if (v === 'NOT_AFFECTED') return '<span class="badge badge-not">Not affected</span>';
+  return '<span class="badge badge-review">Needs review</span>';
+}
+function dotClass(r) { return r==='PASS'?'dot-pass':r==='FAIL'?'dot-fail':'dot-unknown'; }
+
+var renderResults = function(job) {
+  window._lastJob = job;
+  if (document.getElementById('tab-dashboard').classList.contains('active')) renderDashboard(job);
+  const area = document.getElementById('results-area');
+  if (job.status === 'queued') { area.innerHTML = `<div class="empty-state"><span class="spinner"></span><br><br>Queued…</div>`; return; }
+  let html = '';
+  const p = job.advisory_profile || {};
+  if (p.cve) {
+    html += `<div class="advisory-card">
+      <div class="advisory-card-title">${p.title || p.advisory_id || 'Advisory'}</div>
+      <div class="advisory-kv">
+        <span class="advisory-k">CVE</span><span class="advisory-v">${p.cve || '—'}</span>
+        <span class="advisory-k">Feature</span><span class="advisory-v">${p.vulnerable_feature || '—'}</span>
+        <span class="advisory-k">Platforms</span><span class="advisory-v">${(p.affected_platforms||[]).join(', ') || '—'}</span>
+        <span class="advisory-k">Fixed in</span><span class="advisory-v">${p.fixed_in || '—'}</span>
+        <span class="advisory-k">Workaround</span><span class="advisory-v">${p.workaround || 'None'}</span>
+      </div></div>`;
+  }
+  if (job.status === 'done') {
+    const sc = job.summary_counts || {};
+    html += `<div class="results-header">
+      <div class="results-title">Assessment results</div>
+      <button class="btn btn-sm btn-export" onclick="exportJSON('${job.job_id}')">&#11015; Export JSON</button>
+    </div>
+    <div class="summary-bar">
+      <div class="stat-card stat-applicable"><div class="stat-num">${sc.AFFECTED||0}</div><div class="stat-label">Affected</div></div>
+      <div class="stat-card stat-not"><div class="stat-num">${sc.NOT_AFFECTED||0}</div><div class="stat-label">Not affected</div></div>
+      <div class="stat-card stat-review"><div class="stat-num">${sc.NEEDS_REVIEW||0}</div><div class="stat-label">Needs review</div></div>
+      <div class="stat-card"><div class="stat-num">${(job.results||[]).length}</div><div class="stat-label">Total devices</div></div>
+    </div>`;
+  } else {
+    const pct = job.progress || 0;
+    html += `<div class="results-header"><div class="results-title"><span class="spinner"></span> Running… ${pct}%</div></div>
+    <div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${pct}%"></div></div></div>`;
+  }
+  for (const r of (job.results || [])) {
+    const open = (r.verdict==='AFFECTED'||r.verdict==='NEEDS_REVIEW')?'open':'';
+    const cardId = 'dc-'+((r.hostname||r.host||Math.random()).toString().replace(/[^a-z0-9]/gi,'_'));
+    const drawerId = cardId+'_why';
+    html += `<div class="device-card ${open}" id="${cardId}">
+      <div class="device-card-header" onclick="toggleCard('${cardId}')">
+        <span class="device-hostname">${r.hostname||r.host||'—'}</span>
+        <span class="device-meta">${r.host||''} · ${r.platform||''} · ${r.version||r.dnac_version||''}</span>
+        ${verdictBadge(r.verdict)}
+        <button class="why-btn" onclick="event.stopPropagation();toggleWhy('${drawerId}')">Why?</button>
+        <span style="color:var(--text3);font-size:12px;margin-left:4px">▾</span>
+      </div>
+      <div class="device-card-body">
+        <div class="why-drawer" id="${drawerId}">${buildWhyDrawer(r)}</div>
+      </div>
+    </div>`;
+  }
+  if (!job.results||!job.results.length) html += `<div class="empty-state"><span class="spinner"></span><br><br>Connecting to devices…</div>`;
+  area.innerHTML = html;
+};
+
+function buildWhyDrawer(r) {
+  const vClass = r.verdict==='AFFECTED'?'vp-app':r.verdict==='NOT_AFFECTED'?'vp-na':'vp-nr';
+  const vLabel = r.verdict==='AFFECTED'?'Affected':r.verdict==='NOT_AFFECTED'?'Not affected':'Needs review';
+  let html = `<div style="margin-bottom:8px"><span class="verdict-pill ${vClass}">${vLabel}</span></div>`;
+  if (r.summary) html += `<p style="margin:0 0 8px;font-size:12px;line-height:1.6;color:var(--text)">${r.summary}</p>`;
+  const dotC = res => res==='PASS'?'dot-pass':res==='FAIL'?'dot-fail':'dot-unknown';
+  if (r.layer1||r.layer2||r.layer3) {
+    html += `<div class="why-layers">`;
+    [[r.layer1,'L1 · Platform'],[r.layer2,'L2 · Version'],[r.layer3,'L3 · Feature']].forEach(([l,name]) => {
+      if (!l) return;
+      const res = typeof l==='object'?l.result:l, det = typeof l==='object'?(l.detail||''):'';
+      html += `<div class="why-layer-name"><span class="layer-dot ${dotC(res)}" style="display:inline-block;vertical-align:middle;margin-right:5px"></span>${name}</div>
+               <div class="why-layer-detail">${det||res}</div>`;
+    });
+    html += `</div>`;
+  }
+  if (r.evidence) html += `<div class="why-evidence">${r.evidence}</div>`;
+  if (r.action) html += `<div class="why-action">⟶ ${r.action}</div>`;
+  if (r.collection_error) html += `<div style="margin-top:8px;font-size:11px;font-family:var(--mono);color:var(--red)">Collection error: ${r.collection_error}</div>`;
+
+  // ── Tier 1: verbatim advisory remediation (fixed_in / fixed_releases / workaround).
+  // Extracted, never LLM-generated -- see build_remediation_tier1() server-side.
+  const rem = r.remediation;
+  if (rem && (r.verdict === 'AFFECTED' || r.verdict === 'NEEDS_REVIEW')) {
+    window._remedCtxSeq = (window._remedCtxSeq || 0) + 1;
+    const ctxId = 'remedctx_' + window._remedCtxSeq;
+    window._remediationContext = window._remediationContext || {};
+    window._remediationContext[ctxId] = r;
+
+    html += `<div class="remediation-block">
+      <div class="remediation-title">Remediation — from the advisory</div>`;
+    if (rem.fixed_in) html += `<div><strong>Fixed in:</strong> ${rem.fixed_in}</div>`;
+    if (rem.fixed_releases) {
+      const rows = Object.entries(rem.fixed_releases).map(([train, ver]) => `${train} → ${ver}`).join(', ');
+      if (rows) html += `<div style="margin-top:2px"><strong>Fixed releases:</strong> ${rows}</div>`;
+    }
+    if (rem.workaround) {
+      html += `<div style="margin-top:6px"><strong>Vendor workaround:</strong> ${rem.workaround}</div>`;
+    } else {
+      html += `<div style="margin-top:6px;color:var(--text3)">No workaround published in this advisory — upgrading is the only vendor-confirmed fix.</div>`;
+    }
+    html += `<div style="margin-top:8px">
+      <button class="btn btn-sm" id="${ctxId}_btn" onclick="suggestDeviceCommands('${ctxId}')">✨ Suggest exact commands for this device</button>
+    </div>
+    <div id="${ctxId}_result"></div>
+    </div>`;
+  }
+
+  return html;
+}
+
+// ── Tier 2: opt-in, device-specific AI-drafted commands. Only fires when the
+// operator clicks the button -- never automatic. Always rendered with a
+// visible disclaimer since these commands are synthesized, not vendor text.
+async function suggestDeviceCommands(ctxId) {
+  const r = (window._remediationContext || {})[ctxId];
+  const btn = document.getElementById(ctxId + '_btn');
+  const out = document.getElementById(ctxId + '_result');
+  if (!r || !out) return;
+  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Drafting…';
+
+  const advisoryProfile = r.advisory_profile || {
+    fixed_in: (r.remediation || {}).fixed_in,
+    workaround: (r.remediation || {}).workaround,
+  };
+  const device = {
+    hostname: r.hostname || r.host, host: r.host, platform: r.platform,
+    version: r.version || r.dnac_version,
+  };
+  const commandOutputs = r.command_outputs || {};
+
+  try {
+    const resp = await fetch(API_URLS.generateRemediation, {
+      method: 'POST', headers: csrfHeaders(),
+      body: JSON.stringify({ advisory_profile: advisoryProfile, device, command_outputs: commandOutputs }),
+    });
+    const d = await resp.json();
+    if (d.error) {
+      out.innerHTML = `<div class="ai-drafted-block"><div class="remediation-title">AI-drafted commands</div>Error: ${d.error}</div>`;
+    } else if (d.can_draft_commands === false || !(d.commands || []).length) {
+      out.innerHTML = `<div class="ai-drafted-block">
+        <div class="remediation-title">AI-drafted commands</div>
+        Could not safely draft device-specific commands from the vendor guidance.
+        ${d.caveats ? `<div style="margin-top:4px">${d.caveats}</div>` : ''}
+        <div class="ai-disclaimer">${d.disclaimer || ''}</div>
+      </div>`;
+    } else {
+      const cmds = (d.commands || []).map(c => `<span class="remediation-cmd">${c}</span>`).join('');
+      const rollback = (d.rollback || []).map(c => `<span class="remediation-cmd">${c}</span>`).join('');
+      out.innerHTML = `<div class="ai-drafted-block">
+        <div class="remediation-title">AI-drafted commands — for this device</div>
+        ${d.rationale ? `<div style="margin-bottom:6px">${d.rationale}</div>` : ''}
+        ${cmds}
+        ${rollback ? `<div style="margin-top:6px;color:var(--text3);font-size:11px">Rollback:</div>${rollback}` : ''}
+        ${d.caveats ? `<div style="margin-top:6px;font-size:11px">${d.caveats}</div>` : ''}
+        <div class="ai-disclaimer">${d.disclaimer || 'AI-drafted — review before applying.'}</div>
+      </div>`;
+    }
+  } catch (e) {
+    out.innerHTML = `<div class="ai-drafted-block">Network error: ${e.message}</div>`;
+  } finally {
+    btn.disabled = false; btn.innerHTML = '✨ Suggest exact commands for this device';
+  }
+}
+
+function toggleCard(id) { document.getElementById(id).classList.toggle('open'); }
+function toggleWhy(id) { const el=document.querySelector('[id="'+id+'"]'); if(el) el.classList.toggle('open'); }
+function toggleDashAdv(id) { const el=document.getElementById(id); if(!el)return; el.style.display=(el.style.display==='none'||!el.style.display)?'table-row':'none'; }
+
+function renderLog(job) {
+  const logs = job.log || [];
+  document.getElementById('log-area').innerHTML = logs.length
+    ? `<div class="log-box">${logs.map(l => '› ' + l).join('\n')}</div>`
+    : '<div class="empty-state">No log entries yet.</div>';
+}
+
+function renderHistory() {
+  const area = document.getElementById('history-area');
+  if (!jobHistory.length) { area.innerHTML = '<div class="empty-state">No completed jobs yet.</div>'; return; }
+  area.innerHTML = jobHistory.map(j => {
+    const sc = j.summary_counts || {};
+    let label = (j.advisory_profile||{}).cve || '';
+    if (!label && j.results && j.results.length) {
+      const advIds = [...new Set(j.results.map(r=>r.advisory_id).filter(Boolean))];
+      label = advIds.length===1 ? advIds[0].replace('cisco-sa-','') : `${advIds.length} advisories`;
+    }
+    label = label || 'Unknown advisory';
+    return `<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-family:monospace;font-size:12px">
+      <span style="color:var(--text3)">${j.job_id}</span>
+      <span style="flex:1">${label}</span>
+      <span style="color:var(--red)">${sc.AFFECTED||0} affected</span>
+      <span style="color:var(--green)">${sc.NOT_AFFECTED||0} false positive</span>
+      <span style="color:var(--amber)">${sc.NEEDS_REVIEW||0} review</span>
+      <button class="btn btn-sm btn-export" onclick="exportJSON('${j.job_id}')">&#11015; JSON</button>
+    </div>`;
+  }).join('');
+}
+
+function exportJSON(jobId) { window.open(API_URLS.jobExport.replace('__JOBID__', jobId), '_blank'); }
+
+function showTab(name) {
+  const names = ['results','dashboard','log','history','dbresults'];
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', names[i]===name));
+  document.querySelectorAll('.tab-content').forEach(tc => tc.classList.toggle('active', tc.id==='tab-'+name));
+  if (name==='dashboard') renderDashboard(window._lastJob||{results:[]});
+}
+
+// ── Scan DB tab ───────────────────────────────────────────────────────────────
+let _dbRefreshInterval = null;
+
+function toggleDbAutoRefresh() {
+  const btn = document.getElementById('db-refresh-btn');
+  const status = document.getElementById('db-refresh-status');
+  if (_dbRefreshInterval) {
+    clearInterval(_dbRefreshInterval); _dbRefreshInterval = null;
+    btn.textContent = '⟳ Auto-refresh'; status.textContent = '';
+  } else {
+    _dbRefreshInterval = setInterval(loadDbResults, 10000);
+    btn.textContent = '⏹ Stop refresh'; status.textContent = 'Refreshing every 10 s…';
+    loadDbResults();
+  }
+}
+
+async function loadDbResults() {
+  const dnacId = (document.getElementById('db-dnac-id').value || '').trim() || null;
+  const area   = document.getElementById('db-results-area');
+  area.innerHTML = '<div class="empty-state"><span class="spinner"></span><br><br>Loading from database…</div>';
+  try {
+    const qs = dnacId ? '?dnac_id=' + encodeURIComponent(dnacId) : '';
+    const [diagResp, summResp] = await Promise.all([
+      fetch(API_URLS.diagnose + qs),
+      fetch(API_URLS.applicabilitySummary + qs),
+    ]);
+    const diag = await diagResp.json();
+    const summ = await summResp.json();
+    if (diag.error) { area.innerHTML = '<div class="empty-state" style="color:var(--red)">Error: ' + diag.error + '</div>'; return; }
+    renderDbResults(diag, summ);
+  } catch(e) {
+    area.innerHTML = '<div class="empty-state" style="color:var(--red)">Network error: ' + e.message + '</div>';
+  }
+}
+
+function renderDbResults(diag, summ) {
+  const area      = document.getElementById('db-results-area');
+  const counts    = summ.counts || {};
+  const total     = diag.total_checked || 0;
+  const methods   = diag.collection_methods || {};
+  const nrReasons = diag.needs_review_reasons || {};
+  const breakdown = diag.breakdown || [];
+
+  if (!total && !breakdown.length) {
+    area.innerHTML = '<div class="empty-state">No scan results found in the database for this DNAC.<br><br>Run a scan first:<br><code style="background:var(--surface2);padding:3px 8px;border-radius:4px">python run_scan.py --dnac &lt;id&gt;</code></div>';
+    return;
+  }
+
+  const vBadge = v => ({
+    AFFECTED:     '<span class="badge badge-applicable">Affected</span>',
+    NOT_AFFECTED: '<span class="badge badge-not">Not affected</span>',
+    NEEDS_REVIEW:   '<span class="badge badge-review">Needs review</span>',
+    PENDING:        '<span class="badge badge-pending">Pending</span>',
+    MITIGATED:      '<span class="badge" style="background:#e8f0fb;color:var(--blue)">Mitigated</span>',
+  }[v] || '<span class="badge badge-pending">' + (v||'—') + '</span>');
+
+  const methodLabel = m => ({
+    dnac_command_runner:       '🌐 DNAC command runner',
+    ssh_fallback:              '🔒 SSH fallback',
+    version_only:              '📋 Version only',
+    version_only_insufficient: '📋 Version only (insufficient)',
+    pending:                   '⏳ Pending',
+  }[m] || m || '—');
+
+  const nrLabel = r => ({
+    no_fixed_release:  'No fixed release published',
+    collection_failed: 'Command collection failed',
+    insufficient_data: 'Insufficient version data',
+    unknown:           'Unknown',
+  }[r] || r || 'Unknown');
+
+  let html = '<div class="summary-bar" style="flex-wrap:wrap;margin-bottom:16px">';
+  html += '<div class="stat-card stat-applicable"><div class="stat-num">' + (counts.AFFECTED||0) + '</div><div class="stat-label">Affected</div></div>';
+  html += '<div class="stat-card stat-not"><div class="stat-num">'        + (counts.NOT_AFFECTED||0) + '</div><div class="stat-label">Not affected</div></div>';
+  html += '<div class="stat-card stat-review"><div class="stat-num">'     + (counts.NEEDS_REVIEW||0) + '</div><div class="stat-label">Needs review</div></div>';
+  html += '<div class="stat-card"><div class="stat-num" style="color:var(--blue)">' + (counts.MITIGATED||0) + '</div><div class="stat-label">Mitigated</div></div>';
+  html += '<div class="stat-card"><div class="stat-num" style="color:var(--text3)">' + (counts.PENDING||0) + '</div><div class="stat-label">Pending</div></div>';
+  html += '<div class="stat-card"><div class="stat-num">' + total + '</div><div class="stat-label">Total checked</div></div>';
+  html += '</div>';
+
+  html += '<div class="dash-charts-row" style="margin-bottom:16px">';
+  html += '<div class="dash-card"><p class="dash-card-title">Collection methods</p>';
+  html += '<table style="width:100%;font-size:12px;font-family:var(--mono)"><thead><tr>';
+  html += '<th style="text-align:left;padding:4px 0;color:var(--text3);font-size:10px;text-transform:uppercase;letter-spacing:.06em">Method</th>';
+  html += '<th style="text-align:right;padding:4px 0;color:var(--text3);font-size:10px;text-transform:uppercase;letter-spacing:.06em">Count</th>';
+  html += '</tr></thead><tbody>';
+  const mEntries = Object.entries(methods);
+  if (mEntries.length) {
+    mEntries.forEach(([m,c]) => { html += '<tr><td style="padding:6px 0">' + methodLabel(m) + '</td><td style="text-align:right;font-weight:600">' + c + '</td></tr>'; });
+  } else { html += '<tr><td colspan="2" style="color:var(--text3);padding:6px 0">No data</td></tr>'; }
+  html += '</tbody></table></div>';
+
+  html += '<div class="dash-card"><p class="dash-card-title">Needs review — reasons</p>';
+  html += '<table style="width:100%;font-size:12px;font-family:var(--mono)"><thead><tr>';
+  html += '<th style="text-align:left;padding:4px 0;color:var(--text3);font-size:10px;text-transform:uppercase;letter-spacing:.06em">Reason</th>';
+  html += '<th style="text-align:right;padding:4px 0;color:var(--text3);font-size:10px;text-transform:uppercase;letter-spacing:.06em">Count</th>';
+  html += '</tr></thead><tbody>';
+  const nrEntries = Object.entries(nrReasons);
+  if (nrEntries.length) {
+    nrEntries.forEach(([r,c]) => { html += '<tr><td style="padding:6px 0">' + nrLabel(r) + '</td><td style="text-align:right;font-weight:600;color:var(--amber)">' + c + '</td></tr>'; });
+  } else { html += '<tr><td colspan="2" style="color:var(--text3);padding:6px 0">None</td></tr>'; }
+  html += '</tbody></table></div>';
+  html += '</div>';
+
+  html += '<div style="display:flex;gap:8px;margin-bottom:12px;align-items:center;flex-wrap:wrap">';
+  html += '<span style="font-size:11px;color:var(--text3);font-family:monospace">Filter:</span>';
+  const filters = [
+    ['ALL',           'All (' + total + ')',                         'var(--text)'],
+    ['AFFECTED',    'Affected (' + (counts.AFFECTED||0) + ')', 'var(--red)'],
+    ['NOT_AFFECTED','Not affected (' + (counts.NOT_AFFECTED||0) + ')', 'var(--green)'],
+    ['NEEDS_REVIEW',  'Needs review (' + (counts.NEEDS_REVIEW||0) + ')',     'var(--amber)'],
+    ['PENDING',       'Pending (' + (counts.PENDING||0) + ')',       'var(--text3)'],
+  ];
+  filters.forEach(([v, label, color]) => {
+    html += '<button class="btn btn-sm" id="db-filter-' + v + '" style="color:' + color + '" onclick="filterDbTable(\'' + v + '\')">' + label + '</button>';
+  });
+  html += '<input type="text" id="db-search" placeholder="Search advisory / hostname…" style="width:200px;font-size:12px;padding:5px 8px;margin-left:auto" oninput="filterDbTable(window._dbFilter||\'ALL\')" />';
+  html += '</div>';
+
+  html += '<div class="device-table-wrap"><table id="db-table">';
+  html += '<thead><tr><th>Advisory ID</th><th>Hostname</th><th>SW Version</th><th>Verdict</th><th>Method</th><th></th></tr></thead>';
+  html += '<tbody id="db-tbody">';
+
+  breakdown.forEach((r, idx) => {
+    const safeId   = 'db_why_' + idx;
+    const advShort = (r.advisoryId || '—').replace('cisco-sa-', '');
+    const advUrl   = r.advisoryId ? ('https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/' + encodeURIComponent(r.advisoryId)) : '';
+    const searchKey = ((r.advisoryId||'') + ' ' + (r.hostname||'')).toLowerCase();
+    html += '<tr class="db-row" data-verdict="' + (r.verdict||'') + '" data-search="' + searchKey + '">';
+    html += '<td style="font-family:monospace;font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="' + (r.advisoryId||'') + '">'
+      + (advUrl ? ('<a href="' + advUrl + '" target="_blank" rel="noopener noreferrer" style="color:var(--blue);text-decoration:none">' + advShort + ' &#8599;</a>') : advShort)
+      + '</td>';
+    html += '<td style="font-family:monospace;font-size:12px;font-weight:600">' + (r.hostname||'—') + '</td>';
+    html += '<td style="font-family:monospace;font-size:11px">' + (r.softwareVersion||'—') + '</td>';
+    html += '<td>' + vBadge(r.verdict) + '</td>';
+    html += '<td style="font-size:11px;color:var(--text3);font-family:monospace;white-space:nowrap">' + methodLabel(r.collection_method) + '</td>';
+    html += '<td><button class="why-btn" onclick="toggleDbWhy(\'' + safeId + '\')">Why?</button></td>';
+    html += '</tr>';
+    html += '<tr class="db-why-row" data-verdict="' + (r.verdict||'') + '" data-search="' + searchKey + '" style="display:none">';
+    html += '<td colspan="6" style="padding:0;background:var(--surface2)">';
+    html += '<div id="' + safeId + '" style="padding:12px 16px">';
+    html += buildWhyDrawer(r);
+    if (r.summary) html += '<div style="margin-top:8px;font-size:12px;color:var(--text2);line-height:1.6">' + r.summary + '</div>';
+    if (r.action)  html += '<div class="why-action" style="margin-top:6px">⟶ ' + r.action + '</div>';
+    if (r.mitigation && r.mitigation.mitigated) {
+      html += '<div style="margin-top:6px;font-size:11px;color:var(--blue);font-family:var(--mono)">🛡 Compensating controls detected (confidence: ' + (r.mitigation.mitigation_confidence||'?') + ')</div>';
+    }
+    html += '</div></td></tr>';
+  });
+
+  html += '</tbody></table></div>';
+  area.innerHTML = html;
+  window._dbFilter = 'ALL';
+  const allBtn = document.getElementById('db-filter-ALL');
+  if (allBtn) allBtn.style.fontWeight = '700';
+}
+
+function toggleDbWhy(id) {
+  const whyRow = document.getElementById(id);
+  if (!whyRow) return;
+  const tr = whyRow.closest('tr');
+  tr.style.display = tr.style.display === 'none' ? '' : 'none';
+}
+
+function filterDbTable(verdict) {
+  window._dbFilter = verdict;
+  const search = ((document.getElementById('db-search') || {}).value || '').toLowerCase();
+  document.querySelectorAll('#db-tbody .db-row').forEach(row => {
+    const matchV = verdict === 'ALL' || row.dataset.verdict === verdict;
+    const matchS = !search || (row.dataset.search || '').includes(search);
+    const show   = matchV && matchS;
+    row.style.display = show ? '' : 'none';
+    const whyRow = row.nextElementSibling;
+    if (whyRow && whyRow.classList.contains('db-why-row')) {
+      if (!show) whyRow.style.display = 'none';
+    }
+  });
+  ['ALL','AFFECTED','NOT_AFFECTED','NEEDS_REVIEW','PENDING'].forEach(v => {
+    const btn = document.getElementById('db-filter-' + v);
+    if (btn) btn.style.fontWeight = v === verdict ? '700' : '400';
+  });
+}
+
+let _dashCharts = [];
+function renderDashboard(job) {
+  const area = document.getElementById('dashboard-area');
+  const results = job.results || [];
+  if (!results.length) { area.innerHTML = '<div class="empty-state">No results yet.</div>'; return; }
+  _dashCharts.forEach(c => { try{c.destroy();}catch(e){} }); _dashCharts = [];
+  const counts={AFFECTED:0,NOT_AFFECTED:0,NEEDS_REVIEW:0};
+  const advMap={}, famMap={}, verMap={}, methodMap={dnac_command_runner:0,ssh_fallback:0,unknown:0};
+  const shortId = id => (id||'').replace('cisco-sa-','').split('-').slice(0,3).join('-');
+  results.forEach(r => {
+    const v=r.verdict||'NEEDS_REVIEW'; counts[v]=(counts[v]||0)+1;
+    const aid=r.advisory_id||'unknown';
+    if (!advMap[aid]) advMap[aid]={AFFECTED:0,NOT_AFFECTED:0,NEEDS_REVIEW:0,total:0};
+    advMap[aid][v]++; advMap[aid].total++;
+    const fam=r.dnac_family||'Unknown';
+    if (!famMap[fam]) famMap[fam]={AFFECTED:0,NOT_AFFECTED:0,NEEDS_REVIEW:0};
+    famMap[fam][v]++;
+    const ver=(r.dnac_version||r.version||'').split('.').slice(0,2).join('.')+'.x';
+    if (ver!=='.x') verMap[ver]=(verMap[ver]||0)+1;
+    const m=r.collection_method||'unknown'; methodMap[m]=(methodMap[m]||0)+1;
+  });
+  const total=results.length, pct=n=>Math.round((n/total)*100), advIds=Object.keys(advMap);
+  let advRows='';
+  advIds.forEach(aid => {
+    const d=advMap[aid], maxW=150;
+    const appW=Math.max(Math.round((d.AFFECTED/d.total)*maxW),d.AFFECTED?3:0);
+    const naW=Math.max(Math.round((d.NOT_AFFECTED/d.total)*maxW),d.NOT_AFFECTED?3:0);
+    const nrW=Math.max(Math.round((d.NEEDS_REVIEW/d.total)*maxW),d.NEEDS_REVIEW?3:0);
+    const badge=d.NEEDS_REVIEW>0?'<span class="badge badge-review">Review</span>':d.AFFECTED>0?'<span class="badge badge-applicable">Affected</span>':'<span class="badge badge-not">Clean</span>';
+    advRows+=`<tr>
+      <td style="font-size:12px;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${aid}">${shortId(aid)}</td>
+      <td style="font-weight:600">${d.total}</td>
+      <td><div class="mini-bar-wrap">
+        ${appW?`<div class="mini-bar-seg" style="background:#ef4444;width:${appW}px" title="${d.AFFECTED} affected"></div>`:''}
+        ${naW?`<div class="mini-bar-seg" style="background:#10b981;width:${naW}px" title="${d.NOT_AFFECTED} not affected"></div>`:''}
+        ${nrW?`<div class="mini-bar-seg" style="background:#f59e0b;width:${nrW}px" title="${d.NEEDS_REVIEW} needs review"></div>`:''}
+        <span style="font-size:10px;color:var(--text3);margin-left:5px">${d.AFFECTED}A · ${d.NOT_AFFECTED}N · ${d.NEEDS_REVIEW}R</span>
+      </div></td>
+      <td>${badge}</td>
+      <td><button class="why-btn" onclick="toggleDashAdv('dash_adv_${aid.replace(/[^a-z0-9]/gi,'_')}')">▾ Devices</button></td>
+    </tr>
+    <tr id="dash_adv_${aid.replace(/[^a-z0-9]/gi,'_')}" style="display:none">
+      <td colspan="5" style="padding:0;background:var(--surface2)">
+        <div style="padding:8px 12px">
+          ${results.filter(r=>(r.advisory_id||'unknown')===aid).map(r => {
+            const vbadge=r.verdict==='AFFECTED'?'badge-applicable':r.verdict==='NOT_AFFECTED'?'badge-not':'badge-review';
+            const vLabel=r.verdict==='AFFECTED'?'Confirmed':r.verdict==='NOT_AFFECTED'?'False Positive':'Needs Review';
+            const dId='dash_why_'+((r.hostname||r.host||'x')+'_'+(r.advisory_id||'x')).replace(/[^a-z0-9]/gi,'_');
+            return `<div style="padding:8px 0;border-bottom:1px solid var(--border)">
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                <span style="font-family:monospace;font-size:12px;font-weight:600;flex:1">${r.hostname||r.host||'—'}</span>
+                <span style="font-size:11px;color:var(--text3);font-family:monospace">${r.dnac_version||r.version||'?'}</span>
+                <span class="badge ${vbadge}" style="font-size:10px">${vLabel}</span>
+                <button class="why-btn" onclick="toggleWhy('${dId}')">Why?</button>
+              </div>
+              <div class="why-drawer" id="${dId}">${buildWhyDrawer(r)}</div>
+            </div>`;
+          }).join('')}
+        </div>
+      </td>
+    </tr>`;
+  });
+  const fams=Object.keys(famMap), verKeys=Object.keys(verMap).sort();
+  const verH=Math.max(160,verKeys.length*36+60);
+  const collLabels=Object.keys(methodMap).filter(k=>methodMap[k]>0);
+  const collColors={dnac_command_runner:'#4080f5',ssh_fallback:'#572ac2',unknown:'#888'};
+  area.innerHTML=`<div style="padding:0.5rem 0 1.5rem">
+    <div class="dash-metric-grid">
+      <div class="dash-metric"><p class="dash-metric-label">Pairs assessed</p><p class="dash-metric-value" style="color:var(--text)">${total}</p><p class="dash-metric-sub">${advIds.length} advisories</p></div>
+      <div class="dash-metric"><p class="dash-metric-label">Confirmed affected</p><p class="dash-metric-value" style="color:var(--red)">${counts.AFFECTED}</p><p class="dash-metric-sub">${pct(counts.AFFECTED)}% of pairs</p></div>
+      <div class="dash-metric"><p class="dash-metric-label">Not affected (False Positive)</p><p class="dash-metric-value" style="color:var(--green)">${counts.NOT_AFFECTED}</p><p class="dash-metric-sub">${pct(counts.NOT_AFFECTED)}% of pairs</p></div>
+      <div class="dash-metric"><p class="dash-metric-label">Needs review</p><p class="dash-metric-value" style="color:var(--amber)">${counts.NEEDS_REVIEW}</p><p class="dash-metric-sub">${pct(counts.NEEDS_REVIEW)}% of pairs</p></div>
+    </div>
+    <div class="dash-charts-row">
+      <div class="dash-card"><p class="dash-card-title">Verdict distribution</p>
+        <div class="dash-legend">
+          <span><span class="dash-legend-dot" style="background:#ef4444"></span>Affected ${counts.AFFECTED}</span>
+          <span><span class="dash-legend-dot" style="background:#10b981"></span>False Positive ${counts.NOT_AFFECTED}</span>
+          <span><span class="dash-legend-dot" style="background:#f59e0b"></span>Needs review ${counts.NEEDS_REVIEW}</span>
+        </div>
+        <div style="position:relative;width:100%;height:200px"><canvas id="dash-donut"></canvas></div>
+      </div>
+      <div class="dash-card"><p class="dash-card-title">Verdicts per advisory</p>
+        <div class="dash-legend">
+          <span><span class="dash-legend-dot" style="background:#ef4444"></span>Affected</span>
+          <span><span class="dash-legend-dot" style="background:#10b981"></span>False Positive</span>
+          <span><span class="dash-legend-dot" style="background:#f59e0b"></span>Needs review</span>
+        </div>
+        <div style="position:relative;width:100%;height:200px"><canvas id="dash-bar"></canvas></div>
+      </div>
+    </div>
+    <div class="dash-card" style="margin-bottom:14px"><p class="dash-card-title">Advisory breakdown</p>
+      <table class="adv-breakdown-table">
+        <thead><tr><th>Advisory</th><th>Devices</th><th style="min-width:180px">Verdict spread</th><th>Status</th><th>Reason</th></tr></thead>
+        <tbody>${advRows}</tbody>
+      </table>
+    </div>
+    <div class="dash-charts-row">
+      <div class="dash-card"><p class="dash-card-title">By device family</p>
+        <div style="position:relative;width:100%;height:180px"><canvas id="dash-fam"></canvas></div>
+      </div>
+      <div class="dash-card"><p class="dash-card-title">Collection method</p>
+        <div class="dash-legend">
+          <span><span class="dash-legend-dot" style="background:#4080f5"></span>DNAC ${methodMap.dnac_command_runner||0}</span>
+          <span><span class="dash-legend-dot" style="background:#572ac2"></span>SSH fallback ${methodMap.ssh_fallback||0}</span>
+        </div>
+        <div style="position:relative;width:100%;height:180px"><canvas id="dash-coll"></canvas></div>
+      </div>
+    </div>
+    <div class="dash-card"><p class="dash-card-title">Software version distribution</p>
+      <div style="position:relative;width:100%;height:${verH}px"><canvas id="dash-ver"></canvas></div>
+    </div>
+  </div>`;
+
+  requestAnimationFrame(() => {
+    if (typeof Chart === 'undefined') { setTimeout(() => renderDashboard(job), 300); return; }
+    _dashCharts.push(new Chart(document.getElementById('dash-donut'),{type:'doughnut',data:{labels:['Affected','Not affected','Needs review'],datasets:[{data:[counts.AFFECTED,counts.NOT_AFFECTED,counts.NEEDS_REVIEW],backgroundColor:['#ef4444','#10b981','#f59e0b'],borderWidth:0,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{display:false}}}}));
+    _dashCharts.push(new Chart(document.getElementById('dash-bar'),{type:'bar',data:{labels:advIds.map(shortId),datasets:[{label:'Affected',data:advIds.map(a=>advMap[a].AFFECTED),backgroundColor:'#ef4444',borderRadius:2},{label:'Not affected',data:advIds.map(a=>advMap[a].NOT_AFFECTED),backgroundColor:'#10b981',borderRadius:2},{label:'Needs review',data:advIds.map(a=>advMap[a].NEEDS_REVIEW),backgroundColor:'#f59e0b',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{stacked:true,ticks:{font:{size:9},autoSkip:false,maxRotation:40},grid:{display:false}},y:{stacked:true,ticks:{font:{size:10}},grid:{color:'rgba(128,128,128,.1)'}}}}}));
+    _dashCharts.push(new Chart(document.getElementById('dash-fam'),{type:'bar',data:{labels:fams,datasets:[{label:'Affected',data:fams.map(f=>famMap[f].AFFECTED),backgroundColor:'#ef4444',borderRadius:2},{label:'Not affected',data:fams.map(f=>famMap[f].NOT_AFFECTED),backgroundColor:'#10b981',borderRadius:2},{label:'Needs review',data:fams.map(f=>famMap[f].NEEDS_REVIEW),backgroundColor:'#f59e0b',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{stacked:true,ticks:{font:{size:10}},grid:{display:false}},y:{stacked:true,ticks:{font:{size:10}},grid:{color:'rgba(128,128,128,.1)'}}}}}));
+    _dashCharts.push(new Chart(document.getElementById('dash-coll'),{type:'doughnut',data:{labels:collLabels,datasets:[{data:collLabels.map(k=>methodMap[k]),backgroundColor:collLabels.map(k=>collColors[k]||'#888'),borderWidth:0,hoverOffset:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{display:false}}}}));
+    _dashCharts.push(new Chart(document.getElementById('dash-ver'),{type:'bar',data:{labels:verKeys,datasets:[{label:'Devices',data:verKeys.map(k=>verMap[k]),backgroundColor:'#4080f5',borderRadius:3,barPercentage:0.6}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:10}},grid:{color:'rgba(128,128,128,.1)'}},y:{ticks:{font:{size:10}},grid:{display:false}}}}}));
+  });
+}
+
+renderDeviceTable();
+
+// ── Populate the "Scan DB" DNAC ID dropdown from the configured DNAC instances
+// (custom_chatbot/vulnerebility_management/config.py DNAC_INSTANCES), instead
+// of requiring the user to type a DNAC ID from memory.
+async function loadDnacIdOptions() {
+  const sel = document.getElementById('db-dnac-id');
+  if (!sel) return;
+  try {
+    const r = await fetch(API_URLS.dnacInstances);
+    if (!r.ok) return;
+    const d = await r.json();
+    const instances = d.dnac_instances || [];
+    const current = sel.value;
+    sel.innerHTML = '<option value="">All DNACs</option>' + instances.map(inst =>
+      `<option value="${inst.id}">${inst.id}${inst.host ? ' (' + inst.host + ')' : ''}</option>`
+    ).join('');
+    if (current && instances.some(inst => inst.id === current)) sel.value = current;
+  } catch (e) {
+    console.error('Failed to load DNAC instances:', e);
+  }
+}
+loadDnacIdOptions();
+
+function dnacCreds() {
+  const host=document.getElementById('dnac-host').value.trim();
+  const port=document.getElementById('dnac-port').value.trim()||'443';
+  return {
+    host: host.includes(':')?host:`${host}:${port}`,
+    username: document.getElementById('dnac-user').value.trim(),
+    password: document.getElementById('dnac-pass').value,
+    verify_ssl: document.getElementById('dnac-verify-ssl').checked,
+    ssh_username: document.getElementById('dnac-ssh-user').value.trim(),
+    ssh_password: document.getElementById('dnac-ssh-pass').value,
+  };
+}
+function dnacMsg(text, color) {
+  const el=document.getElementById('dnac-msg'); el.style.color=color||'var(--text3)'; el.textContent=text;
+}
+function dnacSetDot(status) {
+  const dot=document.getElementById('dnac-status-dot');
+  const colors={ok:'#22c55e',error:'#ef4444',loading:'#f59e0b'};
+  dot.style.background=colors[status]||'var(--text3)';
+  dot.title=status==='ok'?'Connected':status==='error'?'Connection failed':'Connecting...';
+}
+async function dnacTest() {
+  const c=dnacCreds();
+  if (!c.host||!c.username||!c.password){dnacMsg('Host, username, and password required.','var(--red)');return;}
+  dnacMsg('Testing connection...','var(--text3)'); dnacSetDot('loading');
+  try {
+    const r=await fetch(API_URLS.dnacTest,{method:'POST',headers:csrfHeaders(),body:JSON.stringify(c)});
+    const d=await r.json();
+    if (!r.ok){dnacMsg('Error: '+d.error,'var(--red)');dnacSetDot('error');}
+    else{dnacMsg(d.message||'Connected!','#22c55e');dnacSetDot('ok');}
+  } catch(e){dnacMsg('Network error: '+e.message,'var(--red)');dnacSetDot('error');}
+}
+async function dnacFetchDevices() {
+  const c=dnacCreds();
+  if (!c.host||!c.username||!c.password){dnacMsg('Host, username, and password required.','var(--red)');return;}
+  dnacMsg('Fetching devices...','var(--text3)'); dnacSetDot('loading');
+  try {
+    const r=await fetch(API_URLS.dnacDevices,{method:'POST',headers:csrfHeaders(),body:JSON.stringify(c)});
+    const d=await r.json();
+    if (!r.ok){dnacMsg('Error: '+d.error,'var(--red)');dnacSetDot('error');return;}
+    const existing=new Set(devices.map(d=>d.host)); let added=0;
+    for (const dev of d.devices){if (!existing.has(dev.host)){devices.push(dev);existing.add(dev.host);added++;}}
+    renderDeviceTable(); dnacSetDot('ok');
+    dnacMsg(`Imported ${added} new device(s) (${d.count} total from DNAC).`,'#22c55e');
+  } catch(e){dnacMsg('Network error: '+e.message,'var(--red)');dnacSetDot('error');}
+}
+function openDnacAdvisories(){document.getElementById('dnac-adv-panel').style.display='block';document.getElementById('dnac-adv-list').innerHTML='<span style="color:var(--text3)">Click "Fetch from DNAC" to load advisories.</span>';}
+function closeDnacAdvisories(){document.getElementById('dnac-adv-panel').style.display='none';}
+async function dnacFetchAdvisories() {
+  const c=dnacCreds();
+  if (!c.host||!c.username||!c.password){dnacMsg('Host, username, and password required.','var(--red)');return;}
+  const includeAffected=document.getElementById('dnac-adv-include-affected').checked;
+  const listEl=document.getElementById('dnac-adv-list');
+  listEl.innerHTML='<span style="color:var(--text3)">Loading advisories from DNAC...</span>'; dnacSetDot('loading');
+  try {
+    const r=await fetch(API_URLS.dnacAdvisories,{method:'POST',headers:csrfHeaders(),body:JSON.stringify({...c,include_affected_devices:includeAffected})});
+    const d=await r.json();
+    if (!r.ok){listEl.innerHTML=`<span style="color:var(--red)">Error: ${d.error}</span>`;dnacSetDot('error');return;}
+    dnacSetDot('ok'); dnacMsg(`${d.count} advisories loaded.`,'#22c55e');
+    if (!d.advisories.length){listEl.innerHTML='<span style="color:var(--text3)">No advisories found.</span>';return;}
+    document.getElementById('dnac-run-selected-btn').style.display='block';
+    const sirColors={Critical:'#ef4444',High:'#f97316',Medium:'#eab308',Low:'#22c55e'};
+    listEl.innerHTML=d.advisories.map((adv,i)=>{
+      const sirColor=sirColors[adv.sir]||'var(--text3)';
+      const affectedInfo=adv.affectedDeviceCount!=null?`<span style="color:var(--text3)"> | ${adv.affectedDeviceCount} device(s)</span>`:'';
+      return `<div style="border:1px solid var(--border);border-radius:4px;padding:7px 9px;margin-bottom:5px;background:var(--surface)">
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <input type="checkbox" class="dnac-adv-checkbox" data-id="${adv.advisoryId}" data-index="${i}" checked style="flex-shrink:0;cursor:pointer" onchange="dnacUpdateRunBtn()" />
+          <span style="font-weight:bold;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:monospace;font-size:11px" title="${adv.advisoryId}">${adv.advisoryId}</span>
+          <span style="color:${sirColor};font-size:10px;font-weight:bold;white-space:nowrap">${adv.sir||''}${affectedInfo}</span>
+        </div>
+        ${adv.cves.length?`<div style="color:var(--text3);font-size:10px;margin-top:2px;padding-left:20px">${adv.cves.join(', ')}</div>`:''}
+        <div style="display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;padding-left:20px">
+          <button class="btn btn-sm btn-primary" style="font-size:10px;padding:2px 7px" onclick="dnacUseAdvisory(${i})">Use advisory</button>
+          ${includeAffected&&adv.affectedDevices&&adv.affectedDevices.length?`<button class="btn btn-sm" style="font-size:10px;padding:2px 7px" onclick="dnacImportAffectedDevices(${i})">Import ${adv.affectedDevices.length} affected</button>`:''}
+        </div>
+      </div>`;
+    }).join('');
+    dnacUpdateRunBtn();
+    window._dnacAdvisories=d.advisories;
+  } catch(e){listEl.innerHTML=`<span style="color:var(--red)">Network error: ${e.message}</span>`;dnacSetDot('error');}
+}
+function dnacUseAdvisory(i){const adv=(window._dnacAdvisories||[])[i];if(!adv)return;document.getElementById('advisory-text').value=adv.advisoryText;dnacMsg('Advisory loaded.','#22c55e');}
+async function dnacImportAffectedDevices(i) {
+  const adv=(window._dnacAdvisories||[])[i]; if(!adv)return;
+  const c=dnacCreds(), sshUser=c.ssh_username||c.username, sshPass=c.ssh_password||c.password;
+  let devicesToAdd=adv.affectedDevices||[];
+  if (!devicesToAdd.length){
+    try{
+      const r=await fetch(API_URLS.dnacAdvisoryDevices.replace('__ADVISORYID__', encodeURIComponent(adv.advisoryId)),{method:'POST',headers:csrfHeaders(),body:JSON.stringify(c)});
+      const d=await r.json(); if(!r.ok){dnacMsg('Error: '+d.error,'var(--red)');return;} devicesToAdd=d.devices;
+    }catch(e){dnacMsg('Error: '+e.message,'var(--red)');return;}
+  } else {
+    devicesToAdd=devicesToAdd.map(d=>({host:d.managementIp||'',hostname:d.hostname||d.managementIp||'',port:22,username:sshUser,password:sshPass,device_type:'cisco_xe',platform:d.platformId||''})).filter(d=>d.host);
+  }
+  const existing=new Set(devices.map(d=>d.host)); let added=0;
+  for (const d of devicesToAdd){if(d.host&&!existing.has(d.host)){devices.push(d);existing.add(d.host);added++;}}
+  renderDeviceTable(); dnacMsg(`Imported ${added} affected device(s).`,'#22c55e');
+}
+function dnacSelectAll(checked){document.querySelectorAll('.dnac-adv-checkbox').forEach(cb=>cb.checked=checked);dnacUpdateRunBtn();}
+function dnacUpdateRunBtn(){
+  const checked=document.querySelectorAll('.dnac-adv-checkbox:checked'), btn=document.getElementById('dnac-run-selected-btn');
+  if(!btn)return;
+  if(checked.length===0){btn.textContent='Select at least one advisory';btn.disabled=true;}
+  else{btn.disabled=false;btn.innerHTML=`&#9654; Assess ${checked.length} Selected Advisor${checked.length===1?'y':'ies'}`;}
+}
+async function dnacAssessAll() {
+  const c=dnacCreds();
+  if (!c.host||!c.username||!c.password){dnacMsg('Host, username, and password required.','var(--red)');return;}
+  dnacMsg('Starting bulk assessment...','var(--text3)'); dnacSetDot('loading');
+  try{
+    const r=await fetch(API_URLS.dnacAssessAll,{method:'POST',headers:csrfHeaders(),body:JSON.stringify(c)});
+    const d=await r.json();
+    if(!r.ok){dnacMsg('Error: '+d.error,'var(--red)');dnacSetDot('error');return;}
+    dnacMsg('Bulk job started.','#22c55e'); dnacSetDot('ok');
+    showTab('results'); startPolling(d.job_id);
+  }catch(e){dnacMsg('Error: '+e.message,'var(--red)');dnacSetDot('error');}
+}
+
+const _renderResultsBase=renderResults;
+renderResults=function(job){
+  window._lastJob=job;
+  if(job.job_type==='dnac_bulk'){renderBulkResults(job);if(document.getElementById('tab-dashboard').classList.contains('active'))renderDashboard(job);}
+  else{_renderResultsBase(job);}
+};
+
+function renderBulkResults(job) {
+  const el=document.getElementById('results-area'); if(!el)return;
+  const counts=job.summary_counts||{}, pairs=job.results||[];
+  const byAdvisory={};
+  for(const p of pairs){const aid=p.advisory_id||'Unknown';if(!byAdvisory[aid])byAdvisory[aid]={adv:p,pairs:[]};byAdvisory[aid].pairs.push(p);}
+  const verdictLabel={AFFECTED:'CONFIRMED',NOT_AFFECTED:'FALSE POSITIVE',NEEDS_REVIEW:'NEEDS REVIEW'};
+  let html=`<div class="summary-bar">
+    <div class="stat-card stat-applicable"><div class="stat-num">${counts.AFFECTED||0}</div><div class="stat-label">Confirmed</div></div>
+    <div class="stat-card stat-not"><div class="stat-num">${counts.NOT_AFFECTED||0}</div><div class="stat-label">False Positives</div></div>
+    <div class="stat-card stat-review"><div class="stat-num">${counts.NEEDS_REVIEW||0}</div><div class="stat-label">Needs Review</div></div>
+    <div class="stat-card"><div class="stat-num">${pairs.length}</div><div class="stat-label">Total Pairs</div></div>
+  </div>`;
+  if(job.status==='running'){const pct=job.progress||0;html+=`<div class="progress-wrap"><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${pct}%"></div></div><div style="font-size:11px;color:var(--text3);margin-top:4px;font-family:monospace">Assessing pairs… ${pct}%</div></div>`;}
+  for(const[aid,group]of Object.entries(byAdvisory)){
+    const p0=group.adv;
+    const confirmed=group.pairs.filter(p=>p.verdict==='AFFECTED').length;
+    const falsePos=group.pairs.filter(p=>p.verdict==='NOT_AFFECTED').length;
+    const needsReview=group.pairs.filter(p=>p.verdict==='NEEDS_REVIEW').length;
+    html+=`<div class="device-card" style="margin-bottom:14px">
+      <div style="background:var(--surface2);padding:10px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid var(--border)">
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:bold;font-size:13px;font-family:monospace">${aid}</div>
+          <div style="font-size:11px;color:var(--text3);font-family:monospace">${(p0.cves||[]).join(', ')||'—'} | SIR: ${p0.sir||'?'} | CVSS: ${p0.cvss||'?'}</div>
+        </div>
+        <div style="font-size:11px;display:flex;gap:10px;font-family:monospace">
+          ${confirmed?`<span style="color:var(--red)">✓ ${confirmed} confirmed</span>`:''}
+          ${falsePos?`<span style="color:var(--green)">✗ ${falsePos} false positive${falsePos!==1?'s':''}</span>`:''}
+          ${needsReview?`<span style="color:var(--amber)">? ${needsReview} review</span>`:''}
+        </div>
+      </div>`;
+    for(const pair of group.pairs){
+      const vl=verdictLabel[pair.verdict]||pair.verdict;
+      const vbadge=pair.verdict==='AFFECTED'?'badge-applicable':pair.verdict==='NOT_AFFECTED'?'badge-not':'badge-review';
+      const safeId=((pair.hostname||pair.host||'x')+'_'+(pair.advisory_id||'x')).replace(/[^a-z0-9]/gi,'_');
+      const drawerId='why_bulk_'+safeId;
+      html+=`<div style="padding:10px 16px;border-top:1px solid var(--border)">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:600;font-size:12px;font-family:monospace">${pair.hostname||pair.host||'—'}</div>
+            <div style="font-size:11px;color:var(--text3);font-family:monospace">${pair.platform||''} | v${pair.dnac_version||'?'} | ${pair.host||''}</div>
+            ${pair.collection_error?`<div style="font-size:11px;color:var(--red);margin-top:2px">⚠ ${pair.collection_error}</div>`:''}
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;padding-top:2px;flex-shrink:0">
+            <span class="badge ${vbadge}">${vl}</span>
+            <button class="why-btn" onclick="toggleWhy('${drawerId}')">Why?</button>
+          </div>
+        </div>
+        <div class="why-drawer" id="${drawerId}">${buildWhyDrawer(pair)}</div>
+      </div>`;
+    }
+    html+=`</div>`;
+  }
+  if(!pairs.length&&job.status!=='running')html+=`<div class="empty-state">No pairs found yet.</div>`;
+  if(job.status==='done'&&job.job_id)html+=`<div style="margin-top:10px"><button class="btn btn-sm btn-export" onclick="exportJSON('${job.job_id}')">&#11015; Export JSON</button></div>`;
+  el.innerHTML=html;
+}
+
+async function dnacAssessSelected() {
+  const c=dnacCreds();
+  if(!c.host||!c.username||!c.password){dnacMsg('Host, username, and password required.','var(--red)');return;}
+  const checked=document.querySelectorAll('.dnac-adv-checkbox:checked');
+  if(!checked.length){dnacMsg('Select at least one advisory.','var(--text3)');return;}
+  const advisoryIds=Array.from(checked).map(cb=>cb.dataset.id);
+  const forceRefresh=document.getElementById('dnac-force-refresh').checked;
+  dnacMsg(`Starting assessment for ${advisoryIds.length} advisory(ies)${forceRefresh?' (force refresh)':''}...`,'var(--text3)'); dnacSetDot('loading');
+  try{
+    const r=await fetch(API_URLS.dnacAssessAll,{method:'POST',headers:csrfHeaders(),body:JSON.stringify({...c,advisory_ids:advisoryIds,force_refresh:forceRefresh})});
+    const d=await r.json();
+    if(!r.ok){dnacMsg('Error: '+d.error,'var(--red)');dnacSetDot('error');return;}
+    dnacMsg(`Job started for ${advisoryIds.length} advisor${advisoryIds.length===1?'y':'ies'}.`,'#22c55e'); dnacSetDot('ok');
+    closeDnacAdvisories(); showTab('results'); startPolling(d.job_id);
+  }catch(e){dnacMsg('Error: '+e.message,'var(--red)');dnacSetDot('error');}
+}
+</script>
+</body>
+</html>
