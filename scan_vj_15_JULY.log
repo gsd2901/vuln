@@ -1,0 +1,839 @@
+nohup: ignoring input
+2026-08-07 00:04:52,593 [INFO] run_scan: [SCAN] DNAC host=10.153.2.49  dnac_id=vj
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+DNAC Login token generated
+2026-08-07 00:04:54,743 [INFO] dnac.dnacenter: DNAC Login token generated
+2026-08-07 00:04:54,744 [INFO] run_scan: [SCAN] Authenticated to DNAC successfully.
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/security-advisory/advisory
+2026-08-07 00:04:55,579 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/security-advisory/advisory
+2026-08-07 00:04:55,585 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:04:55,585 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:04:55,585 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:04:55,606 [INFO] run_scan: [SCAN] Advisories fetched and stored: 3
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+2026-08-07 00:04:56,381 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+[PAGINATION] Fetched 500 devices at offset=1 (running total=500)
+2026-08-07 00:04:56,387 [INFO] dnac.dnacenter: [PAGINATION] Fetched 500 devices at offset=1 (running total=500)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+2026-08-07 00:04:57,177 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+[PAGINATION] Fetched 500 devices at offset=501 (running total=1000)
+2026-08-07 00:04:57,184 [INFO] dnac.dnacenter: [PAGINATION] Fetched 500 devices at offset=501 (running total=1000)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+2026-08-07 00:04:57,957 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+[PAGINATION] Fetched 500 devices at offset=1001 (running total=1500)
+2026-08-07 00:04:57,964 [INFO] dnac.dnacenter: [PAGINATION] Fetched 500 devices at offset=1001 (running total=1500)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+2026-08-07 00:04:58,764 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+[PAGINATION] Fetched 500 devices at offset=1501 (running total=2000)
+2026-08-07 00:04:58,772 [INFO] dnac.dnacenter: [PAGINATION] Fetched 500 devices at offset=1501 (running total=2000)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+2026-08-07 00:04:59,554 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+[PAGINATION] Fetched 500 devices at offset=2001 (running total=2500)
+2026-08-07 00:04:59,561 [INFO] dnac.dnacenter: [PAGINATION] Fetched 500 devices at offset=2001 (running total=2500)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+2026-08-07 00:05:00,348 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+[PAGINATION] Fetched 500 devices at offset=2501 (running total=3000)
+2026-08-07 00:05:00,355 [INFO] dnac.dnacenter: [PAGINATION] Fetched 500 devices at offset=2501 (running total=3000)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+2026-08-07 00:05:01,132 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+[PAGINATION] Fetched 500 devices at offset=3001 (running total=3500)
+2026-08-07 00:05:01,137 [INFO] dnac.dnacenter: [PAGINATION] Fetched 500 devices at offset=3001 (running total=3500)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+2026-08-07 00:05:02,012 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+[PAGINATION] Fetched 500 devices at offset=3501 (running total=4000)
+2026-08-07 00:05:02,017 [INFO] dnac.dnacenter: [PAGINATION] Fetched 500 devices at offset=3501 (running total=4000)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+2026-08-07 00:05:02,916 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+[PAGINATION] Fetched 500 devices at offset=4001 (running total=4500)
+2026-08-07 00:05:02,921 [INFO] dnac.dnacenter: [PAGINATION] Fetched 500 devices at offset=4001 (running total=4500)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+2026-08-07 00:05:03,663 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device
+[PAGINATION] Fetched 169 devices at offset=4501 (running total=4669)
+2026-08-07 00:05:03,666 [INFO] dnac.dnacenter: [PAGINATION] Fetched 169 devices at offset=4501 (running total=4669)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device/count
+2026-08-07 00:05:04,109 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/network-device/count
+2026-08-07 00:05:04,110 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:05:04,110 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:05:04,110 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:05:05,546 [INFO] run_scan: [SCAN] Devices fetched and stored: 4669
+2026-08-07 00:05:06,385 [INFO] psirt.applicability_engine: [PSIRT] ChromaDB cache cleared — deleted 1 advisory profiles.
+2026-08-07 00:05:06,385 [INFO] run_scan: [SCAN] ChromaDB advisory cache cleared (1 profiles removed).
+2026-08-07 00:05:06,386 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:05:06,386 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:05:06,386 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:05:06,396 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:05:06,396 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:05:06,396 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/security-advisory/advisory/cisco-sa-asa-ftd-ios-dos-kPEpQGGK/device
+2026-08-07 00:05:07,093 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/security-advisory/advisory/cisco-sa-asa-ftd-ios-dos-kPEpQGGK/device
+2026-08-07 00:05:07,094 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: 25 device(s) affected (dnac_id=vj)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/security-advisory/advisory/cisco-sa-iosxe-tls-dos-TVgLDEZL/device
+2026-08-07 00:05:07,393 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/security-advisory/advisory/cisco-sa-iosxe-tls-dos-TVgLDEZL/device
+2026-08-07 00:05:07,394 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL: 4 device(s) affected (dnac_id=vj)
+/home/genaisot/nautobot-latest/snaap310/lib/python3.10/site-packages/urllib3/connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host '10.153.2.49'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(
+GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/security-advisory/advisory/cisco-sa-ios-http-dos-sbv8XRpL/device
+2026-08-07 00:05:07,700 [INFO] dnac.dnacenter: GET request - Debug DNAC url: https://10.153.2.49:443/dna/intent/api/v1/security-advisory/advisory/cisco-sa-ios-http-dos-sbv8XRpL/device
+2026-08-07 00:05:07,702 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: 21 device(s) affected (dnac_id=vj)
+2026-08-07 00:05:07,702 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:05:07,702 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:05:07,702 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:05:07,712 [INFO] psirt.db_queries: [PSIRT] Cleared 0 stale applicability rows for dnac_id=vj
+2026-08-07 00:05:07,712 [INFO] psirt.background_scanner: [PSIRT] Background scan started — 3 advisories, dnac_id=vj
+2026-08-07 00:05:07,713 [INFO] psirt.background_scanner: [PSIRT] Scan thread started: psirt-scan-vj-2026-08-06T18:35:06
+2026-08-07 00:05:07,713 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR11BLUEVS01.hcl.com (98bfef06-9aa2-41d8-a4d3-75770c8f3b43)
+2026-08-07 00:05:07,713 [INFO] run_scan: [SCAN] Applicability engine triggered at 2026-08-06T18:35:06.386279+00:00
+2026-08-07 00:05:07,713 [INFO] run_scan: [SCAN] --wait mode: blocking until scan thread finishes…
+2026-08-07 00:05:07,713 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:05:07,713 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:05:07,713 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:05:07,951 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: DNAC detail had no fixed_releases, trying Cisco portal + GPT
+2026-08-07 00:05:09,642 [INFO] psirt.applicability_engine: [PSIRT FETCH] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: JSON endpoint status=200 content-type=text/html;charset=ISO-8859-1
+2026-08-07 00:05:12,565 [INFO] psirt.applicability_engine: [PSIRT FETCH] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: HTML section-targeted OK, sections=['Summary', 'Affected Products', 'Vulnerable Products', 'Products Confirmed Not Vulnerable', 'Workarounds', 'Fixed Software'], text_len=16044, preview='=== Summary ===\nA vulnerability in the Internet Key Exchange version 2 (IKEv2) feature of Cisco IOS Software, Cisco IOS XE Software, Cisco Secure Firewall Adaptive Security Appliance (ASA) Software, and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, remote atta
+2026-08-07 00:05:13,309 [INFO] psirt.applicability_engine: [PSIRT EXTRACT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: advisory_text len=16343, preview='Advisory ID: cisco-sa-asa-ftd-ios-dos-kPEpQGGK\nCVE(s): CVE-2026-20012\nSecurity Impact Rating: HIGH\nCVSS Base Score: N/A\nPublication URL: https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asa-ftd-ios-dos-kPEpQGGK\nDetection Type: N/A\n\n\n--- Full Cisco Advisory ---\n=== Summary ===\nA vulnerability in the Internet Key Exchange version 2 (IKEv2) feature of Cisco IOS Software, Cisco IOS XE Software, Cisco Secure Firewall Adaptive Security Appliance (ASA) S
+2026-08-07 00:05:13,309 [INFO] psirt.applicability_engine: [PSIRT EXTRACT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: Fixed Software section: 'Cisco considers any workarounds and mitigations (if applicable) to be temporary solutions until an upgrade to a fixed software release is available. To fully remediate this vulnerability and avoid future exposure as described in this advisory, Cisco strongly recommends that customers upgrade to the fixed software indicated in this advisory.\n\nCisco IOS and IOS XE Software\n\nTo help customers determine their exposure to vulnerabilities in Cisco IOS and IOS XE Software, Cisco provides the Cisco Software Checker. This tool identifies any Cisco security advisories that impact a specific software release and the earliest release that fixes the vulnerabilities that are described in each advisory (&ldquo;First Fixed&rdquo;). If applicable, the tool also returns the earliest release that fixes all the vulnerabilities that are described in all the advisories that the Software Checker identifies (&ldquo;Combined First Fixed&rdquo;). \n\nTo use the tool, go to the Cisco Software Checker page and follow the instructions. Alternatively, use the following form to determine whether a release is affected by any Cisco Security Advisory. To use the form, follow these steps:\n\nChoose which advisories the tool will search-only this advisory, only advisories with a Critical or High Security Impact Rating (SIR), or all advisories.\nEnter a release number-for example, 15.9(3)M2 or 17.3.3.\nClick Check.\n\n \nOnly this advisory\nAll Critical and High advisories\nAll advisories\n\n \n\n \n\nCisco Secure Firewall ASA, Secure FMC, and Secure FTD Software\n\nTo help customers determine their exposure to vulnerabilities in Cisco Secure Firewall ASA, Secure FMC, and Secure FTD Software, Cisco provides the Cisco Software Checker. This tool identifies any Cisco security advisories that impact a specific software release and the earliest release that fixes the vulnerabilities that are described in each advisory (&ldquo;First Fixed&rdquo;). If applicable, the tool also returns the earliest release that fixes all the vulnerabilities that are described in all the advisories that the Software Checker identifies (&ldquo;Combined First Fixed&rdquo;).\n\nTo use the tool, go to the Cisco Software Checker page and follow the instructions. Alternatively, use the following form to search for vulnerabilities that affect a specific software release. To use the form, follow these steps:\n\nChoose which advisories the tool will search-all advisories, only advisories with a Critical or High Security Impact Rating (SIR), or only this advisory.\nChoose the appropriate software.\nChoose the appropriate platform.\nEnter a release number-for example, 9.20.3.4 for Cisco Secure Firewall ASA Software or 7.4.2 for Cisco Secure FTD Software.\nClick Check.\n\n \nOnly this advisory\nAll Critical and High advisories\nAll advisories\n\nCisco ASA Software\nCisco FMC Software\nCisco FTD Software\n\nAny Platform\n3000 Series Industrial Security Appliances (ISA)\nASA 5500-X Series Firewalls\nASA Service Modu
+2026-08-07 00:05:16,116 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:05:16,374 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: GPT extracted fixed_releases={} affected_versions=[]
+2026-08-07 00:05:16,374 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: GPT+HTML yielded no version data — trying openVuln API
+2026-08-07 00:05:17,011 [INFO] psirt.applicability_engine: [PSIRT OPENVULN] OAuth token refreshed, expires_in=3600
+2026-08-07 00:05:19,238 [INFO] psirt.applicability_engine: [PSIRT OPENVULN] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: API response keys=['advisoryId', 'advisoryTitle', 'bugIDs', 'ipsSignatures', 'cves', 'cvrfUrl', 'csafUrl', 'cvssBaseScore', 'cwe', 'firstPublished', 'lastUpdated', 'status', 'version', 'productNames', 'publicationUrl', 'sir', 'summary']
+2026-08-07 00:05:19,238 [INFO] psirt.applicability_engine: [PSIRT OPENVULN] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: summary text len=1614, preview='A vulnerability in the Internet Key Exchange version 2 (IKEv2) feature of Cisco IOS Software, Cisco IOS XE Software, Cisco Secure Firewall Adaptive Security Appliance (ASA) Software, and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to trigger a
+2026-08-07 00:05:19,238 [INFO] psirt.applicability_engine: [PSIRT CSAF-URL] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: csafUrl='https://sec.cloudapps.cisco.com/security/center/contentjson/CiscoSecurityAdvisory/cisco-sa-asa-ftd-ios-dos-kPEpQGGK/csaf/cisco-sa-asa-ftd-ios-dos-kPEpQGGK.json'  cvrfUrl='https://sec.cloudapps.cisco.com/security/center/contentxml/CiscoSecurityAdvisory/cisco-sa-asa-ftd-ios-dos-kPEpQGGK/cvrf/cisco-sa-asa-ftd-ios-dos-kPEpQGGK_cvrf.xml'  → csaf_url='https://sec.cloudapps.cisco.com/security/center/contentjson/CiscoSecurityAdvisory/cisco-sa-asa-ftd-ios-dos-kPEpQGGK/csaf/cisco-sa-asa-ftd-ios-dos-kPEpQGGK.json'
+2026-08-07 00:05:23,429 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: fetched https://sec.cloudapps.cisco.com/security/center/contentjson/CiscoSecurityAdvisory/cisco-sa-asa-ftd-ios-dos-kPEpQGGK/csaf/cisco-sa-asa-ftd-ios-dos-kPEpQGGK.json, size=1698149
+2026-08-07 00:05:23,431 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: pid_to_version sample={'CSAFPID-107859': '15.2(1)S', 'CSAFPID-107861': '15.2(2)S', 'CSAFPID-111551': '15.2(1)S1', 'CSAFPID-112424': '15.2(4)S', 'CSAFPID-114168': '15.2(1)S2'}
+2026-08-07 00:05:23,431 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: mapped 3671 product IDs
+2026-08-07 00:05:23,431 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: product_status keys={'known_affected': 3320}
+2026-08-07 00:05:23,431 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: first_fixed versions=['Cisco Secure Firewall Threat Defense (FTD) Software 6.6.0 when installed on Cisco Firepower 2100 Series', 'Cisco Secure Firewall Threat Defense (FTD) Software 6.6.0 when installed on Cisco Firepower 1000 Series', 'Cisco Secure Firewall Threat Defense (FTD) Software 6.6.0 when installed on Cisco ASA 5500-X Series Firewalls', 'Cisco Secure Firewall Threat Defense (FTD) Software 6.6.0 when installed on Cisco 3000 Series Industrial Security Appliances (ISA)', 'Cisco Secure Firewall Threat Defense (FTD) Software 6.6.0 when installed on Cisco Firepower 9000 Series', 'Cisco Secure Firewall Threat Defense (FTD) Software 6.6.0 when installed on Cisco Firepower 4100 Series', 'Cisco Secure Firewall Threat Defense (FTD) Software 6.6.0 when installed on Cisco Secure Firewall Threat Defense Virtual', 'Cisco Secure Firewall Threat Defense (FTD) Software 6.2.3 when installed on Cisco Firepower 2100 Series', 'Cisco Secure Firewall Threat Defense (FTD) Software 6.2.3 when installed on Cisco ASA 5500-X Series Firewalls', 'Cisco Secure Firewall Threat Defense (FTD) Software 6.2.3 when installed on Cisco 3000 Series Industrial Security Appliances (ISA)']
+2026-08-07 00:05:23,459 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: extracted fixed_releases={'6.6': '6.6.0', '6.2': '6.2.3', '6.4': '6.4.0', '7.0': '7.0.0', '7.1': '7.1.0', '7.2': '7.2.0', '7.3': '7.3.0', '7.4': '7.4.0', '7.6': '7.6.0', '7.7': '7.7.0', '3.5': '3.5.0E', '3.10': '3.10', '3.11': '3.11', '3.12': '3.12', '3.13': '3.13', '3.6': '3.6', '3.14': '3.14.0S', '3.15': '3.15', '3.7': '3.7.0E', '3.16': '3.16', '3.17': '3.17', '3.8': '3.8', '3.18': '3.18', '3.9': '3.9', '16.6': '16.6.1', '16.7': '16.7.1', '16.8': '16.8.1', '16.9': '16.9.1', '16.10': '16.10.1', '16.11': '16.11.1', '16.12': '16.12.1', '17.1': '17.1.1', '17.2': '17.2.1', '17.3': '17.3.1', '17.4': '17.4.1', '17.5': '17.5.1', '17.6': '17.6.1', '17.7': '17.7.1', '17.10': '17.10.1', '17.8': '17.8.1', '17.9': '17.9.1', '17.11': '17.11.1', '17.12': '17.12.1', '17.13': '17.13.1', '17.14': '17.14.1', '17.15': '17.15.1', '17.16': '17.16.1', '17.17': '17.17.1', '17.18': '17.18.1', '9.8': '9.8.1', '9.12': '9.12.1', '9.14': '9.14.1', '9.16': '9.16.1', '9.17': '9.17.1', '9.18': '9.18.1', '9.19': '9.19.1', '9.20': '9.20.1', '9.22': '9.22.1.1', '9.23': '9.23.1', '15.3': '15.3', '15.1': '15.1', '15.2': '15.2', '15.0': '15.0', '15.4': '15.4', '15.5': '15.5', '15.6': '15.6', '15.7': '15.7', '15.8': '15.8', '12.2': '12.2', '15.9': '15.9'}
+2026-08-07 00:05:23,462 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: openVuln API fixed_releases={'6.6': '6.6.0', '6.2': '6.2.3', '6.4': '6.4.0', '7.0': '7.0.0', '7.1': '7.1.0', '7.2': '7.2.0', '7.3': '7.3.0', '7.4': '7.4.0', '7.6': '7.6.0', '7.7': '7.7.0', '3.5': '3.5.0E', '3.10': '3.10', '3.11': '3.11', '3.12': '3.12', '3.13': '3.13', '3.6': '3.6', '3.14': '3.14.0S', '3.15': '3.15', '3.7': '3.7.0E', '3.16': '3.16', '3.17': '3.17', '3.8': '3.8', '3.18': '3.18', '3.9': '3.9', '16.6': '16.6.1', '16.7': '16.7.1', '16.8': '16.8.1', '16.9': '16.9.1', '16.10': '16.10.1', '16.11': '16.11.1', '16.12': '16.12.1', '17.1': '17.1.1', '17.2': '17.2.1', '17.3': '17.3.1', '17.4': '17.4.1', '17.5': '17.5.1', '17.6': '17.6.1', '17.7': '17.7.1', '17.10': '17.10.1', '17.8': '17.8.1', '17.9': '17.9.1', '17.11': '17.11.1', '17.12': '17.12.1', '17.13': '17.13.1', '17.14': '17.14.1', '17.15': '17.15.1', '17.16': '17.16.1', '17.17': '17.17.1', '17.18': '17.18.1', '9.8': '9.8.1', '9.12': '9.12.1', '9.14': '9.14.1', '9.16': '9.16.1', '9.17': '9.17.1', '9.18': '9.18.1', '9.19': '9.19.1', '9.20': '9.20.1', '9.22': '9.22.1.1', '9.23': '9.23.1', '15.3': '15.3', '15.1': '15.1', '15.2': '15.2', '15.0': '15.0', '15.4': '15.4', '15.5': '15.5', '15.6': '15.6', '15.7': '15.7', '15.8': '15.8', '12.2': '12.2', '15.9': '15.9'}
+2026-08-07 00:05:30,763 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR11BLUEVS01.hcl.com
+2026-08-07 00:05:34,257 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:05:34,258 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:05:34,258 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:05:34,259 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:05:34,267 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR11BLUEVS01.hcl.com → NOT_AFFECTED
+2026-08-07 00:05:34,267 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS024.hcl.com (4dd200a7-311d-4719-8db3-7b6e17a421a2)
+2026-08-07 00:05:34,268 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:05:34,268 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:05:34,268 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:05:34,277 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:05:41,164 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS024.hcl.com
+2026-08-07 00:05:44,783 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:05:44,784 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:05:44,784 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:05:44,784 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:05:44,795 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS024.hcl.com → NOT_AFFECTED
+2026-08-07 00:05:44,795 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXNOVADS01.hcl.com (53288af4-9299-4179-a7e1-3865e68b53a1)
+2026-08-07 00:05:44,795 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:05:44,795 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:05:44,795 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:05:44,807 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:05:52,033 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXNOVADS01.hcl.com
+2026-08-07 00:05:56,097 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:05:56,098 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:05:56,098 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:05:56,098 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:05:56,107 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXNOVADS01.hcl.com → NOT_AFFECTED
+2026-08-07 00:05:56,107 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR11CBAAS003.hcl.com (eb88bf23-b2f4-4e60-93aa-303b849677cb)
+2026-08-07 00:05:56,108 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:05:56,108 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:05:56,108 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:05:56,116 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:06:03,056 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR11CBAAS003.hcl.com
+2026-08-07 00:06:07,381 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:06:07,382 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:06:07,382 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:06:07,382 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:06:07,393 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR11CBAAS003.hcl.com → NOT_AFFECTED
+2026-08-07 00:06:07,393 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN25CTVAS030.hcl.com (a55206c2-0a5e-4d0d-b2bf-24476a0efd0a)
+2026-08-07 00:06:07,393 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:06:07,393 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:06:07,393 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:06:07,403 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:06:14,353 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN25CTVAS030.hcl.com
+2026-08-07 00:06:18,060 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:06:18,062 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:06:18,062 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:06:18,062 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:06:18,072 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN25CTVAS030.hcl.com → NOT_AFFECTED
+2026-08-07 00:06:18,072 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU01XXXAS12.hcl.com (375795cd-4fe2-495b-95c4-3dbe577ce518)
+2026-08-07 00:06:18,072 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:06:18,072 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:06:18,072 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:06:18,081 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:06:25,157 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU01XXXAS12.hcl.com
+2026-08-07 00:06:28,820 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:06:28,821 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:06:28,821 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:06:28,821 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:06:28,836 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU01XXXAS12.hcl.com → NOT_AFFECTED
+2026-08-07 00:06:28,837 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINHYD03GILEADDS02.hcl.com (e6677a11-285d-44d3-b62c-9600a18d70c4)
+2026-08-07 00:06:28,837 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:06:28,837 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:06:28,837 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:06:28,847 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:06:35,860 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINHYD03GILEADDS02.hcl.com
+2026-08-07 00:06:39,832 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:06:39,833 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:06:39,834 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:06:39,834 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:06:39,844 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINHYD03GILEADDS02.hcl.com → NOT_AFFECTED
+2026-08-07 00:06:39,844 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU02AIBDS001.hcl.com (c97fdbef-8cdc-4528-828c-0df4068c4ba0)
+2026-08-07 00:06:39,844 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:06:39,844 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:06:39,844 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:06:39,855 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:06:47,169 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU02AIBDS001.hcl.com
+2026-08-07 00:06:51,130 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:06:51,131 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:06:51,131 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:06:51,131 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:06:51,142 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU02AIBDS001.hcl.com → NOT_AFFECTED
+2026-08-07 00:06:51,142 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINHYD03GILEADDS01.hcl.com (8a2ada77-69e5-4b74-aa78-4985a1fba8bb)
+2026-08-07 00:06:51,142 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:06:51,142 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:06:51,142 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:06:51,151 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:07:01,856 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINHYD03GILEADDS01.hcl.com
+2026-08-07 00:07:06,253 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:07:06,255 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:07:06,255 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:07:06,255 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:07:06,267 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINHYD03GILEADDS01.hcl.com → NOT_AFFECTED
+2026-08-07 00:07:06,267 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS047.hcl.com (62426746-3898-45ed-a8a5-8a7692620d6a)
+2026-08-07 00:07:06,267 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:07:06,267 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:07:06,267 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:07:06,278 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:07:13,554 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS047.hcl.com
+2026-08-07 00:07:16,934 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:07:16,935 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:07:16,936 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:07:16,936 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:07:16,946 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS047.hcl.com → NOT_AFFECTED
+2026-08-07 00:07:16,946 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN22CHEPDS02.hcl.com (eee14acf-1b9d-42e5-aa5c-e464b6a0dbc3)
+2026-08-07 00:07:16,946 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:07:16,946 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:07:16,946 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:07:16,956 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:07:23,958 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN22CHEPDS02.hcl.com
+2026-08-07 00:07:28,152 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:07:28,153 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:07:28,153 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:07:28,153 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:07:28,164 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN22CHEPDS02.hcl.com → NOT_AFFECTED
+2026-08-07 00:07:28,165 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN22CHEPDS01.hcl.com (a9e83b11-92d6-4e5b-97ee-0547731cf93c)
+2026-08-07 00:07:28,165 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:07:28,165 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:07:28,165 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:07:28,174 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:07:44,947 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN22CHEPDS01.hcl.com
+2026-08-07 00:07:48,620 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:07:48,621 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:07:48,621 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:07:48,621 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:07:48,632 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN22CHEPDS01.hcl.com → NOT_AFFECTED
+2026-08-07 00:07:48,632 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR14XXXAS096.hcl.com (3cd72188-9459-4ef3-9adc-58a4258fe764)
+2026-08-07 00:07:48,632 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:07:48,632 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:07:48,632 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:07:48,642 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:07:55,757 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR14XXXAS096.hcl.com
+2026-08-07 00:08:02,284 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:08:02,285 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:02,285 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:02,285 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:02,298 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR14XXXAS096.hcl.com → NOT_AFFECTED
+2026-08-07 00:08:02,299 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS075.hcl.com (56428319-0e40-41da-b283-322809fa1592)
+2026-08-07 00:08:02,299 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:02,299 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:02,299 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:02,308 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:08:10,059 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS075.hcl.com
+2026-08-07 00:08:13,699 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:08:13,701 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:13,701 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:13,701 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:13,712 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS075.hcl.com → NOT_AFFECTED
+2026-08-07 00:08:13,712 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR18XXXAS010.hcl.com (c4dc6f32-6c58-401c-8da0-73f8e892b601)
+2026-08-07 00:08:13,712 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:13,712 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:13,712 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:13,721 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:08:20,659 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR18XXXAS010.hcl.com
+2026-08-07 00:08:24,996 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:08:24,998 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:24,998 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:24,998 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:25,010 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR18XXXAS010.hcl.com → NOT_AFFECTED
+2026-08-07 00:08:25,010 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU01XXXAS11.hcl.com (f6f35024-c54f-4728-92f2-ac5e688238b5)
+2026-08-07 00:08:25,010 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:25,010 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:25,010 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:25,020 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:08:31,957 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU01XXXAS11.hcl.com
+2026-08-07 00:08:36,358 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:08:36,359 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:36,360 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:36,360 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:36,370 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU01XXXAS11.hcl.com → NOT_AFFECTED
+2026-08-07 00:08:36,370 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXXAS044.hcl.com (e01f606b-4b19-4788-8f8c-4c25563cde6c)
+2026-08-07 00:08:36,370 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:36,370 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:36,370 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:36,382 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:08:43,272 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXXAS044.hcl.com
+2026-08-07 00:08:48,135 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:08:48,137 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:48,137 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:48,137 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:48,148 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXXAS044.hcl.com → NOT_AFFECTED
+2026-08-07 00:08:48,148 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXCLUBDS01.hcl.com (f8ce88dd-9ff6-4ea5-824a-90db9152adff)
+2026-08-07 00:08:48,148 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:48,148 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:48,148 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:48,158 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:08:55,057 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXCLUBDS01.hcl.com
+2026-08-07 00:08:58,999 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:08:59,000 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:59,000 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:59,000 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:59,012 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXCLUBDS01.hcl.com → NOT_AFFECTED
+2026-08-07 00:08:59,012 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINHYD09C3iAS003.hcl.com (f58e7063-4984-4dfa-be9c-022cb863c5da)
+2026-08-07 00:08:59,012 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:08:59,012 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:08:59,012 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:08:59,022 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:09:05,956 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINHYD09C3iAS003.hcl.com
+2026-08-07 00:09:11,416 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:09:11,418 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:09:11,418 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:09:11,418 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:09:11,429 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINHYD09C3iAS003.hcl.com → NOT_AFFECTED
+2026-08-07 00:09:11,430 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU02XXXAS040.hcl.com (806c421f-5ad8-4db1-b763-d671039a3b74)
+2026-08-07 00:09:11,430 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:09:11,430 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:09:11,430 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:09:11,440 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:09:18,348 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU02XXXAS040.hcl.com
+2026-08-07 00:09:22,371 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:09:22,373 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:09:22,373 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:09:22,373 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:09:22,386 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU02XXXAS040.hcl.com → NOT_AFFECTED
+2026-08-07 00:09:22,386 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS025.hcl.com (92e2133d-4bc3-4e04-acff-cf6e8bcf2618)
+2026-08-07 00:09:22,386 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:09:22,386 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:09:22,386 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:09:22,396 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:09:29,356 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS025.hcl.com
+2026-08-07 00:09:33,220 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:09:33,222 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:09:33,222 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:09:33,222 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:09:33,234 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HBAINCHN25XXXAS025.hcl.com → NOT_AFFECTED
+2026-08-07 00:09:33,234 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR14XXXAS081.hcl.com (e0c78599-6dd5-4fbc-9355-bf800f0e3edf)
+2026-08-07 00:09:33,235 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:09:33,235 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:09:33,235 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:09:33,245 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:09:40,461 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR14XXXAS081.hcl.com
+2026-08-07 00:09:44,581 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:09:44,583 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:09:44,583 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:09:44,583 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:09:44,595 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINBLR14XXXAS081.hcl.com → NOT_AFFECTED
+2026-08-07 00:09:44,595 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN25XXXAS145.hcl.com (dc7c2455-44bd-4701-a949-add390cda2fa)
+2026-08-07 00:09:44,595 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:09:44,595 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:09:44,595 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:09:44,605 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:09:51,566 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN25XXXAS145.hcl.com
+2026-08-07 00:09:55,662 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:09:55,663 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:09:55,663 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:09:55,663 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:09:55,674 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN25XXXAS145.hcl.com → NOT_AFFECTED
+2026-08-07 00:09:55,675 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXCLUBDS02.hcl.com (3ff28be0-e3b1-4c9e-8f0a-15522e6df98b)
+2026-08-07 00:09:55,675 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:09:55,675 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:09:55,675 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:09:55,685 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:10:02,580 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXCLUBDS02.hcl.com
+2026-08-07 00:10:06,612 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:10:06,613 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:10:06,613 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:10:06,613 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:10:06,625 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINCHN24XXCLUBDS02.hcl.com → NOT_AFFECTED
+2026-08-07 00:10:06,625 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU01XXXAS13.hcl.com (2afe4a13-91cb-4837-80b8-2352427b0779)
+2026-08-07 00:10:06,625 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:10:06,625 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:10:06,625 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:10:06,639 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK: profile from ChromaDB cache.
+2026-08-07 00:10:13,554 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU01XXXAS13.hcl.com
+2026-08-07 00:10:17,559 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:10:17,561 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:10:17,561 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:10:17,561 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:10:17,573 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-asa-ftd-ios-dos-kPEpQGGK × HTAINMDU01XXXAS13.hcl.com → NOT_AFFECTED
+2026-08-07 00:10:17,574 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINBLR18XXXAS010.hcl.com (c4dc6f32-6c58-401c-8da0-73f8e892b601)
+2026-08-07 00:10:17,574 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:10:17,574 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:10:17,574 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:10:17,861 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL: DNAC detail had no fixed_releases, trying Cisco portal + GPT
+2026-08-07 00:10:19,895 [INFO] psirt.applicability_engine: [PSIRT FETCH] cisco-sa-iosxe-tls-dos-TVgLDEZL: JSON endpoint status=200 content-type=text/html;charset=ISO-8859-1
+2026-08-07 00:10:22,530 [INFO] psirt.applicability_engine: [PSIRT FETCH] cisco-sa-iosxe-tls-dos-TVgLDEZL: HTML section-targeted OK, sections=['Summary', 'Affected Products', 'Vulnerable Products', 'Products Confirmed Not Vulnerable', 'Workarounds', 'Fixed Software'], text_len=10553, preview='=== Summary ===\nA vulnerability in the TLS library of Cisco IOS XE Software could allow an unauthenticated, adjacent attacker to exhaust the available memory of an affected device.\n\nThis vulnerability is due to improper management of memory resources during TLS connection setup. An attacker coul
+2026-08-07 00:10:22,532 [INFO] psirt.applicability_engine: [PSIRT EXTRACT] cisco-sa-iosxe-tls-dos-TVgLDEZL: advisory_text len=10848, preview='Advisory ID: cisco-sa-iosxe-tls-dos-TVgLDEZL\nCVE(s): CVE-2026-20004\nSecurity Impact Rating: HIGH\nCVSS Base Score: N/A\nPublication URL: https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-iosxe-tls-dos-TVgLDEZL\nDetection Type: N/A\n\n\n--- Full Cisco Advisory ---\n=== Summary ===\nA vulnerability in the TLS library of Cisco IOS XE Software could allow an unauthenticated, adjacent attacker to exhaust the available memory of an affected device.\n\nThis vulne
+2026-08-07 00:10:22,532 [INFO] psirt.applicability_engine: [PSIRT EXTRACT] cisco-sa-iosxe-tls-dos-TVgLDEZL: Fixed Software section: 'Cisco considers any workarounds and mitigations (if applicable) to be temporary solutions until an upgrade to a fixed software release is available. To fully remediate this vulnerability and avoid future exposure as described in this advisory, Cisco strongly recommends that customers upgrade to the fixed software indicated in this advisory.\n\nCisco IOS and IOS XE Software\n\nTo help customers determine their exposure to vulnerabilities in Cisco IOS and IOS XE Software, Cisco provides the Cisco Software Checker. This tool identifies any Cisco security advisories that impact a specific software release and the earliest release that fixes the vulnerabilities that are described in each advisory (&ldquo;First Fixed&rdquo;). If applicable, the tool also returns the earliest release that fixes all the vulnerabilities that are described in all the advisories that the Software Checker identifies (&ldquo;Combined First Fixed&rdquo;). \n\nTo use the tool, go to the Cisco Software Checker page and follow the instructions. Alternatively, use the following form to determine whether a release is affected by any Cisco Security Advisory. To use the form, follow these steps:\n\nChoose which advisories the tool will search-only this advisory, only advisories with a Critical or High Security Impact Rating (SIR), or all advisories.\nEnter a release number-for example, 15.9(3)M2 or 17.3.3.\nClick Check.\n\n \nOnly this advisory\nAll Critical and High advisories\nAll advisories\n\n \n\n \n\n Exploitation and Public Announcements\n \n \n\nThe Cisco Product Security Incident Response Team (PSIRT) is not aware of any public announcements or malicious use of the vulnerability that is described in this advisory.\n\n Source\n \n \n\nThis vulnerability was found during the resolution of a Cisco Technical Assistance Center (TAC) support case.\n\n Cisco Security Vulnerability Policy\n \n \n\nTo learn about Cisco security vulnerability disclosure policies and publications, see the Security Vulnerability Policy. This document also contains instructions for obtaining fixed software and receiving security vulnerability information from Cisco.\n\nSubscribe to Cisco Security Notifications\n\nSubscribe\n\n \n Related to This Advisory\n \n\nCisco Event Response: March 2026 Semiannual Cisco IOS and IOS XE Software Security Advisory Bundled Publication\n\n URL\n \n \n\nhttps://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-iosxe-tls-dos-TVgLDEZL\n\n Revision History\n \n \n\n | \n \n | Version\n | Description\n | Section\n | Status\n | Date\n \n\n\t\n\t\n \n | 1.0\n | Initial public release.\n | -\n | Final\n | 2026-MAR-25\n \n\n\t\n\nShow Less\n\n Legal Disclaimer\n \n\nSOFTWARE DOWNLOADS AND TECHNICAL SUPPORT\n\nThe Cisco Support and Downloads page on Cisco.com provides information about licensing and downloads. This page can also display customer device support coverage for customers who use the My Devices tool. Please note that customers may download
+2026-08-07 00:10:24,277 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:10:24,473 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL: GPT extracted fixed_releases={} affected_versions=[]
+2026-08-07 00:10:24,473 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL: GPT+HTML yielded no version data — trying openVuln API
+2026-08-07 00:10:26,314 [INFO] psirt.applicability_engine: [PSIRT OPENVULN] cisco-sa-iosxe-tls-dos-TVgLDEZL: API response keys=['advisoryId', 'advisoryTitle', 'bugIDs', 'ipsSignatures', 'cves', 'cvrfUrl', 'csafUrl', 'cvssBaseScore', 'cwe', 'firstPublished', 'lastUpdated', 'status', 'version', 'productNames', 'publicationUrl', 'sir', 'summary']
+2026-08-07 00:10:26,315 [INFO] psirt.applicability_engine: [PSIRT OPENVULN] cisco-sa-iosxe-tls-dos-TVgLDEZL: summary text len=1448, preview='A vulnerability in the TLS library of Cisco IOS XE Software could allow an unauthenticated, adjacent attacker to exhaust the available memory of an affected device.\r\n\nThis vulnerability is due to improper management of memory resources during TLS connection setup. An attacker could exploit this 
+2026-08-07 00:10:26,315 [INFO] psirt.applicability_engine: [PSIRT CSAF-URL] cisco-sa-iosxe-tls-dos-TVgLDEZL: csafUrl='https://sec.cloudapps.cisco.com/security/center/contentjson/CiscoSecurityAdvisory/cisco-sa-iosxe-tls-dos-TVgLDEZL/csaf/cisco-sa-iosxe-tls-dos-TVgLDEZL.json'  cvrfUrl='https://sec.cloudapps.cisco.com/security/center/contentxml/CiscoSecurityAdvisory/cisco-sa-iosxe-tls-dos-TVgLDEZL/cvrf/cisco-sa-iosxe-tls-dos-TVgLDEZL_cvrf.xml'  → csaf_url='https://sec.cloudapps.cisco.com/security/center/contentjson/CiscoSecurityAdvisory/cisco-sa-iosxe-tls-dos-TVgLDEZL/csaf/cisco-sa-iosxe-tls-dos-TVgLDEZL.json'
+2026-08-07 00:10:28,377 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-iosxe-tls-dos-TVgLDEZL: fetched https://sec.cloudapps.cisco.com/security/center/contentjson/CiscoSecurityAdvisory/cisco-sa-iosxe-tls-dos-TVgLDEZL/csaf/cisco-sa-iosxe-tls-dos-TVgLDEZL.json, size=92176
+2026-08-07 00:10:28,377 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-iosxe-tls-dos-TVgLDEZL: pid_to_version sample={'CSAFPID-225856': '16.9.1', 'CSAFPID-232008': '16.9.2', 'CSAFPID-242308': '16.9.1a', 'CSAFPID-243362': '16.9.1b', 'CSAFPID-244530': '16.9.1s'}
+2026-08-07 00:10:28,378 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-iosxe-tls-dos-TVgLDEZL: mapped 200 product IDs
+2026-08-07 00:10:28,378 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-iosxe-tls-dos-TVgLDEZL: product_status keys={'known_affected': 200}
+2026-08-07 00:10:28,378 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-iosxe-tls-dos-TVgLDEZL: first_fixed versions=['16.9.1', '16.10.1', '16.11.1', '16.12.1', '16.9.2', '16.9.1a', '16.9.1b', '16.9.1s', '16.9.1c', '17.1.1']
+2026-08-07 00:10:28,379 [INFO] psirt.applicability_engine: [PSIRT CSAF] cisco-sa-iosxe-tls-dos-TVgLDEZL: extracted fixed_releases={'16.9': '16.9.1', '16.10': '16.10.1', '16.11': '16.11.1', '16.12': '16.12.1', '17.1': '17.1.1', '17.2': '17.2.1', '17.3': '17.3.1', '17.4': '17.4.1', '17.5': '17.5.1', '17.6': '17.6.1', '17.7': '17.7.1', '17.10': '17.10.1', '17.8': '17.8.1', '17.9': '17.9.1', '17.11': '17.11.1', '17.12': '17.12.1', '17.13': '17.13.1', '17.14': '17.14.1', '17.15': '17.15.1', '17.16': '17.16.1'}
+2026-08-07 00:10:28,381 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL: openVuln API fixed_releases={'16.9': '16.9.1', '16.10': '16.10.1', '16.11': '16.11.1', '16.12': '16.12.1', '17.1': '17.1.1', '17.2': '17.2.1', '17.3': '17.3.1', '17.4': '17.4.1', '17.5': '17.5.1', '17.6': '17.6.1', '17.7': '17.7.1', '17.10': '17.10.1', '17.8': '17.8.1', '17.9': '17.9.1', '17.11': '17.11.1', '17.12': '17.12.1', '17.13': '17.13.1', '17.14': '17.14.1', '17.15': '17.15.1', '17.16': '17.16.1'}
+2026-08-07 00:10:46,257 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINBLR18XXXAS010.hcl.com
+2026-08-07 00:10:52,464 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:10:52,466 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINBLR18XXXAS010.hcl.com
+2026-08-07 00:11:03,190 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:11:03,191 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:11:03,191 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:11:03,192 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:11:03,206 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINBLR18XXXAS010.hcl.com → AFFECTED
+2026-08-07 00:11:03,206 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINHYD03GILEADDS02.hcl.com (e6677a11-285d-44d3-b62c-9600a18d70c4)
+2026-08-07 00:11:03,207 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:11:03,207 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:11:03,207 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:11:03,218 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL: profile from ChromaDB cache.
+2026-08-07 00:11:20,543 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINHYD03GILEADDS02.hcl.com
+2026-08-07 00:11:25,639 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:11:25,640 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:11:25,640 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:11:25,640 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:11:25,651 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINHYD03GILEADDS02.hcl.com → NOT_AFFECTED
+2026-08-07 00:11:25,651 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINMDU02AIBDS001.hcl.com (c97fdbef-8cdc-4528-828c-0df4068c4ba0)
+2026-08-07 00:11:25,652 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:11:25,652 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:11:25,652 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:11:25,666 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL: profile from ChromaDB cache.
+2026-08-07 00:11:42,635 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINMDU02AIBDS001.hcl.com
+2026-08-07 00:11:47,709 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:11:47,711 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:11:47,711 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:11:47,711 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:11:47,722 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINMDU02AIBDS001.hcl.com → NOT_AFFECTED
+2026-08-07 00:11:47,722 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINHYD03GILEADDS01.hcl.com (8a2ada77-69e5-4b74-aa78-4985a1fba8bb)
+2026-08-07 00:11:47,723 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:11:47,723 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:11:47,723 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:11:47,733 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL: profile from ChromaDB cache.
+2026-08-07 00:12:04,637 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINHYD03GILEADDS01.hcl.com
+2026-08-07 00:12:09,459 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:12:09,460 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:12:09,461 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:12:09,461 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:12:09,473 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-iosxe-tls-dos-TVgLDEZL × HTAINHYD03GILEADDS01.hcl.com → NOT_AFFECTED
+2026-08-07 00:12:09,473 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS024.hcl.com (4dd200a7-311d-4719-8db3-7b6e17a421a2)
+2026-08-07 00:12:09,474 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:12:09,474 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:12:09,474 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:12:09,485 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:12:16,753 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS024.hcl.com
+2026-08-07 00:12:22,690 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:12:22,692 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS024.hcl.com
+2026-08-07 00:12:33,033 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:12:33,034 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:12:33,034 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:12:33,034 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:12:33,046 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS024.hcl.com → AFFECTED
+2026-08-07 00:12:33,046 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXNOVADS01.hcl.com (53288af4-9299-4179-a7e1-3865e68b53a1)
+2026-08-07 00:12:33,046 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:12:33,046 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:12:33,046 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:12:33,058 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:12:40,252 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXNOVADS01.hcl.com
+2026-08-07 00:12:46,632 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:12:46,633 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXNOVADS01.hcl.com
+2026-08-07 00:12:56,708 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:12:56,709 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:12:56,709 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:12:56,710 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:12:56,724 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXNOVADS01.hcl.com → AFFECTED
+2026-08-07 00:12:56,724 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR11CBAAS003.hcl.com (eb88bf23-b2f4-4e60-93aa-303b849677cb)
+2026-08-07 00:12:56,724 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:12:56,724 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:12:56,724 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:12:56,737 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:13:04,254 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR11CBAAS003.hcl.com
+2026-08-07 00:13:10,647 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:13:10,648 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR11CBAAS003.hcl.com
+2026-08-07 00:13:23,902 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:13:23,903 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:13:23,903 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:13:23,903 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:13:23,916 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR11CBAAS003.hcl.com → AFFECTED
+2026-08-07 00:13:23,916 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN25CTVAS030.hcl.com (a55206c2-0a5e-4d0d-b2bf-24476a0efd0a)
+2026-08-07 00:13:23,916 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:13:23,916 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:13:23,916 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:13:23,927 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:13:30,851 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN25CTVAS030.hcl.com
+2026-08-07 00:13:35,041 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:13:35,042 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN25CTVAS030.hcl.com
+2026-08-07 00:13:45,132 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:13:45,133 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:13:45,133 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:13:45,133 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:13:45,145 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN25CTVAS030.hcl.com → AFFECTED
+2026-08-07 00:13:45,145 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU01XXXAS12.hcl.com (375795cd-4fe2-495b-95c4-3dbe577ce518)
+2026-08-07 00:13:45,146 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:13:45,146 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:13:45,146 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:13:45,157 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:13:52,053 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU01XXXAS12.hcl.com
+2026-08-07 00:13:58,610 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:13:58,612 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:13:58,612 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:13:58,612 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:13:58,627 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU01XXXAS12.hcl.com → NOT_AFFECTED
+2026-08-07 00:13:58,627 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS047.hcl.com (62426746-3898-45ed-a8a5-8a7692620d6a)
+2026-08-07 00:13:58,627 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:13:58,627 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:13:58,627 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:13:58,640 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:14:05,559 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS047.hcl.com
+2026-08-07 00:14:11,012 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:14:11,013 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS047.hcl.com
+2026-08-07 00:14:21,139 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:14:21,140 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:14:21,141 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:14:21,141 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:14:21,158 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS047.hcl.com → AFFECTED
+2026-08-07 00:14:21,158 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN22CHEPDS02.hcl.com (eee14acf-1b9d-42e5-aa5c-e464b6a0dbc3)
+2026-08-07 00:14:21,159 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:14:21,159 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:14:21,159 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:14:21,175 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:14:24,892 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN22CHEPDS02.hcl.com
+2026-08-07 00:14:29,410 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:14:29,412 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:14:29,412 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:14:29,412 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:14:29,423 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN22CHEPDS02.hcl.com → NOT_AFFECTED
+2026-08-07 00:14:29,424 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN22CHEPDS01.hcl.com (a9e83b11-92d6-4e5b-97ee-0547731cf93c)
+2026-08-07 00:14:29,424 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:14:29,424 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:14:29,424 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:14:29,436 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:14:33,086 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN22CHEPDS01.hcl.com
+2026-08-07 00:14:38,812 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:14:38,813 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:14:38,813 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:14:38,813 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:14:38,826 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN22CHEPDS01.hcl.com → NOT_AFFECTED
+2026-08-07 00:14:38,827 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR14XXXAS096.hcl.com (3cd72188-9459-4ef3-9adc-58a4258fe764)
+2026-08-07 00:14:38,827 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:14:38,827 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:14:38,827 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:14:38,839 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:14:45,851 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR14XXXAS096.hcl.com
+2026-08-07 00:14:56,509 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:14:56,510 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR14XXXAS096.hcl.com
+2026-08-07 00:15:02,933 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:15:02,935 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:15:02,935 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:15:02,935 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:15:02,948 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR14XXXAS096.hcl.com → AFFECTED
+2026-08-07 00:15:02,948 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS075.hcl.com (56428319-0e40-41da-b283-322809fa1592)
+2026-08-07 00:15:02,948 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:15:02,948 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:15:02,948 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:15:02,960 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:15:09,803 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS075.hcl.com
+2026-08-07 00:15:25,883 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:15:25,884 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS075.hcl.com
+2026-08-07 00:15:36,653 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:15:36,654 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:15:36,654 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:15:36,654 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:15:36,666 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS075.hcl.com → AFFECTED
+2026-08-07 00:15:36,666 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU01XXXAS11.hcl.com (f6f35024-c54f-4728-92f2-ac5e688238b5)
+2026-08-07 00:15:36,667 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:15:36,667 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:15:36,667 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:15:36,681 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:15:44,651 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU01XXXAS11.hcl.com
+2026-08-07 00:15:50,506 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:15:50,507 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU01XXXAS11.hcl.com
+2026-08-07 00:16:08,274 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:16:08,275 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:16:08,275 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:16:08,275 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:16:08,289 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU01XXXAS11.hcl.com → AFFECTED
+2026-08-07 00:16:08,289 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXXAS044.hcl.com (e01f606b-4b19-4788-8f8c-4c25563cde6c)
+2026-08-07 00:16:08,290 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:16:08,290 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:16:08,290 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:16:08,304 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:16:20,952 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXXAS044.hcl.com
+2026-08-07 00:16:26,277 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:16:26,278 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:16:26,278 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:16:26,278 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:16:26,290 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXXAS044.hcl.com → NOT_AFFECTED
+2026-08-07 00:16:26,291 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXCLUBDS01.hcl.com (f8ce88dd-9ff6-4ea5-824a-90db9152adff)
+2026-08-07 00:16:26,291 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:16:26,291 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:16:26,291 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:16:26,303 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:16:34,698 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXCLUBDS01.hcl.com
+2026-08-07 00:16:39,764 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:16:39,765 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXCLUBDS01.hcl.com
+2026-08-07 00:16:46,481 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:16:46,482 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:16:46,482 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:16:46,482 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:16:46,496 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXCLUBDS01.hcl.com → AFFECTED
+2026-08-07 00:16:46,496 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINHYD09C3iAS003.hcl.com (f58e7063-4984-4dfa-be9c-022cb863c5da)
+2026-08-07 00:16:46,496 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:16:46,496 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:16:46,496 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:16:46,508 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:16:57,003 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINHYD09C3iAS003.hcl.com
+2026-08-07 00:17:03,554 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:17:03,555 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINHYD09C3iAS003.hcl.com
+2026-08-07 00:17:25,403 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:17:25,404 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:17:25,405 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:17:25,405 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:17:25,418 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINHYD09C3iAS003.hcl.com → AFFECTED
+2026-08-07 00:17:25,419 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU02XXXAS040.hcl.com (806c421f-5ad8-4db1-b763-d671039a3b74)
+2026-08-07 00:17:25,419 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:17:25,419 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:17:25,419 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:17:25,431 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:17:32,338 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU02XXXAS040.hcl.com
+2026-08-07 00:17:38,337 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:17:38,338 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU02XXXAS040.hcl.com
+2026-08-07 00:17:44,491 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:17:44,492 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:17:44,492 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:17:44,492 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:17:44,509 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU02XXXAS040.hcl.com → AFFECTED
+2026-08-07 00:17:44,509 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS025.hcl.com (92e2133d-4bc3-4e04-acff-cf6e8bcf2618)
+2026-08-07 00:17:44,510 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:17:44,510 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:17:44,510 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:17:44,522 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:17:55,403 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS025.hcl.com
+2026-08-07 00:18:01,756 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:18:01,757 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:18:01,757 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:18:01,757 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:18:01,772 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HBAINCHN25XXXAS025.hcl.com → NOT_AFFECTED
+2026-08-07 00:18:01,773 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR14XXXAS081.hcl.com (e0c78599-6dd5-4fbc-9355-bf800f0e3edf)
+2026-08-07 00:18:01,773 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:18:01,773 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:18:01,773 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:18:01,785 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:18:07,116 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR14XXXAS081.hcl.com
+2026-08-07 00:18:12,953 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:18:12,954 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR14XXXAS081.hcl.com
+2026-08-07 00:18:20,172 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:18:20,174 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:18:20,174 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:18:20,174 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:18:20,187 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR14XXXAS081.hcl.com → AFFECTED
+2026-08-07 00:18:20,187 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN25XXXAS145.hcl.com (dc7c2455-44bd-4701-a949-add390cda2fa)
+2026-08-07 00:18:20,188 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:18:20,188 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:18:20,188 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:18:20,200 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:18:27,050 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN25XXXAS145.hcl.com
+2026-08-07 00:18:32,860 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:18:32,861 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN25XXXAS145.hcl.com
+2026-08-07 00:18:43,515 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:18:43,516 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:18:43,516 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:18:43,516 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:18:43,530 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN25XXXAS145.hcl.com → AFFECTED
+2026-08-07 00:18:43,530 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXCLUBDS02.hcl.com (3ff28be0-e3b1-4c9e-8f0a-15522e6df98b)
+2026-08-07 00:18:43,530 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:18:43,530 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:18:43,530 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:18:43,542 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:18:47,377 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXCLUBDS02.hcl.com
+2026-08-07 00:18:52,869 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:18:52,871 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:18:52,871 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:18:52,871 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:18:52,883 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINCHN24XXCLUBDS02.hcl.com → NOT_AFFECTED
+2026-08-07 00:18:52,884 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU01XXXAS13.hcl.com (2afe4a13-91cb-4837-80b8-2352427b0779)
+2026-08-07 00:18:52,884 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:18:52,884 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:18:52,884 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:18:52,896 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:19:01,437 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU01XXXAS13.hcl.com
+2026-08-07 00:19:07,876 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:19:07,877 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU01XXXAS13.hcl.com
+2026-08-07 00:19:21,252 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:19:21,253 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:19:21,254 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:19:21,254 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:19:21,268 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINMDU01XXXAS13.hcl.com → AFFECTED
+2026-08-07 00:19:21,268 [INFO] psirt.background_scanner: [PSIRT] Processing cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR11BLUEVS01.hcl.com (98bfef06-9aa2-41d8-a4d3-75770c8f3b43)
+2026-08-07 00:19:21,269 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:19:21,269 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:19:21,269 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:19:21,281 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL: profile from ChromaDB cache.
+2026-08-07 00:19:28,931 [INFO] psirt.background_scanner: [PSIRT] Running 4-layer GPT analysis for cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR11BLUEVS01.hcl.com
+2026-08-07 00:19:33,838 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:19:33,839 [INFO] psirt.background_scanner: [PSIRT] Checking compensating controls for cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR11BLUEVS01.hcl.com
+2026-08-07 00:19:44,441 [INFO] httpx: HTTP Request: POST https://git-nw-openai-llm-prod.openai.azure.com/openai/deployments/gpt-4.1/chat/completions?api-version=2025-04-01-preview "HTTP/1.1 200 OK"
+2026-08-07 00:19:44,443 [INFO] db.database_postgresql: DB_DETAILS are :::{'NAME': 'RAGDatabase', 'USER': 'nautobot', 'PASSWORD': 'git@HCL$2025', 'HOST': 'localhost', 'PORT': '5432'}
+2026-08-07 00:19:44,443 [INFO] db.database_postgresql: Postgres Connection None,None,None,None,None
+2026-08-07 00:19:44,443 [INFO] db.database_postgresql: Postgres Connection localhost,5432,nautobot,git@HCL$2025,AdvisoryDatabase
+2026-08-07 00:19:44,457 [INFO] psirt.background_scanner: [PSIRT] cisco-sa-ios-http-dos-sbv8XRpL × HTAINBLR11BLUEVS01.hcl.com → AFFECTED
+2026-08-07 00:19:44,457 [INFO] psirt.background_scanner: [PSIRT] Scan finished. Pairs: 50, errors: 0
+2026-08-07 00:19:48,560 [INFO] run_scan: [SCAN] Scan thread finished.
+2026-08-07 00:19:48,564 [INFO] run_scan: [SCAN] ✓ dnac_id=vj           | advisories=3    | devices=4669 | triggered_at=2026-08-06T18:35:06.386279+00:00
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
+Inside Connector::
