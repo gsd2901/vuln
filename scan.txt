@@ -1,0 +1,760 @@
+Advisory ID	Hostname	SW Version	Verdict	Method	
+snmp-x4LPhte ↗	HTACHKUN01XXXVG001	17.12.5a	Affected	🌐 DNAC command runner	Why?
+Affected
+The device is running IOS XE, which is an affected platform. However, the software version (17.12.5a) is newer than the first fixed release (17.12.1), indicating the device is patched. Additionally, there is no evidence of SNMP configuration in the command outputs.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+UNKNOWN
+Platform: ISR4331/K9 (IOS XE); Version: 17.12.5a (newer than fixed 17.12.1); No SNMP config found in outputs.
+⟶ No action required. Device is not affected by this advisory. If SNMP is required, ensure best practices and monitor for future advisories.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 12.2 → 12.2, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 16.6 → 16.6.1, 16.7 → 16.7.1, 16.8 → 16.8.1, 16.9 → 16.9.1, 17.1 → 17.1.1, 17.2 → 17.2.1, 17.3 → 17.3.1, 17.4 → 17.4.1, 17.5 → 17.5.1, 17.6 → 17.6.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.9 → 17.9.1, 3.10 → 3.10, 3.11 → 3.11, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18, 16.10 → 16.10.1, 16.11 → 16.11.1, 16.12 → 16.12.1, 17.10 → 17.10.1, 17.11 → 17.11.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.14 → 17.14.1, 17.15 → 17.15.1, 17.16 → 17.16.1, 17.17 → 17.17.1, 17.18 → 17.18.1
+Vendor workaround: There are no workarounds that address this vulnerability. However, there is a mitigation. Administrators are advised to allow only trusted users to have SNMP access on an affected system. Administrators are also advised to monitor affected systems by using the show snmp host command in the CLI. Administrators can disable the affected OIDs on a device. Not all software will support the OID that is listed in the mitigation. If the OID is not valid for specific software, then it is not affected by this vulnerability. Excluding these OIDs may affect device management through SNMP, such as discovery and hardware inventory. To create or update a view entry and disable the affected OIDs, use the snmp-server view global configuration command, as shown in the following example: !Standard VIEW and Security Exclusions snmp-server view NO_BAD_SNMP iso included snmp-server view NO_BAD_SNMP snmpUsmMIB excluded snmp-server view NO_BAD_SNMP snmpVacmMIB excluded snmp-server view NO_BAD_SNMP snmpCommunityMIB excluded !End Standard View !Advisory Specific Mappings !CISCO-AUTH-FRAMEWORK-MIB snmp-server view NO_BAD_SNMP cafSessionMethodsInfoEntry excluded To then apply this configuration to a community string, use the following command: snmp-server community mycomm view NO_BAD_SNMP RO For SNMPv3, use the following command: snmp-server group v3group v3 auth read NO_BAD_SNMP write NO_BAD_SNMP For customers using Meraki cloud-managed switches: If any devices in your dashboard organization are running an affected software release, contact the Meraki support team to apply the recommended mitigation. Using this configuration is recommended until fixed software becomes available.
+The device is running IOS XE, which is an affected platform. However, the software version (17.12.5a) is newer than the first fixed release (17.12.1), indicating the device is patched. Additionally, there is no evidence of SNMP configuration in the command outputs.
+⟶ No action required. Device is not affected by this advisory. If SNMP is required, ensure best practices and monitor for future advisories.
+snmp-x4LPhte ↗	HTMILTEL01XXXIS001.hcl.com	17.12.5	Needs review	🌐 DNAC command runner	Why?
+Needs review
+The device platform is affected, but there is no valid output to determine the software version or SNMP feature status. Applicability cannot be confirmed without additional data.
+
+L1 · Platform
+PASS
+L2 · Version
+UNKNOWN
+L3 · Feature
+UNKNOWN
+All command outputs failed; only platform information is available.
+⟶ Collect valid show version and SNMP-related command outputs to complete applicability assessment.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 12.2 → 12.2, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 16.6 → 16.6.1, 16.7 → 16.7.1, 16.8 → 16.8.1, 16.9 → 16.9.1, 17.1 → 17.1.1, 17.2 → 17.2.1, 17.3 → 17.3.1, 17.4 → 17.4.1, 17.5 → 17.5.1, 17.6 → 17.6.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.9 → 17.9.1, 3.10 → 3.10, 3.11 → 3.11, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18, 16.10 → 16.10.1, 16.11 → 16.11.1, 16.12 → 16.12.1, 17.10 → 17.10.1, 17.11 → 17.11.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.14 → 17.14.1, 17.15 → 17.15.1, 17.16 → 17.16.1, 17.17 → 17.17.1, 17.18 → 17.18.1
+Vendor workaround: There are no workarounds that address this vulnerability. However, there is a mitigation. Administrators are advised to allow only trusted users to have SNMP access on an affected system. Administrators are also advised to monitor affected systems by using the show snmp host command in the CLI. Administrators can disable the affected OIDs on a device. Not all software will support the OID that is listed in the mitigation. If the OID is not valid for specific software, then it is not affected by this vulnerability. Excluding these OIDs may affect device management through SNMP, such as discovery and hardware inventory. To create or update a view entry and disable the affected OIDs, use the snmp-server view global configuration command, as shown in the following example: !Standard VIEW and Security Exclusions snmp-server view NO_BAD_SNMP iso included snmp-server view NO_BAD_SNMP snmpUsmMIB excluded snmp-server view NO_BAD_SNMP snmpVacmMIB excluded snmp-server view NO_BAD_SNMP snmpCommunityMIB excluded !End Standard View !Advisory Specific Mappings !CISCO-AUTH-FRAMEWORK-MIB snmp-server view NO_BAD_SNMP cafSessionMethodsInfoEntry excluded To then apply this configuration to a community string, use the following command: snmp-server community mycomm view NO_BAD_SNMP RO For SNMPv3, use the following command: snmp-server group v3group v3 auth read NO_BAD_SNMP write NO_BAD_SNMP For customers using Meraki cloud-managed switches: If any devices in your dashboard organization are running an affected software release, contact the Meraki support team to apply the recommended mitigation. Using this configuration is recommended until fixed software becomes available.
+The device platform is affected, but there is no valid output to determine the software version or SNMP feature status. Applicability cannot be confirmed without additional data.
+⟶ Collect valid show version and SNMP-related command outputs to complete applicability assessment.
+snmp-x4LPhte ↗	HTAINLKO03TELVR01	17.12.5a	Affected	🌐 DNAC command runner	Why?
+Affected
+The device is running IOS XE 17.12.5a, which is newer than the fixed release 17.12.1 for this vulnerability. SNMP is configured and active, but the device is not vulnerable as it is running a patched version.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+PASS
+Platform: ISR4321/K9 IOS XE; Version: 17.12.5a (fixed release is 17.12.1); SNMP configuration present in command outputs.
+⟶ No action required. Device is running a fixed software version and is not affected by this advisory.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 12.2 → 12.2, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 16.6 → 16.6.1, 16.7 → 16.7.1, 16.8 → 16.8.1, 16.9 → 16.9.1, 17.1 → 17.1.1, 17.2 → 17.2.1, 17.3 → 17.3.1, 17.4 → 17.4.1, 17.5 → 17.5.1, 17.6 → 17.6.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.9 → 17.9.1, 3.10 → 3.10, 3.11 → 3.11, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18, 16.10 → 16.10.1, 16.11 → 16.11.1, 16.12 → 16.12.1, 17.10 → 17.10.1, 17.11 → 17.11.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.14 → 17.14.1, 17.15 → 17.15.1, 17.16 → 17.16.1, 17.17 → 17.17.1, 17.18 → 17.18.1
+Vendor workaround: There are no workarounds that address this vulnerability. However, there is a mitigation. Administrators are advised to allow only trusted users to have SNMP access on an affected system. Administrators are also advised to monitor affected systems by using the show snmp host command in the CLI. Administrators can disable the affected OIDs on a device. Not all software will support the OID that is listed in the mitigation. If the OID is not valid for specific software, then it is not affected by this vulnerability. Excluding these OIDs may affect device management through SNMP, such as discovery and hardware inventory. To create or update a view entry and disable the affected OIDs, use the snmp-server view global configuration command, as shown in the following example: !Standard VIEW and Security Exclusions snmp-server view NO_BAD_SNMP iso included snmp-server view NO_BAD_SNMP snmpUsmMIB excluded snmp-server view NO_BAD_SNMP snmpVacmMIB excluded snmp-server view NO_BAD_SNMP snmpCommunityMIB excluded !End Standard View !Advisory Specific Mappings !CISCO-AUTH-FRAMEWORK-MIB snmp-server view NO_BAD_SNMP cafSessionMethodsInfoEntry excluded To then apply this configuration to a community string, use the following command: snmp-server community mycomm view NO_BAD_SNMP RO For SNMPv3, use the following command: snmp-server group v3group v3 auth read NO_BAD_SNMP write NO_BAD_SNMP For customers using Meraki cloud-managed switches: If any devices in your dashboard organization are running an affected software release, contact the Meraki support team to apply the recommended mitigation. Using this configuration is recommended until fixed software becomes available.
+The device is running IOS XE 17.12.5a, which is newer than the fixed release 17.12.1 for this vulnerability. SNMP is configured and active, but the device is not vulnerable as it is running a patched version.
+⟶ No action required. Device is running a fixed software version and is not affected by this advisory.
+snmp-x4LPhte ↗	HTAINGUR01TELVG001	17.12.5a	Needs review	🌐 DNAC command runner	Why?
+Needs review
+The device platform is affected, but there is no available data to determine the software version or SNMP feature status. Insufficient evidence prevents a definitive applicability verdict.
+
+L1 · Platform
+PASS
+L2 · Version
+UNKNOWN
+L3 · Feature
+UNKNOWN
+All command outputs failed; no version or SNMP configuration data available.
+⟶ Collect 'show version' and SNMP-related command outputs from the device to enable proper applicability assessment.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 12.2 → 12.2, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 16.6 → 16.6.1, 16.7 → 16.7.1, 16.8 → 16.8.1, 16.9 → 16.9.1, 17.1 → 17.1.1, 17.2 → 17.2.1, 17.3 → 17.3.1, 17.4 → 17.4.1, 17.5 → 17.5.1, 17.6 → 17.6.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.9 → 17.9.1, 3.10 → 3.10, 3.11 → 3.11, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18, 16.10 → 16.10.1, 16.11 → 16.11.1, 16.12 → 16.12.1, 17.10 → 17.10.1, 17.11 → 17.11.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.14 → 17.14.1, 17.15 → 17.15.1, 17.16 → 17.16.1, 17.17 → 17.17.1, 17.18 → 17.18.1
+Vendor workaround: There are no workarounds that address this vulnerability. However, there is a mitigation. Administrators are advised to allow only trusted users to have SNMP access on an affected system. Administrators are also advised to monitor affected systems by using the show snmp host command in the CLI. Administrators can disable the affected OIDs on a device. Not all software will support the OID that is listed in the mitigation. If the OID is not valid for specific software, then it is not affected by this vulnerability. Excluding these OIDs may affect device management through SNMP, such as discovery and hardware inventory. To create or update a view entry and disable the affected OIDs, use the snmp-server view global configuration command, as shown in the following example: !Standard VIEW and Security Exclusions snmp-server view NO_BAD_SNMP iso included snmp-server view NO_BAD_SNMP snmpUsmMIB excluded snmp-server view NO_BAD_SNMP snmpVacmMIB excluded snmp-server view NO_BAD_SNMP snmpCommunityMIB excluded !End Standard View !Advisory Specific Mappings !CISCO-AUTH-FRAMEWORK-MIB snmp-server view NO_BAD_SNMP cafSessionMethodsInfoEntry excluded To then apply this configuration to a community string, use the following command: snmp-server community mycomm view NO_BAD_SNMP RO For SNMPv3, use the following command: snmp-server group v3group v3 auth read NO_BAD_SNMP write NO_BAD_SNMP For customers using Meraki cloud-managed switches: If any devices in your dashboard organization are running an affected software release, contact the Meraki support team to apply the recommended mitigation. Using this configuration is recommended until fixed software becomes available.
+The device platform is affected, but there is no available data to determine the software version or SNMP feature status. Insufficient evidence prevents a definitive applicability verdict.
+⟶ Collect 'show version' and SNMP-related command outputs from the device to enable proper applicability assessment.
+snmp-x4LPhte ↗	HTAINNOI09TELVR01	17.12.5a	Affected	🌐 DNAC command runner	Why?
+Affected
+The device is running IOS XE 17.12.5a, which is above the fixed release 17.12.1 for this vulnerability. Although SNMP is configured and active, the device is not affected as it is running a patched version.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+PASS
+Platform: IOS XE (ISR4351/K9); Version: 17.12.5a; Fixed release for 17.12: 17.12.1; SNMP configuration present in command outputs.
+⟶ No action required. Device is not affected; continue monitoring for future advisories.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 12.2 → 12.2, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 16.6 → 16.6.1, 16.7 → 16.7.1, 16.8 → 16.8.1, 16.9 → 16.9.1, 17.1 → 17.1.1, 17.2 → 17.2.1, 17.3 → 17.3.1, 17.4 → 17.4.1, 17.5 → 17.5.1, 17.6 → 17.6.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.9 → 17.9.1, 3.10 → 3.10, 3.11 → 3.11, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18, 16.10 → 16.10.1, 16.11 → 16.11.1, 16.12 → 16.12.1, 17.10 → 17.10.1, 17.11 → 17.11.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.14 → 17.14.1, 17.15 → 17.15.1, 17.16 → 17.16.1, 17.17 → 17.17.1, 17.18 → 17.18.1
+Vendor workaround: There are no workarounds that address this vulnerability. However, there is a mitigation. Administrators are advised to allow only trusted users to have SNMP access on an affected system. Administrators are also advised to monitor affected systems by using the show snmp host command in the CLI. Administrators can disable the affected OIDs on a device. Not all software will support the OID that is listed in the mitigation. If the OID is not valid for specific software, then it is not affected by this vulnerability. Excluding these OIDs may affect device management through SNMP, such as discovery and hardware inventory. To create or update a view entry and disable the affected OIDs, use the snmp-server view global configuration command, as shown in the following example: !Standard VIEW and Security Exclusions snmp-server view NO_BAD_SNMP iso included snmp-server view NO_BAD_SNMP snmpUsmMIB excluded snmp-server view NO_BAD_SNMP snmpVacmMIB excluded snmp-server view NO_BAD_SNMP snmpCommunityMIB excluded !End Standard View !Advisory Specific Mappings !CISCO-AUTH-FRAMEWORK-MIB snmp-server view NO_BAD_SNMP cafSessionMethodsInfoEntry excluded To then apply this configuration to a community string, use the following command: snmp-server community mycomm view NO_BAD_SNMP RO For SNMPv3, use the following command: snmp-server group v3group v3 auth read NO_BAD_SNMP write NO_BAD_SNMP For customers using Meraki cloud-managed switches: If any devices in your dashboard organization are running an affected software release, contact the Meraki support team to apply the recommended mitigation. Using this configuration is recommended until fixed software becomes available.
+The device is running IOS XE 17.12.5a, which is above the fixed release 17.12.1 for this vulnerability. Although SNMP is configured and active, the device is not affected as it is running a patched version.
+⟶ No action required. Device is not affected; continue monitoring for future advisories.
+snmp-x4LPhte ↗	HTAINNOI20TELVR05	17.12.5a	Affected	🌐 DNAC command runner	Why?
+Affected
+The device is running an affected platform (IOS XE), on a vulnerable software version (17.12.5a, which is before the fixed 17.12.1), and has SNMP actively configured. The documented mitigation is not present, so the device remains exposed.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+PASS
+Platform: ISR4321/K9 IOS XE; Version: 17.12.5a; SNMP hosts and users present; No SNMP view exclusions found in config.
+⟶ Upgrade to at least 17.12.1 or apply the Cisco-documented SNMP view workaround to mitigate exposure until patching is possible.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 12.2 → 12.2, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 16.6 → 16.6.1, 16.7 → 16.7.1, 16.8 → 16.8.1, 16.9 → 16.9.1, 17.1 → 17.1.1, 17.2 → 17.2.1, 17.3 → 17.3.1, 17.4 → 17.4.1, 17.5 → 17.5.1, 17.6 → 17.6.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.9 → 17.9.1, 3.10 → 3.10, 3.11 → 3.11, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18, 16.10 → 16.10.1, 16.11 → 16.11.1, 16.12 → 16.12.1, 17.10 → 17.10.1, 17.11 → 17.11.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.14 → 17.14.1, 17.15 → 17.15.1, 17.16 → 17.16.1, 17.17 → 17.17.1, 17.18 → 17.18.1
+Vendor workaround: There are no workarounds that address this vulnerability. However, there is a mitigation. Administrators are advised to allow only trusted users to have SNMP access on an affected system. Administrators are also advised to monitor affected systems by using the show snmp host command in the CLI. Administrators can disable the affected OIDs on a device. Not all software will support the OID that is listed in the mitigation. If the OID is not valid for specific software, then it is not affected by this vulnerability. Excluding these OIDs may affect device management through SNMP, such as discovery and hardware inventory. To create or update a view entry and disable the affected OIDs, use the snmp-server view global configuration command, as shown in the following example: !Standard VIEW and Security Exclusions snmp-server view NO_BAD_SNMP iso included snmp-server view NO_BAD_SNMP snmpUsmMIB excluded snmp-server view NO_BAD_SNMP snmpVacmMIB excluded snmp-server view NO_BAD_SNMP snmpCommunityMIB excluded !End Standard View !Advisory Specific Mappings !CISCO-AUTH-FRAMEWORK-MIB snmp-server view NO_BAD_SNMP cafSessionMethodsInfoEntry excluded To then apply this configuration to a community string, use the following command: snmp-server community mycomm view NO_BAD_SNMP RO For SNMPv3, use the following command: snmp-server group v3group v3 auth read NO_BAD_SNMP write NO_BAD_SNMP For customers using Meraki cloud-managed switches: If any devices in your dashboard organization are running an affected software release, contact the Meraki support team to apply the recommended mitigation. Using this configuration is recommended until fixed software becomes available.
+The device is running an affected platform (IOS XE), on a vulnerable software version (17.12.5a, which is before the fixed 17.12.1), and has SNMP actively configured. The documented mitigation is not present, so the device remains exposed.
+⟶ Upgrade to at least 17.12.1 or apply the Cisco-documented SNMP view workaround to mitigate exposure until patching is possible.
+secboot-UqFD8AvC ↗	HTACHKUN01XXXVG001	17.12.5a	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running IOS XE on an affected platform, but the software version (17.12.5a) is newer than the fixed release (17.12.1) and is therefore not vulnerable. Secure boot is present, but the device is already patched.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+PASS
+Platform: ISR4331/K9 (IOS XE); Version: 17.12.5a; Fixed release for 17.12 is 17.12.1; Secure boot evidence in 'show platform integrity'.
+⟶ No action required. Device is not affected by this advisory.
+The device is running IOS XE on an affected platform, but the software version (17.12.5a) is newer than the fixed release (17.12.1) and is therefore not vulnerable. Secure boot is present, but the device is already patched.
+⟶ No action required. Device is not affected by this advisory.
+secboot-UqFD8AvC ↗	HTAINLKO03TELVR01	17.12.5a	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running IOS XE and has secure boot enabled, but its software version (17.12.5a) is equal to or newer than the fixed release (17.12.1) for its train. Therefore, it is not affected by this vulnerability.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+PASS
+Platform: IOS XE; Version: 17.12.5a; Fixed release for 17.12: 17.12.1; Secure boot evidence in 'show platform integrity'.
+⟶ No action required. Device is already running a fixed release.
+The device is running IOS XE and has secure boot enabled, but its software version (17.12.5a) is equal to or newer than the fixed release (17.12.1) for its train. Therefore, it is not affected by this vulnerability.
+⟶ No action required. Device is already running a fixed release.
+secboot-UqFD8AvC ↗	HTAINGUR01TELVG001	17.12.5a	Affected	🌐 DNAC command runner	Why?
+Affected
+The device is running IOS XE and has secure boot enabled, but the software version (17.12.5a) is newer than the fixed release (17.12.1), meaning it is not vulnerable. Therefore, the device is NOT_AFFECTED by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+PASS
+Platform: IOS XE; Version: 17.12.5a; Fixed release for 17.12 is 17.12.1; Secure boot present in 'show platform integrity'.
+⟶ No action required. Device is running a fixed release.
+Remediation — from the advisory
+Fixed releases: 17.3 → 17.3.1, 17.4 → 17.4.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.15 → 17.15.3, 17.17 → 17.17.1
+Vendor workaround: There are no workarounds that address these vulnerabilities.
+The device is running IOS XE and has secure boot enabled, but the software version (17.12.5a) is newer than the fixed release (17.12.1), meaning it is not vulnerable. Therefore, the device is NOT_AFFECTED by this advisory.
+⟶ No action required. Device is running a fixed release.
+secboot-UqFD8AvC ↗	HTAINNOI09TELVR01	17.12.5a	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running IOS XE and has secure boot features present, but its software version (17.12.5a) is newer than the fixed release (17.12.1). Therefore, it is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+PASS
+Platform: ISR4351/K9 (IOS XE); Software Version: 17.12.5a; Fixed release for 17.12 is 17.12.1; Secure boot evidence in 'show platform integrity'.
+⟶ No action required. Device is already running a fixed release.
+The device is running IOS XE and has secure boot features present, but its software version (17.12.5a) is newer than the fixed release (17.12.1). Therefore, it is not affected by this advisory.
+⟶ No action required. Device is already running a fixed release.
+secboot-UqFD8AvC ↗	HTAINNOI20TELVR05	17.12.5a	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running IOS XE and has secure boot enabled, but its software version (17.12.5a) is newer than the fixed release (17.12.1) for its train. Therefore, it is not affected by this vulnerability.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+PASS
+Platform: ISR4321/K9; Software Version: 17.12.5a; Fixed release for 17.12: 17.12.1; 'show platform integrity' confirms secure boot feature.
+⟶ No action required. Device is already running a fixed release.
+The device is running IOS XE and has secure boot enabled, but its software version (17.12.5a) is newer than the fixed release (17.12.1) for its train. Therefore, it is not affected by this vulnerability.
+⟶ No action required. Device is already running a fixed release.
+ios-http-dos-sbv8XRpL ↗	HTEPOKRA01PNGDS501.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release (15.2) for its train. Although the vulnerable feature (WEB_EXEC) is active, the device is not affected due to its patched software version.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+PASS
+show version: 15.2(7)E13; fixed_releases: 15.2; show ip http server session-module: WEB_EXEC Active
+⟶ No action required. Device is running a fixed version.
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release (15.2) for its train. Although the vulnerable feature (WEB_EXEC) is active, the device is not affected due to its patched software version.
+⟶ No action required. Device is running a fixed version.
+ios-http-dos-sbv8XRpL ↗	HTUASSDN01XXXAS03.hcl.com	15.2(7)E13	Affected	🌐 DNAC command runner	Why?
+Affected
+This device is affected because it is running an impacted IOS platform and a vulnerable software version (15.2(7)E13), with the HTTP server feature enabled. No workaround is documented for this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+PASS
+Platform: IOS (C2960X-UNIVERSALK9-M); Version: 15.2(7)E13; 'ip http server' and 'ip http secure-server' present in running-config; No workaround documented.
+⟶ Plan to upgrade the device to at least the fixed release for train 15.2 (15.2 or higher) to remediate the vulnerability.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 12.2 → 12.2, 12.4 → 12.4, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 3.10 → 3.10, 3.11 → 3.11, 3.12 → 3.12, 3.13 → 3.13, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18
+No workaround published in this advisory — upgrading is the only vendor-confirmed fix.
+This device is affected because it is running an impacted IOS platform and a vulnerable software version (15.2(7)E13), with the HTTP server feature enabled. No workaround is documented for this advisory.
+⟶ Plan to upgrade the device to at least the fixed release for train 15.2 (15.2 or higher) to remediate the vulnerability.
+ios-http-dos-sbv8XRpL ↗	HTEPOKRA01ADIDDS502.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device runs an affected platform (IOS), but its software version (15.2(7)E13) is at or above the fixed release. Additionally, the vulnerable HTTP server feature is not enabled. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+Platform: IOS, Version: 15.2(7)E13 (>= fixed 15.2), 'no ip http server', 'no ip http secure-server', 'WEB_EXEC Inactive'.
+⟶ No action required. Continue to monitor for future advisories and maintain current configuration.
+The device runs an affected platform (IOS), but its software version (15.2(7)E13) is at or above the fixed release. Additionally, the vulnerable HTTP server feature is not enabled. Therefore, the device is not affected by this advisory.
+⟶ No action required. Continue to monitor for future advisories and maintain current configuration.
+ios-http-dos-sbv8XRpL ↗	HTEPOKRA01STMDS401.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train, and the vulnerable 'http server' feature is not enabled. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+show version: 15.2(7)E13; fixed_releases: 15.2; show running-config: no ip http server, no ip http secure-server
+⟶ No action required. Continue to monitor for future advisories and maintain current configuration.
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train, and the vulnerable 'http server' feature is not enabled. Therefore, the device is not affected by this advisory.
+⟶ No action required. Continue to monitor for future advisories and maintain current configuration.
+ios-http-dos-sbv8XRpL ↗	HTEPOKRA01DSMTHDS702.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running IOS 15.2, which is listed as a fixed release in the advisory. Therefore, it is not affected by this vulnerability, even though the HTTP secure server feature is enabled. No further action is required.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+PASS
+Platform: IOS 15.2(7)E13; Fixed release for 15.2 is 15.2; 'ip http secure-server' present; 'no ip http server' disables non-secure HTTP.
+⟶ No action needed. Device is running a fixed software version.
+The device is running IOS 15.2, which is listed as a fixed release in the advisory. Therefore, it is not affected by this vulnerability, even though the HTTP secure server feature is enabled. No further action is required.
+⟶ No action needed. Device is running a fixed software version.
+ios-http-dos-sbv8XRpL ↗	HTEPOKRA01STMDS402.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train (15.2), so it is not affected by this vulnerability. While the vulnerable feature appears present, the device is already patched.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+PASS
+Platform: IOS; Version: 15.2(7)E13; Fixed release for 15.2 is 15.2; 'WEB_EXEC' session module is Active.
+⟶ No action required. Device is not affected; continue standard monitoring.
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train (15.2), so it is not affected by this vulnerability. While the vulnerable feature appears present, the device is already patched.
+⟶ No action required. Device is not affected; continue standard monitoring.
+ios-http-dos-sbv8XRpL ↗	HTEPOKRA01XSBDDS502.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running an affected platform and a software version that is at or above the fixed release. Additionally, the vulnerable feature ('http server') is not enabled in the configuration. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+FAIL
+Platform: IOS (WS-C3560CX-8PC-S); Version: 15.2(7)E13; Config: 'no ip http server', 'no ip http secure-server'.
+⟶ No action required. Continue to monitor for future advisories and ensure the http server remains disabled if not needed.
+The device is running an affected platform and a software version that is at or above the fixed release. Additionally, the vulnerable feature ('http server') is not enabled in the configuration. Therefore, the device is not affected by this advisory.
+⟶ No action required. Continue to monitor for future advisories and ensure the http server remains disabled if not needed.
+ios-http-dos-sbv8XRpL ↗	HTEPOKRA01PNGDS502.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train (15.2). Additionally, the vulnerable feature ('http server') is not enabled. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+show version: 15.2(7)E13; fixed_releases: 15.2; show running-config: no ip http server, no ip http secure-server.
+⟶ No action required. Continue standard monitoring and ensure the http server remains disabled unless needed.
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train (15.2). Additionally, the vulnerable feature ('http server') is not enabled. Therefore, the device is not affected by this advisory.
+⟶ No action required. Continue standard monitoring and ensure the http server remains disabled unless needed.
+ios-http-dos-sbv8XRpL ↗	HTEPOKRA01XSBDDS501.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train (15.2). Additionally, the vulnerable feature 'http server' is not enabled in the configuration. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+Platform: IOS; Version: 15.2(7)E13; Fixed release for train 15.2 is 15.2; 'no ip http server' and 'no ip http secure-server' present in config.
+⟶ No action required. Continue to monitor for future advisories and maintain current software and configuration.
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train (15.2). Additionally, the vulnerable feature 'http server' is not enabled in the configuration. Therefore, the device is not affected by this advisory.
+⟶ No action required. Continue to monitor for future advisories and maintain current software and configuration.
+ios-http-dos-sbv8XRpL ↗	HTNMXZPN02USAADS02.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running IOS 15.2(7)E13, which is equal to or newer than the fixed release for train 15.2. Although the vulnerable feature is present, the device is not affected as it is running a patched version.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+PASS
+Platform: IOS; Version: 15.2(7)E13; Fixed release for 15.2: 15.2; 'WEB_EXEC' module active.
+⟶ No action required. Device is not affected by this advisory.
+The device is running IOS 15.2(7)E13, which is equal to or newer than the fixed release for train 15.2. Although the vulnerable feature is present, the device is not affected as it is running a patched version.
+⟶ No action required. Device is not affected by this advisory.
+ios-http-dos-sbv8XRpL ↗	HTEPLKBP01BMODS01.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running on an affected platform (IOS), but the software version is at or above the fixed release (15.2), and the vulnerable feature ('http server') is not enabled. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+Platform: IOS; Version: 15.2(7)E13; Fixed release for train 15.2 is 15.2; 'no ip http server' and 'no ip http secure-server' present in running-config.
+⟶ No action required. Continue to monitor for future advisories and maintain current configuration.
+The device is running on an affected platform (IOS), but the software version is at or above the fixed release (15.2), and the vulnerable feature ('http server') is not enabled. Therefore, the device is not affected by this advisory.
+⟶ No action required. Continue to monitor for future advisories and maintain current configuration.
+ios-http-dos-sbv8XRpL ↗	HTAINNOI20X12AS06.hcl.com	15.2(7)E13	Affected	🌐 DNAC command runner	Why?
+Affected
+This device is running an affected platform (IOS), with a software version (15.2(7)E13) that is in the vulnerable range, and the 'http server' feature is enabled. No workaround is documented in the advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+PASS
+Platform: IOS (C2960X-UNIVERSALK9-M); Version: 15.2(7)E13; Config: 'ip http server' present in running-config; No workaround documented.
+⟶ Plan to upgrade to a fixed release (15.2 or higher as specified by Cisco) to remediate vulnerability. Disable 'ip http server' if not required.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 12.2 → 12.2, 12.4 → 12.4, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 3.10 → 3.10, 3.11 → 3.11, 3.12 → 3.12, 3.13 → 3.13, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18
+No workaround published in this advisory — upgrading is the only vendor-confirmed fix.
+This device is running an affected platform (IOS), with a software version (15.2(7)E13) that is in the vulnerable range, and the 'http server' feature is enabled. No workaround is documented in the advisory.
+⟶ Plan to upgrade to a fixed release (15.2 or higher as specified by Cisco) to remediate vulnerability. Disable 'ip http server' if not required.
+ios-http-dos-sbv8XRpL ↗	HTEPLO3XXAKZODS001.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train (15.2). Additionally, the HTTP server feature is explicitly disabled in the configuration. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+show version: 15.2(7)E13; show running-config: no ip http server, no ip http secure-server
+⟶ No action required. Device is not vulnerable to this advisory.
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train (15.2). Additionally, the HTTP server feature is explicitly disabled in the configuration. Therefore, the device is not affected by this advisory.
+⟶ No action required. Device is not vulnerable to this advisory.
+ios-http-dos-sbv8XRpL ↗	HTEPOKRA01DSMTHDS701.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running IOS 15.2(7)E13, which is equal to or newer than the fixed release for train 15.2. Although the HTTP server feature is enabled, the device is not affected by this advisory as it is already patched.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+PASS
+Platform: IOS; Version: 15.2(7)E13; Fixed release for 15.2: 15.2; HTTP server feature ('ip http secure-server') is present in running-config.
+⟶ No action required. Device is not affected by this vulnerability.
+The device is running IOS 15.2(7)E13, which is equal to or newer than the fixed release for train 15.2. Although the HTTP server feature is enabled, the device is not affected by this advisory as it is already patched.
+⟶ No action required. Device is not affected by this vulnerability.
+ios-http-dos-sbv8XRpL ↗	HTEPOKRA01ADIDDS501.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device runs IOS 15.2, which is at or above the fixed release, and the vulnerable 'http server' feature is not enabled. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+Platform: IOS 15.2(7)E13; 'no ip http server' and 'no ip http secure-server' present; WEB_EXEC Inactive; fixed release for 15.2 is 15.2.
+⟶ No action required. Continue to monitor for future advisories.
+The device runs IOS 15.2, which is at or above the fixed release, and the vulnerable 'http server' feature is not enabled. Therefore, the device is not affected by this advisory.
+⟶ No action required. Continue to monitor for future advisories.
+ios-http-dos-sbv8XRpL ↗	HTEPLKBP01BMODS02.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train (15.2). Additionally, the vulnerable feature ('http server') is not enabled. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+Platform: IOS; Version: 15.2(7)E13; Fixed release for 15.2: 15.2; 'no ip http server' and 'no ip http secure-server' present in running-config.
+⟶ No action required. Device is not affected by this vulnerability.
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train (15.2). Additionally, the vulnerable feature ('http server') is not enabled. Therefore, the device is not affected by this advisory.
+⟶ No action required. Device is not affected by this vulnerability.
+ios-http-dos-sbv8XRpL ↗	HTAINNOI20F07XXXAS01.hcl.com	15.2(7)E13	Affected	🌐 DNAC command runner	Why?
+Affected
+This device is running an affected platform (IOS), with a software version (15.2(7)E13) that is within the vulnerable range for this advisory. The vulnerable feature 'http server' is enabled in the configuration. No workaround is documented.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+PASS
+Platform: IOS (C2960X Software); Version: 15.2(7)E13; Config: 'ip http server' present in running-config.
+⟶ Plan to upgrade the device to a fixed release (15.2 or higher) as soon as possible to remediate the vulnerability.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 12.2 → 12.2, 12.4 → 12.4, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 3.10 → 3.10, 3.11 → 3.11, 3.12 → 3.12, 3.13 → 3.13, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18
+No workaround published in this advisory — upgrading is the only vendor-confirmed fix.
+This device is running an affected platform (IOS), with a software version (15.2(7)E13) that is within the vulnerable range for this advisory. The vulnerable feature 'http server' is enabled in the configuration. No workaround is documented.
+⟶ Plan to upgrade the device to a fixed release (15.2 or higher) as soon as possible to remediate the vulnerability.
+xe-secureboot-bypass-B6uYxYSZ ↗	HTMILTEL01XXXIR002.hcl.com	17.12.6	Needs review	🌐 DNAC command runner	Why?
+Needs review
+The device platform and software version suggest it is running a fixed release, but all command outputs are unavailable, so feature status cannot be confirmed. Insufficient evidence to definitively determine exposure.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+UNKNOWN
+All command outputs returned 'Device is not accessible due to being unreachable'; device info provided version and platform.
+⟶ Restore device access and rerun relevant show commands (e.g., show platform integrity) to confirm secure boot status and software version.
+Remediation — from the advisory
+Fixed releases: 17.3 → 17.3.3, 17.4 → 17.4.1, 17.5 → 17.5.1, 17.6 → 17.6.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.9 → 17.9.1, 16.12 → 16.12.6, 17.10 → 17.10.1, 17.11 → 17.11.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.14 → 17.14.1, 17.15 → 17.15.1, 17.16 → 17.16.1, 17.17 → 17.17.1, 17.18 → 17.18.1
+No workaround published in this advisory — upgrading is the only vendor-confirmed fix.
+The device platform and software version suggest it is running a fixed release, but all command outputs are unavailable, so feature status cannot be confirmed. Insufficient evidence to definitively determine exposure.
+⟶ Restore device access and rerun relevant show commands (e.g., show platform integrity) to confirm secure boot status and software version.
+xe-secureboot-bypass-B6uYxYSZ ↗	HTEISTEL01XXXXIR001.hcl.com	17.12.6	Affected	🌐 DNAC command runner	Why?
+Affected
+The device is running IOS XE, which is an affected platform, and the software version is in the train with a fixed release. However, all command outputs are unavailable, so feature status cannot be confirmed. Based on available data, the device should be considered potentially affected.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+UNKNOWN
+Platform: ISR4431/K9 (IOS XE); Software Version: 17.12.6; All command outputs: 'Device is not accessible due to being unreachable'.
+⟶ Restore device connectivity and rerun the required commands to confirm feature status and patch level. If possible, upgrade to the latest fixed release.
+Remediation — from the advisory
+Fixed releases: 17.3 → 17.3.3, 17.4 → 17.4.1, 17.5 → 17.5.1, 17.6 → 17.6.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.9 → 17.9.1, 16.12 → 16.12.6, 17.10 → 17.10.1, 17.11 → 17.11.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.14 → 17.14.1, 17.15 → 17.15.1, 17.16 → 17.16.1, 17.17 → 17.17.1, 17.18 → 17.18.1
+No workaround published in this advisory — upgrading is the only vendor-confirmed fix.
+The device is running IOS XE, which is an affected platform, and the software version is in the train with a fixed release. However, all command outputs are unavailable, so feature status cannot be confirmed. Based on available data, the device should be considered potentially affected.
+⟶ Restore device connectivity and rerun the required commands to confirm feature status and patch level. If possible, upgrade to the latest fixed release.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTAINPUNAZCLDNVART02.hcl.com	17.15.4c	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running IOS XE 17.15.4c, which is newer than the fixed release 17.15.1 for this vulnerability. Therefore, it is not affected, regardless of feature status. No workaround evaluation is needed.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+UNKNOWN
+Platform: C8000V (IOS XE); Version: 17.15.4c; Fixed release for 17.15: 17.15.1; Device version is newer than fixed.
+⟶ No action required. Device is already running a fixed software version.
+The device is running IOS XE 17.15.4c, which is newer than the fixed release 17.15.1 for this vulnerability. Therefore, it is not affected, regardless of feature status. No workaround evaluation is needed.
+⟶ No action required. Device is already running a fixed software version.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPOKRA01PNGDS501.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+This device is a Catalyst switch running IOS 15.2(7)E13, which does not support IKEv2 or related crypto features. No evidence of the vulnerable feature being present or active. The advisory does not apply to this platform or configuration.
+
+L1 · Platform
+FAIL
+L2 · Version
+UNKNOWN
+L3 · Feature
+FAIL
+Platform: WS-C3560CX-8TC-S; Software: 15.2(7)E13; 'show crypto map': No crypto maps found; 'show running-config crypto ikev2': Invalid input; No UDP 500 activity.
+⟶ No action required. No vulnerability exposure detected for this device or software version.
+This device is a Catalyst switch running IOS 15.2(7)E13, which does not support IKEv2 or related crypto features. No evidence of the vulnerable feature being present or active. The advisory does not apply to this platform or configuration.
+⟶ No action required. No vulnerability exposure detected for this device or software version.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTUASSDN01XXXAS03.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+This device is a Catalyst 2960X switch, which is not among the platforms listed as affected in the advisory. Therefore, it is not impacted by this vulnerability regardless of software version or feature configuration.
+
+L1 · Platform
+FAIL
+L2 · Version
+UNKNOWN
+L3 · Feature
+UNKNOWN
+Platform: WS-C2960X-48FPS-L; Affected platforms: IOS, IOS XE, Secure Firewall ASA, Secure FTD.
+⟶ No action required. No further investigation needed for this advisory on this device.
+This device is a Catalyst 2960X switch, which is not among the platforms listed as affected in the advisory. Therefore, it is not impacted by this vulnerability regardless of software version or feature configuration.
+⟶ No action required. No further investigation needed for this advisory on this device.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPOKRA01ADIDDS502.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is a Catalyst 3560CX switch running IOS 15.2(7)E13. This platform does not support IKEv2, and no evidence of IKEv2 configuration or crypto maps was found. Therefore, the device is not affected by the advisory.
+
+L1 · Platform
+FAIL
+L2 · Version
+PASS
+L3 · Feature
+FAIL
+Platform: WS-C3560CX-8TC-S; 'show crypto map' returned 'No crypto maps found'; 'show running-config crypto ikev2' is invalid; no IKEv2 configuration present.
+⟶ No action required. No exposure to the advisory on this device.
+The device is a Catalyst 3560CX switch running IOS 15.2(7)E13. This platform does not support IKEv2, and no evidence of IKEv2 configuration or crypto maps was found. Therefore, the device is not affected by the advisory.
+⟶ No action required. No exposure to the advisory on this device.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPOKRA01STMDS401.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+This device is a Catalyst 3560CX switch running IOS 15.2(7)E13, which is not an affected platform or version for this IKEv2 advisory. No IKEv2 configuration or activity is present.
+
+L1 · Platform
+FAIL
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+Platform: WS-C3560CX-8TC-S (switch); Version: 15.2(7)E13; 'show crypto map' shows no crypto maps; UDP port 500 not in use; 'show running-config crypto ikev2' not supported.
+⟶ No action required. Device is not affected by this advisory.
+This device is a Catalyst 3560CX switch running IOS 15.2(7)E13, which is not an affected platform or version for this IKEv2 advisory. No IKEv2 configuration or activity is present.
+⟶ No action required. Device is not affected by this advisory.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPOKRA01DSMTHDS702.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+This device is not affected by the advisory because its platform (WS-C3560CX-8TC-S) is not listed among the affected platforms. No further checks are required.
+
+L1 · Platform
+FAIL
+L2 · Version
+UNKNOWN
+L3 · Feature
+UNKNOWN
+Platform: WS-C3560CX-8TC-S; Affected platforms: IOS, IOS XE, Secure Firewall ASA, Secure FTD.
+⟶ No action needed. No exposure to this advisory on this device.
+This device is not affected by the advisory because its platform (WS-C3560CX-8TC-S) is not listed among the affected platforms. No further checks are required.
+⟶ No action needed. No exposure to this advisory on this device.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPOKRA01STMDS402.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+This device is not affected by the advisory because its platform (WS-C3560CX-8TC-S) is not listed among the affected platforms. No further checks are required as the advisory does not apply to this hardware.
+
+L1 · Platform
+FAIL
+L2 · Version
+UNKNOWN
+L3 · Feature
+UNKNOWN
+Platform: WS-C3560CX-8TC-S; Affected platforms: IOS, IOS XE, Secure Firewall ASA, Secure FTD.
+⟶ No action needed. No exposure to this advisory on this device.
+This device is not affected by the advisory because its platform (WS-C3560CX-8TC-S) is not listed among the affected platforms. No further checks are required as the advisory does not apply to this hardware.
+⟶ No action needed. No exposure to this advisory on this device.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPOKRA01XSBDDS502.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is a WS-C3560CX-8PC-S switch running IOS 15.2(7)E13. While the software version could be in the vulnerable range, the platform is not typically affected and there is no evidence of the IKEv2 feature being configured or active.
+
+L1 · Platform
+FAIL
+L2 · Version
+PASS
+L3 · Feature
+FAIL
+Platform is a C3560CX switch; 'show crypto map' shows no crypto maps; no UDP port 500 activity; 'show running-config crypto ikev2' is invalid.
+⟶ No action required. No evidence of vulnerability exposure on this device.
+The device is a WS-C3560CX-8PC-S switch running IOS 15.2(7)E13. While the software version could be in the vulnerable range, the platform is not typically affected and there is no evidence of the IKEv2 feature being configured or active.
+⟶ No action required. No evidence of vulnerability exposure on this device.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPOKRA01PNGDS502.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train, and there is no evidence of the vulnerable IKEv2 feature being configured. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+Platform: IOS; Version: 15.2(7)E13 (>= 15.2 fixed); 'show crypto map': No crypto maps found; No IKEv2 config present.
+⟶ No action required. Device is not vulnerable to this advisory.
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train, and there is no evidence of the vulnerable IKEv2 feature being configured. Therefore, the device is not affected by this advisory.
+⟶ No action required. Device is not vulnerable to this advisory.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPOKRA01XSBDDS501.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+This device is a WS-C3560CX-8PC-S switch running IOS 15.2(7)E13. There is no evidence that the IKEv2 feature is configured or active, and this platform does not typically support IKEv2. Therefore, the device is not affected by the advisory.
+
+L1 · Platform
+FAIL
+L2 · Version
+PASS
+L3 · Feature
+FAIL
+Platform: WS-C3560CX-8PC-S; 'show crypto map': No crypto maps found; 'show udp | include 500': no output; 'show running-config crypto ikev2': invalid command.
+⟶ No action required. No vulnerable feature is present or active on this device.
+This device is a WS-C3560CX-8PC-S switch running IOS 15.2(7)E13. There is no evidence that the IKEv2 feature is configured or active, and this platform does not typically support IKEv2. Therefore, the device is not affected by the advisory.
+⟶ No action required. No vulnerable feature is present or active on this device.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTMILTEL01XXXIR002.hcl.com	17.12.6	Needs review	🌐 DNAC command runner	Why?
+Needs review
+The device is running an affected platform and a vulnerable software version, but there is no available data to confirm if the vulnerable feature (ikev2) is configured or active. As a result, a definitive verdict cannot be reached.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+UNKNOWN
+Platform: IOS XE (ISR4431/K9); Version: 17.12.6 (vulnerable); All command outputs unavailable.
+⟶ Restore device access and re-run the verification commands to determine if ikev2 is configured. If it is, upgrade to a fixed release.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5.0E, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 6.2 → 6.2.3, 6.4 → 6.4.0, 6.6 → 6.6.0, 7.0 → 7.0.0, 7.1 → 7.1.0, 7.2 → 7.2.0, 7.3 → 7.3.0, 7.4 → 7.4.0, 7.6 → 7.6.0, 7.7 → 7.7.0, 9.8 → 9.8.1, 12.2 → 12.2, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 16.6 → 16.6.1, 16.7 → 16.7.1, 16.8 → 16.8.1, 16.9 → 16.9.1, 17.1 → 17.1.1, 17.2 → 17.2.1, 17.3 → 17.3.1, 17.4 → 17.4.1, 17.5 → 17.5.1, 17.6 → 17.6.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.9 → 17.9.1, 3.10 → 3.10, 3.11 → 3.11, 3.12 → 3.12, 3.13 → 3.13, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18, 9.12 → 9.12.1, 9.14 → 9.14.1, 9.16 → 9.16.1, 9.17 → 9.17.1, 9.18 → 9.18.1, 9.19 → 9.19.1, 9.20 → 9.20.1, 9.22 → 9.22.1.1, 9.23 → 9.23.1, 16.10 → 16.10.1, 16.11 → 16.11.1, 16.12 → 16.12.1, 17.10 → 17.10.1, 17.11 → 17.11.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.14 → 17.14.1, 17.15 → 17.15.1, 17.16 → 17.16.1, 17.17 → 17.17.1, 17.18 → 17.18.1
+Vendor workaround: There are no workarounds that address this vulnerability.
+The device is running an affected platform and a vulnerable software version, but there is no available data to confirm if the vulnerable feature (ikev2) is configured or active. As a result, a definitive verdict cannot be reached.
+⟶ Restore device access and re-run the verification commands to determine if ikev2 is configured. If it is, upgrade to a fixed release.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTNMXZPN02USAADS02.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+This device is a WS-C3560CX-8TC-S switch running IOS 15.2(7)E13. It does not support or have IKEv2/crypto features configured, and is not among the platforms typically affected by this advisory. No evidence of the vulnerable feature is present.
+
+L1 · Platform
+FAIL
+L2 · Version
+PASS
+L3 · Feature
+FAIL
+Platform: WS-C3560CX-8TC-S; 'show crypto map' shows no crypto maps; no UDP 500 sockets; 'show running-config crypto ikev2' is invalid.
+⟶ No action required. No exposure to this advisory on this device.
+This device is a WS-C3560CX-8TC-S switch running IOS 15.2(7)E13. It does not support or have IKEv2/crypto features configured, and is not among the platforms typically affected by this advisory. No evidence of the vulnerable feature is present.
+⟶ No action required. No exposure to this advisory on this device.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPLKBP01BMODS01.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+This device is not affected by the advisory. The platform is a Catalyst switch that does not support IKEv2, and there is no evidence of the vulnerable feature being present or configured.
+
+L1 · Platform
+FAIL
+L2 · Version
+PASS
+L3 · Feature
+FAIL
+Platform: WS-C3560CX-8TC-S; 'show crypto map' shows no crypto maps; IKEv2 commands are invalid; no UDP 500 sockets.
+⟶ No action required. No exposure to the advisory on this device.
+This device is not affected by the advisory. The platform is a Catalyst switch that does not support IKEv2, and there is no evidence of the vulnerable feature being present or configured.
+⟶ No action required. No exposure to the advisory on this device.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTAINNOI20X12AS06.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train, and there is no evidence of the vulnerable IKEv2 feature being configured. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+Platform: IOS; Version: 15.2(7)E13 (>= 15.2 fixed); 'No crypto maps found'; 'show running-config crypto ikev2' not supported.
+⟶ No action required. Device is not vulnerable to this advisory.
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train, and there is no evidence of the vulnerable IKEv2 feature being configured. Therefore, the device is not affected by this advisory.
+⟶ No action required. Device is not vulnerable to this advisory.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPLO3XXAKZODS001.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train, and there is no evidence of the vulnerable IKEv2 feature being configured or active. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+Platform: IOS; Version: 15.2(7)E13 (>= fixed 15.2); 'show crypto map' shows no crypto maps; UDP port 500 not in use; no IKEv2 config present.
+⟶ No action required. Device is not affected by this vulnerability.
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train, and there is no evidence of the vulnerable IKEv2 feature being configured or active. Therefore, the device is not affected by this advisory.
+⟶ No action required. Device is not affected by this vulnerability.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPOKRA01DSMTHDS701.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+This device is not affected by the advisory. The platform (C3560CX switch) does not support IKEv2, and there is no evidence of the vulnerable feature being present or configured. The software version and train are not in scope for the advisory.
+
+L1 · Platform
+FAIL
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+Platform is WS-C3560CX-8TC-S (not in affected list); 'show crypto map' returns no crypto maps; 'show running-config crypto ikev2' is invalid; software version 15.2(7)E13 is not in a vulnerable train for IKEv2.
+⟶ No action required. No exposure to the documented vulnerability.
+This device is not affected by the advisory. The platform (C3560CX switch) does not support IKEv2, and there is no evidence of the vulnerable feature being present or configured. The software version and train are not in scope for the advisory.
+⟶ No action required. No exposure to the documented vulnerability.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEISTEL01XXXXIR001.hcl.com	17.12.6	Needs review	🌐 DNAC command runner	Why?
+Needs review
+The device platform and software version suggest possible exposure, but all command outputs are unavailable, so it is not possible to confirm if the vulnerable feature is active. Further review is required to determine exposure.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+UNKNOWN
+Platform: ISR4431/K9 (IOS XE, affected). Version: 17.12.6 (potentially vulnerable, but cannot confirm without show version). All command outputs for feature check are unavailable.
+⟶ Restore device access and rerun the feature verification commands to confirm if IKEv2 is configured or active.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5.0E, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 6.2 → 6.2.3, 6.4 → 6.4.0, 6.6 → 6.6.0, 7.0 → 7.0.0, 7.1 → 7.1.0, 7.2 → 7.2.0, 7.3 → 7.3.0, 7.4 → 7.4.0, 7.6 → 7.6.0, 7.7 → 7.7.0, 9.8 → 9.8.1, 12.2 → 12.2, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 16.6 → 16.6.1, 16.7 → 16.7.1, 16.8 → 16.8.1, 16.9 → 16.9.1, 17.1 → 17.1.1, 17.2 → 17.2.1, 17.3 → 17.3.1, 17.4 → 17.4.1, 17.5 → 17.5.1, 17.6 → 17.6.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.9 → 17.9.1, 3.10 → 3.10, 3.11 → 3.11, 3.12 → 3.12, 3.13 → 3.13, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18, 9.12 → 9.12.1, 9.14 → 9.14.1, 9.16 → 9.16.1, 9.17 → 9.17.1, 9.18 → 9.18.1, 9.19 → 9.19.1, 9.20 → 9.20.1, 9.22 → 9.22.1.1, 9.23 → 9.23.1, 16.10 → 16.10.1, 16.11 → 16.11.1, 16.12 → 16.12.1, 17.10 → 17.10.1, 17.11 → 17.11.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.14 → 17.14.1, 17.15 → 17.15.1, 17.16 → 17.16.1, 17.17 → 17.17.1, 17.18 → 17.18.1
+Vendor workaround: There are no workarounds that address this vulnerability.
+The device platform and software version suggest possible exposure, but all command outputs are unavailable, so it is not possible to confirm if the vulnerable feature is active. Further review is required to determine exposure.
+⟶ Restore device access and rerun the feature verification commands to confirm if IKEv2 is configured or active.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPOKRA01ADIDDS501.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train, and there is no evidence of the vulnerable IKEv2 feature being configured or active. Therefore, the device is not affected by this advisory.
+
+L1 · Platform
+PASS
+L2 · Version
+FAIL
+L3 · Feature
+FAIL
+Platform: IOS; Version: 15.2(7)E13 (>= 15.2); 'show crypto map' shows no crypto maps; UDP port 500 not in use.
+⟶ No action required. Device is not vulnerable to this advisory.
+The device is running a software version (15.2(7)E13) that is equal to or newer than the fixed release for its train, and there is no evidence of the vulnerable IKEv2 feature being configured or active. Therefore, the device is not affected by this advisory.
+⟶ No action required. Device is not vulnerable to this advisory.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTEPLKBP01BMODS02.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+This device is not affected by the advisory because its platform (Catalyst 3560-CX) is not listed among the affected platforms. No further checks are required as the advisory does not apply to this hardware.
+
+L1 · Platform
+FAIL
+L2 · Version
+UNKNOWN
+L3 · Feature
+UNKNOWN
+Platform: WS-C3560CX-8TC-S; Affected platforms: IOS, IOS XE, Secure Firewall ASA, Secure FTD.
+⟶ No action needed. No exposure to this advisory on this device.
+This device is not affected by the advisory because its platform (Catalyst 3560-CX) is not listed among the affected platforms. No further checks are required as the advisory does not apply to this hardware.
+⟶ No action needed. No exposure to this advisory on this device.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTAINPUNAZCLDNVART01.hcl.com	17.15.4c	Affected	🌐 DNAC command runner	Why?
+Affected
+The device is running IOS XE, which is an affected platform, and its software version is not clearly above the fixed release. UDP port 500 activity indicates the IKEv2 feature is active. There are no available workarounds for this vulnerability.
+
+L1 · Platform
+PASS
+L2 · Version
+PASS
+L3 · Feature
+PASS
+Platform: C8000V (IOS XE); Version: 17.15.4c; UDP port 500 active in 'show udp' and 'show ip socket'; No workaround per advisory.
+⟶ Plan to upgrade the device to a software version at or above the fixed release (17.15.1 or later as confirmed by Cisco) to remediate the vulnerability.
+Remediation — from the advisory
+Fixed releases: 3.5 → 3.5.0E, 3.6 → 3.6, 3.7 → 3.7.0E, 3.8 → 3.8, 3.9 → 3.9, 6.2 → 6.2.3, 6.4 → 6.4.0, 6.6 → 6.6.0, 7.0 → 7.0.0, 7.1 → 7.1.0, 7.2 → 7.2.0, 7.3 → 7.3.0, 7.4 → 7.4.0, 7.6 → 7.6.0, 7.7 → 7.7.0, 9.8 → 9.8.1, 12.2 → 12.2, 15.0 → 15.0, 15.1 → 15.1, 15.2 → 15.2, 15.3 → 15.3, 15.4 → 15.4, 15.5 → 15.5, 15.6 → 15.6, 15.7 → 15.7, 15.8 → 15.8, 15.9 → 15.9, 16.6 → 16.6.1, 16.7 → 16.7.1, 16.8 → 16.8.1, 16.9 → 16.9.1, 17.1 → 17.1.1, 17.2 → 17.2.1, 17.3 → 17.3.1, 17.4 → 17.4.1, 17.5 → 17.5.1, 17.6 → 17.6.1, 17.7 → 17.7.1, 17.8 → 17.8.1, 17.9 → 17.9.1, 3.10 → 3.10, 3.11 → 3.11, 3.12 → 3.12, 3.13 → 3.13, 3.14 → 3.14.0S, 3.15 → 3.15, 3.16 → 3.16, 3.17 → 3.17, 3.18 → 3.18, 9.12 → 9.12.1, 9.14 → 9.14.1, 9.16 → 9.16.1, 9.17 → 9.17.1, 9.18 → 9.18.1, 9.19 → 9.19.1, 9.20 → 9.20.1, 9.22 → 9.22.1.1, 9.23 → 9.23.1, 16.10 → 16.10.1, 16.11 → 16.11.1, 16.12 → 16.12.1, 17.10 → 17.10.1, 17.11 → 17.11.1, 17.12 → 17.12.1, 17.13 → 17.13.1, 17.14 → 17.14.1, 17.15 → 17.15.1, 17.16 → 17.16.1, 17.17 → 17.17.1, 17.18 → 17.18.1
+Vendor workaround: There are no workarounds that address this vulnerability.
+The device is running IOS XE, which is an affected platform, and its software version is not clearly above the fixed release. UDP port 500 activity indicates the IKEv2 feature is active. There are no available workarounds for this vulnerability.
+⟶ Plan to upgrade the device to a software version at or above the fixed release (17.15.1 or later as confirmed by Cisco) to remediate the vulnerability.
+asa-ftd-ios-dos-kPEpQGGK ↗	HTAINNOI20F07XXXAS01.hcl.com	15.2(7)E13	Not affected	🌐 DNAC command runner	Why?
+Not affected
+This device is not affected by the advisory because its platform (Catalyst 2960X) is not listed among the affected platforms. No further checks are necessary.
+
+L1 · Platform
+FAIL
+L2 · Version
+UNKNOWN
+L3 · Feature
+UNKNOWN
+Platform: WS-C2960XR-48FPS-I; Affected platforms: IOS, IOS XE, Secure Firewall ASA, Secure FTD.
+⟶ No action required. No exposure to this advisory on this device.
+This device is not affected by the advisory because its platform (Catalyst 2960X) is not listed among the affected platforms. No further checks are necessary.
+⟶ No action required. No exposure to this advisory on this device.
