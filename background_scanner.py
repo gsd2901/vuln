@@ -32,6 +32,7 @@ from psirt.applicability_engine import (
     fetch_fixed_releases_openvuln,
     get_advisory_profile_from_cache,
     get_compensating_control_commands,
+    judge_verdict,
     resolve_feature_commands,
     save_advisory_profile_to_cache,
     version_only_verdict,
@@ -88,10 +89,49 @@ def _dnac_device_type(family: str, series: str) -> str:
     return "cisco_xe"   # safe default for modern IOS XE devices
 
 
+# ── DNAC token management ─────────────────────────────────────────────────────
+
+class DnacTokenBox:
+    """
+    Shared, refreshable holder for the DNAC auth token used throughout a scan.
+
+    Root cause this fixes: a DNAC session token lasts ~60 minutes, but a full
+    scan (hundreds of device × advisory pairs) can run for hours. Previously
+    the token was captured once as a plain string at the start of the scan and
+    passed by value into every function -- once it expired mid-scan, every
+    subsequent Command Runner call failed with 401, and the code treated that
+    as "device unreachable" and fell back to SSH (which then also failed for
+    most hosts, since SSH access isn't well provisioned in this environment).
+    Confirmed in production: of 165 SSH-fallback pairs in one scan, 162 started
+    within the same minute the token turned 60 minutes old.
+
+    All token-consuming functions now take this box instead of a raw string,
+    so the *first* 401 anywhere triggers one re-login, and every pair
+    processed afterward (this is a single sequential background-scan thread,
+    not a pool) immediately sees the fresh token -- instead of every remaining
+    pair independently hitting its own 401 and falling back to SSH.
+    """
+
+    def __init__(self, dnac):
+        self._dnac = dnac
+        self._lock = threading.Lock()
+        self.token = dnac.header.get("x-auth-token", "")
+
+    def refresh(self) -> str:
+        """Re-authenticate against DNAC and return the fresh token."""
+        with self._lock:
+            self._dnac.login()
+            self.token = self._dnac.header.get("x-auth-token", "")
+            logger.info(
+                "[PSIRT] DNAC token refreshed (previous token had expired mid-scan)."
+            )
+            return self.token
+
+
 # ── DNAC advisory detail fetch ────────────────────────────────────────────────
 
 def _fetch_advisory_detail_from_dnac(
-    dnac_host: str, token: str, advisory_id: str, verify_ssl: bool = False,
+    dnac_host: str, token_box: "DnacTokenBox", advisory_id: str, verify_ssl: bool = False,
 ) -> dict:
     """
     Fetch advisory detail from DNAC's security-advisory API.
@@ -104,16 +144,24 @@ def _fetch_advisory_detail_from_dnac(
     """
     import requests, urllib3
     urllib3.disable_warnings()
-    headers = {"X-Auth-Token": token, "Content-Type": "application/json"}
     base = f"https://{dnac_host}/dna/intent/api/v1"
     detail: dict = {}
+
+    def _headers():
+        return {"X-Auth-Token": token_box.token, "Content-Type": "application/json"}
 
     # 1. Advisory-level detail
     try:
         resp = requests.get(
             f"{base}/security-advisory/advisory/{advisory_id}",
-            headers=headers, verify=verify_ssl, timeout=20,
+            headers=_headers(), verify=verify_ssl, timeout=20,
         )
+        if resp.status_code == 401:
+            token_box.refresh()
+            resp = requests.get(
+                f"{base}/security-advisory/advisory/{advisory_id}",
+                headers=_headers(), verify=verify_ssl, timeout=20,
+            )
         if resp.status_code == 200:
             detail = resp.json().get("response", {}) or {}
     except Exception as exc:
@@ -235,7 +283,7 @@ _DNAC_CMD_LIMIT = 5   # DNAC Command Runner hard limit: max commands per request
 
 
 def _dnac_run_commands(
-    host: str, token: str, device_uuid: str,
+    host: str, token_box: "DnacTokenBox", device_uuid: str,
     commands: list[str], verify_ssl: bool = False,
 ) -> dict:
     """
@@ -249,7 +297,7 @@ def _dnac_run_commands(
         merged: dict[str, str] = {}
         for i in range(0, len(commands), _DNAC_CMD_LIMIT):
             batch_result = _dnac_run_commands(
-                host, token, device_uuid,
+                host, token_box, device_uuid,
                 commands[i : i + _DNAC_CMD_LIMIT],
                 verify_ssl,
             )
@@ -261,16 +309,33 @@ def _dnac_run_commands(
     import json as _json, time, requests, urllib3
     urllib3.disable_warnings()
 
-    headers = {"X-Auth-Token": token, "Content-Type": "application/json"}
-    base    = f"https://{host}/dna/intent/api/v1"
+    base = f"https://{host}/dna/intent/api/v1"
+
+    def _headers():
+        return {"X-Auth-Token": token_box.token, "Content-Type": "application/json"}
 
     try:
         resp = requests.post(
             f"{base}/network-device-poller/cli/read-request",
-            headers=headers,
+            headers=_headers(),
             json={"commands": commands, "deviceUuids": [device_uuid]},
             verify=verify_ssl, timeout=30,
         )
+        if resp.status_code == 401:
+            # Session token expired mid-scan (observed TTL: ~60 minutes) — this
+            # is NOT a device-reachability problem. Re-authenticate once and
+            # retry with the fresh token before falling back to SSH.
+            logger.warning(
+                "[PSIRT] DNAC token expired (401) for device %s — "
+                "re-authenticating and retrying Command Runner call.", device_uuid,
+            )
+            token_box.refresh()
+            resp = requests.post(
+                f"{base}/network-device-poller/cli/read-request",
+                headers=_headers(),
+                json={"commands": commands, "deviceUuids": [device_uuid]},
+                verify=verify_ssl, timeout=30,
+            )
         if resp.status_code == 400:
             err_text = resp.text.lower()
             skip = any(s in err_text for s in _CR_SKIP_ERRORS)
@@ -289,7 +354,7 @@ def _dnac_run_commands(
         time.sleep(3)
         try:
             t = requests.get(
-                f"{base}/task/{task_id}", headers=headers,
+                f"{base}/task/{task_id}", headers=_headers(),
                 verify=verify_ssl, timeout=15,
             ).json()["response"]
             progress = t.get("progress", "")
@@ -316,7 +381,7 @@ def _dnac_run_commands(
 
     try:
         file_resp = requests.get(
-            f"{base}/file/{file_id}", headers=headers,
+            f"{base}/file/{file_id}", headers=_headers(),
             verify=verify_ssl, timeout=30,
         )
         file_resp.raise_for_status()
@@ -363,7 +428,7 @@ def _ssh_collect(ssh_cfg: dict, commands: list[str]) -> dict:
 def _collect_compensating_outputs(
     profile: dict, device: dict,
     existing_outputs: dict,
-    dnac_host: str, token: str, device_uuid: str,
+    dnac_host: str, token_box: "DnacTokenBox", device_uuid: str,
     verify_ssl: bool, ssh_username: str, ssh_password: str,
 ) -> dict:
     """
@@ -379,7 +444,7 @@ def _collect_compensating_outputs(
 
     # Try DNAC Command Runner first
     if device_uuid:
-        cc_result = _dnac_run_commands(dnac_host, token, device_uuid, new_cmds, verify_ssl)
+        cc_result = _dnac_run_commands(dnac_host, token_box, device_uuid, new_cmds, verify_ssl)
         if cc_result["status"] == "ok":
             merged.update(cc_result["outputs"])
             return merged
@@ -412,7 +477,7 @@ def _run_scan_for_pair(
     advisory: dict,
     device: dict,
     dnac_host: str,
-    token: str,
+    token_box: "DnacTokenBox",
     dnac_id: Optional[str],
     verify_ssl: bool,
     scan_triggered_at: str,
@@ -445,7 +510,7 @@ def _run_scan_for_pair(
     else:
         # Try DNAC detail API first (has version data, no external dependency)
         dnac_detail = _fetch_advisory_detail_from_dnac(
-            dnac_host, token, advisory_id, verify_ssl)
+            dnac_host, token_box, advisory_id, verify_ssl)
         profile = _build_profile_from_dnac_detail(advisory_id, dnac_detail, advisory)
 
         # If no fixed_releases from DNAC, try Cisco portal + GPT
@@ -598,7 +663,7 @@ def _run_scan_for_pair(
 
     if device_id:
         collect_result = _dnac_run_commands(
-            dnac_host, token, device_id, commands, verify_ssl)
+            dnac_host, token_box, device_id, commands, verify_ssl)
         skip_ssh = collect_result.get("skip_ssh", False)
 
     # ── SSH fallback ──────────────────────────────────────────────────────────
@@ -678,6 +743,40 @@ def _run_scan_for_pair(
     verdict = analysis.get("verdict", "NEEDS_REVIEW")
     summary = analysis.get("summary", "")
 
+    # ── LLM-as-judge: verdict consistency check (runs on every verdict) ──────
+    # Independent second pass that checks whether `verdict` actually follows
+    # from the layer results and the stated summary/evidence — catches cases
+    # where the model's own prose contradicts its structured output (distinct
+    # from the Layer 2 non-determinism bug, which is now fixed deterministically
+    # in analyse_applicability()/compute_verdict()). Per product decision this
+    # runs unconditionally and auto-applies any correction it finds.
+    judge = None
+    try:
+        judge = judge_verdict(
+            advisory_profile=profile,
+            device={"hostname": hostname, "platform": platform, "version": sw_version},
+            verdict=verdict,
+            summary=summary,
+            evidence=analysis.get("evidence", ""),
+            layer1=analysis.get("layer1", {}),
+            layer2=analysis.get("layer2", {}),
+            layer3=analysis.get("layer3", {}),
+        )
+        if judge and not judge.get("consistent", True) and judge.get("corrected_verdict"):
+            original_verdict = verdict
+            verdict = judge["corrected_verdict"]
+            logger.info(
+                "[PSIRT] %s × %s → judge corrected %s → %s: %s",
+                advisory_id, hostname, original_verdict, verdict,
+                judge.get("judge_reasoning", ""),
+            )
+            summary = (
+                f"[Judge corrected {original_verdict} → {verdict}: "
+                f"{judge.get('judge_reasoning', '')}] {summary}"
+            )
+    except Exception as exc:
+        logger.warning("[PSIRT] Judge verdict check failed: %s", exc)
+
     # ── Compensating controls check (AFFECTED only) ──────────────────────────
     # The LLM's own "mitigated" judgment is authoritative: if it decides the
     # existing device configuration compensates for (blocks exploitation of)
@@ -694,7 +793,7 @@ def _run_scan_for_pair(
                 device=device,
                 existing_outputs=collect_result.get("outputs", {}),
                 dnac_host=dnac_host,
-                token=token,
+                token_box=token_box,
                 device_uuid=device_id,
                 verify_ssl=verify_ssl,
                 ssh_username=ssh_username,
@@ -740,6 +839,7 @@ def _run_scan_for_pair(
         layer4=_layer_result("layer4"),
         collection_method=collection_method,
         mitigation=mitigation,
+        judge=judge,
         needs_review_reason=("insufficient_data" if verdict == "NEEDS_REVIEW" else ""),
         remediation=build_remediation_tier1(profile),
     )
@@ -752,7 +852,7 @@ def _background_scan_worker(
     advisories: list[dict],
     devices_by_uuid: dict[str, dict],
     dnac_host: str,
-    token: str,
+    token_box: "DnacTokenBox",
     dnac_id: Optional[str],
     verify_ssl: bool,
     scan_triggered_at: str,
@@ -784,7 +884,7 @@ def _background_scan_worker(
             try:
                 _run_scan_for_pair(
                     advisory=advisory, device=device,
-                    dnac_host=dnac_host, token=token, dnac_id=dnac_id,
+                    dnac_host=dnac_host, token_box=token_box, dnac_id=dnac_id,
                     verify_ssl=verify_ssl, scan_triggered_at=scan_triggered_at,
                     ssh_username=ssh_username, ssh_password=ssh_password,
                 )
@@ -856,8 +956,12 @@ def trigger_applicability_scan(
         for advisory in advisories:
             advisory_id = advisory.get("advisoryId", "")
             try:
-                resp = dnac.get_devices_per_advisory(advisory_id)
-                device_uuids = resp.get("response", []) or []
+                # get_devices_per_advisory() is unpaginated and silently caps at
+                # ~500 devices per advisory (confirmed against the Security
+                # Advisories UI: cisco-sa-hardening-iosxe-V8NMuMZJ reported 500
+                # here vs 1791 actually affected). Use the paginated variant so
+                # high-blast-radius advisories aren't silently truncated.
+                device_uuids = dnac.get_all_devices_per_advisory(advisory_id) or []
             except Exception as fetch_exc:
                 logger.warning(
                     "[PSIRT] Could not fetch affected devices for advisory %s: %s",
@@ -899,12 +1003,19 @@ def trigger_applicability_scan(
         logger.error("[PSIRT] Token error: %s", exc)
         return scan_triggered_at
 
+    # Wrap the token in a refreshable box (see DnacTokenBox docstring) so a
+    # single re-login mid-scan — needed because DNAC tokens last ~60 minutes
+    # but scans can run for hours — is immediately visible to every remaining
+    # device × advisory pair, instead of each one independently hitting its
+    # own 401 and falling back to a much weaker/less reliable SSH path.
+    token_box = DnacTokenBox(dnac)
+
     # Wipe stale results for this DNAC before writing fresh ones
     clear_applicability_results(dnac_id)
 
     thread = threading.Thread(
         target=_background_scan_worker,
-        args=(advisories, devices_by_uuid, dnac_host, token,
+        args=(advisories, devices_by_uuid, dnac_host, token_box,
               dnac_id, verify_ssl, scan_triggered_at, ssh_username, ssh_password),
         daemon=True,
         name=f"psirt-scan-{dnac_id or 'default'}-{scan_triggered_at[:19]}",
