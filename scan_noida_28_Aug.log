@@ -1,0 +1,4 @@
+nohup: ignoring input
+2026-08-28 13:59:32,586 [INFO] run_scan: [SCAN] DNAC host=10.98.45.247  dnac_id=noida
+2026-08-28 13:59:32,587 [ERROR] run_scan: [SCAN] DNAC auth failed: No module named 'requests'
+2026-08-28 13:59:32,587 [ERROR] run_scan: [SCAN] ✗ dnac_id=noida        | ERROR: DNAC auth failed: No module named 'requests'
